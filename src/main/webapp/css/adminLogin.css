@@ -1,0 +1,442 @@
+/* ── Universal Reset ── */
+/* Removes default margins, padding, and sets border-box sizing on all elements */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ── CSS Custom Properties ── */
+/* Stores all reusable color tokens in one place for easy theming and consistency */
+:root {
+    --bg-overlay: rgba(12, 10, 8, 0.72);
+    --card-bg: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6b6b6b;
+    --text-muted: #999999;
+    --input-border: #e0e0e0;
+    --input-focus: #8b6914;
+    --btn-bg: #1a1a1a;
+    --btn-text: #ffffff;
+    --link-color: #8b6914;
+    --footer-text: #aaa;
+}
+
+/* ── Base Body ── */
+/* Full viewport height, centers the login card using flexbox, dark fallback background */
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0908;
+    overflow: hidden;
+}
+
+/* ── Restaurant Background Image ── */
+/* Fixed full-screen background photo of a restaurant/wine cellar setting */
+.bg-restaurant {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: url('https://picsum.photos/seed/italian-wine-rack/1920/1080.jpg') center/cover no-repeat;
+}
+
+/* ── Background Dark Overlay ── */
+/* Semi-transparent dark layer on top of the photo to make the white card readable */
+.bg-restaurant::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--bg-overlay);
+    backdrop-filter: blur(2px);
+}
+
+/* ── Warm Ambient Light Patches ── */
+/* Simulates warm golden light spots like candlelight or pendant lamps in a restaurant */
+.bg-restaurant::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+            radial-gradient(ellipse 600px 500px at 20% 40%, rgba(180, 120, 40, 0.12) 0%, transparent 70%),
+            radial-gradient(ellipse 500px 400px at 80% 60%, rgba(160, 100, 30, 0.10) 0%, transparent 70%),
+            radial-gradient(ellipse 300px 300px at 50% 20%, rgba(200, 150, 60, 0.06) 0%, transparent 70%);
+    z-index: 1;
+}
+
+/* ── Login Card Container ── */
+/* Constrains max width and adds horizontal padding so the card doesn't touch screen edges on small devices */
+.login-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 440px;
+    padding: 20px;
+}
+
+/* ── Login Card ── */
+/* White rounded card with deep shadows and hidden overflow for the top accent bar pseudo-element */
+.login-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 48px 40px 36px;
+    box-shadow:
+            0 25px 60px rgba(0, 0, 0, 0.4),
+            0 8px 20px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Gold Accent Bar ── */
+/* Thin decorative gold gradient line at the very top of the card for a premium feel */
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px;
+    right: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a84c, #8b6914, #c9a84c, transparent);
+    border-radius: 0 0 4px 4px;
+}
+
+/* ── Shield Icon Container ── */
+/* Soft cream-colored rounded square that holds the lock/shield SVG icon */
+.shield-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f6f1;
+    border-radius: 12px;
+    border: 1px solid #ece6d6;
+}
+
+/* ── Shield Icon SVG ── */
+/* Sizes the shield SVG and applies gold stroke color with rounded line caps */
+.shield-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #8b6914;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Card Header Area ── */
+/* Centers the brand name, title, and subtitle text block */
+.card-header {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* ── Brand Label ── */
+/* Small uppercase serif text "Amici De Gusto" in gold, used as a brand identifier above the title */
+.brand-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--link-color);
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* ── Card Title ── */
+/* Large serif heading "Management" — the main visual anchor of the card */
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+/* ── Card Subtitle ── */
+/* Smaller body text describing the admin access purpose; "Admin Access" line is slightly darker */
+.card-subtitle {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ── Subtitle Highlight Span ── */
+/* Makes the "Admin Access" portion of the subtitle slightly darker for visual hierarchy */
+.card-subtitle span {
+    color: var(--text-secondary);
+}
+
+/* ── Form Group ── */
+/* Vertical spacing between each label + input pair */
+.form-group {
+    margin-top: 28px;
+}
+
+/* ── Form Label ── */
+/* Tiny uppercase label text above each input (e.g. "ADMIN ID OR EMAIL", "PASSWORD") */
+.form-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+/* ── Input Wrapper ── */
+/* Relative container that positions the SVG icon inside the input field */
+.input-wrapper {
+    position: relative;
+}
+
+/* ── Input Field Icon ── */
+/* Left-aligned SVG icon (user or lock) inside the input; changes color on input focus via sibling selector */
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: #b0b0b0;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s;
+    pointer-events: none;
+}
+
+/* ── Form Input ── */
+/* Styled text/password input with left padding for the icon, light background, and rounded corners */
+.form-input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px 0 44px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-primary);
+    background: #fafafa;
+    border: 1.5px solid var(--input-border);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+/* ── Input Placeholder ── */
+/* Very light placeholder text that appears when the input is empty */
+.form-input::placeholder {
+    color: #c0c0c0;
+    font-weight: 300;
+}
+
+/* ── Input Focus State ── */
+/* Gold border, white background, and subtle gold glow ring when the user clicks into the input */
+.form-input:focus {
+    border-color: var(--input-focus);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(139, 105, 20, 0.08);
+}
+
+/* ── Input Focus → Icon Color Change ── */
+/* Uses general sibling combinator to turn the icon gold when the input gains focus */
+.form-input:focus ~ .input-icon {
+    stroke: var(--input-focus);
+}
+
+/* ── Options Row ── */
+/* Right-aligns the "FORGOT?" link below the password field */
+.options-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 14px;
+}
+
+/* ── Forgot Password Link ── */
+/* Small gold link text; gains underline on hover for feedback */
+.forgot-link {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--link-color);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+}
+
+/* ── Forgot Link Hover ── */
+/* Darkens the gold and adds underline to indicate clickability */
+.forgot-link:hover {
+    color: #a07a10;
+    text-decoration: underline;
+}
+
+/* ── Authorize Button ── */
+/* Full-width dark button with uppercase text, arrow icon, and a hidden gold gradient overlay on hover */
+.btn-authorize {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 50px;
+    margin-top: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--btn-text);
+    background: var(--btn-bg);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Button Gold Gradient Overlay ── */
+/* Invisible by default; fades in on hover to give a subtle warm sheen across the button */
+.btn-authorize::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* ── Button Hover State ── */
+/* Lightens background, lifts with shadow, and reveals the gold gradient overlay */
+.btn-authorize:hover {
+    background: #2a2a2a;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+}
+
+/* ── Button Hover → Show Overlay ── */
+/* Fades in the gold gradient pseudo-element when hovering over the button */
+.btn-authorize:hover::before {
+    opacity: 1;
+}
+
+/* ── Button Active (Pressed) State ── */
+/* Pushes the button back down and reduces shadow to simulate a physical press */
+.btn-authorize:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Button Arrow Icon ── */
+/* Right-pointing arrow SVG inside the button; slides slightly right on hover for motion feedback */
+.btn-arrow {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s;
+}
+
+/* ── Button Hover → Arrow Nudge ── */
+/* Shifts the arrow 2px to the right when the button is hovered */
+.btn-authorize:hover .btn-arrow {
+    transform: translateX(2px);
+}
+
+/* ── Divider Line ── */
+/* Horizontal line with fading edges that separates the form from the footer links */
+.divider {
+    margin-top: 28px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e8e8e8, transparent);
+}
+
+/* ── Card Footer ── */
+/* Centers the "Support" and "Privacy" links horizontally with even spacing */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+/* ── Footer Link ── */
+/* Small muted link text for Support/Privacy; darkens slightly on hover */
+.footer-link {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+/* ── Footer Link Hover ── */
+/* Darkens the muted text on hover to indicate interactivity */
+.footer-link:hover {
+    color: var(--text-secondary);
+}
+
+/* ── Page Footer ── */
+/* Fixed to the bottom of the viewport, always visible behind the login card */
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    text-align: center;
+    padding: 16px 20px;
+}
+
+/* ── Page Footer Copyright Text ── */
+/* Very faint white uppercase text for the "© 2026 AMICI DE GUSTO" branding at the bottom */
+.page-footer span {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+}
+
+/* ── Mobile Responsive Adjustments ── */
+/* Reduces padding, border radius, and font sizes for screens narrower than 480px */
+@media (max-width: 480px) {
+    .login-wrapper {
+        padding: 16px;
+    }
+
+    .login-card {
+        padding: 40px 28px 28px;
+        border-radius: 12px;
+    }
+
+    .login-card::before {
+        left: 28px;
+        right: 28px;
+    }
+
+    .card-title {
+        font-size: 19px;
+    }
+
+    .card-subtitle {
+        font-size: 12.5px;
+    }
+}
