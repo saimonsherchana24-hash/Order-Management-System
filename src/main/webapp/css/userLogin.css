@@ -7,7 +7,7 @@
 
 body {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1588013273468-315fd88ea34c') no-repeat center/cover;
+    background: url(../Resource/RegisterImage.png) no-repeat center/cover;
 }
 
 /* MAIN LAYOUT */
@@ -120,7 +120,7 @@ button:active {
 
 /* ── Forgot Span Hover ── */
 .forgot span:hover {
-    color: #8b6914;
+    color: black;
     text-decoration: underline;
 }
 /* ── Right Panel ── */
