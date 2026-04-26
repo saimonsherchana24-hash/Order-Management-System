@@ -1,0 +1,191 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f5f6f7;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px;
+    background: #1e2a38;
+    color: #f5f5f5;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.home-btn {
+    color: #f5f5f5;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.home-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.app-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 32px;
+    margin: 25px 30px;
+    color: #1e2a38;
+}
+
+/* container */
+.container {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: 18px;
+    display: flex;
+    gap: 20px;
+    padding: 0 30px 30px;
+}
+
+.left { flex: 2; }
+.right { flex: 1; }
+
+.box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e6e6e6;
+}
+
+.option {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.card {
+    flex: 1;
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card.active {
+    background: #1e2a38;
+    color: white;
+    border: 1px solid #1e2a38;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.payment {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.paybox {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: #fafafa;
+    transition: 0.3s;
+}
+
+.paybox i {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.paybox:hover {
+    transform: translateY(-3px);
+}
+
+.paybox.active {
+    background: #2c3e50;
+    color: white;
+    border: 1px solid #2c3e50;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    padding: 22px;
+    background: #ddd;
+    color: black;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: #1e2a38 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(30, 42, 56, 0.4);
+}
+
+@media(max-width: 900px){
+    .container {
+        flex-direction: column;
+    }
+
+    .option {
+        flex-direction: column;
+    }
+
+    .payment {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ✅ ONLY FIX: make checkout content text normal (not bold) */
+.box label,
+.box p,
+.summary-item,
+.summary-item span,
+.summary-item div {
+    font-weight: 400 !important;
+}
