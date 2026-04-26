@@ -4,6 +4,7 @@ body {
     background: #f5f6f7;
 }
 
+/* HEADER */
 header {
     display: flex;
     justify-content: space-between;
@@ -41,6 +42,7 @@ header {
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
 }
 
+/* TITLE */
 .title {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
@@ -49,19 +51,12 @@ header {
     color: #1e2a38;
 }
 
-/* container */
+/* CONTAINER */
 .container {
-    font-family: 'Playfair Display', serif;
-    font-weight: 800;
-    font-size: 18px;
-    display: flex;
-    gap: 20px;
     padding: 0 30px 30px;
 }
 
-.left { flex: 2; }
-.right { flex: 1; }
-
+/* BOX */
 .box {
     background: white;
     padding: 25px;
@@ -71,121 +66,53 @@ header {
     border: 1px solid #e6e6e6;
 }
 
-.option {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.card {
-    flex: 1;
-    padding: 18px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    background: #fafafa;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-3px);
-}
-
-.card.active {
-    background: #1e2a38;
-    color: white;
-    border: 1px solid #1e2a38;
-}
-
-input, textarea {
+/* TABLE */
+table {
     width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.payment {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    border-collapse: collapse;
     margin-top: 10px;
 }
 
-.paybox {
-    height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    background: #fafafa;
-    transition: 0.3s;
+th {
+    padding: 12px;
+    background: #f0f0f0;
+    text-align: left;
 }
 
-.paybox i {
-    font-size: 24px;
-    margin-bottom: 6px;
+td {
+    padding: 12px;
 }
 
-.paybox:hover {
-    transform: translateY(-3px);
+tr {
+    border-bottom: 1px solid #eee;
 }
 
-.paybox.active {
-    background: #2c3e50;
-    color: white;
-    border: 1px solid #2c3e50;
-}
-
+/* SUMMARY */
 .summary-item {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
 }
 
+.total {
+    font-size: 18px;
+}
+
+/* BUTTON */
 button {
     width: 100%;
-    padding: 22px;
+    padding: 20px;
     background: #ddd;
     color: black;
     border: none;
     border-radius: 14px;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: 0.25s;
 }
 
 button:hover {
-    background: #1e2a38 !important;
-    color: white !important;
+    background: #1e2a38;
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(30, 42, 56, 0.4);
-}
-
-@media(max-width: 900px){
-    .container {
-        flex-direction: column;
-    }
-
-    .option {
-        flex-direction: column;
-    }
-
-    .payment {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ✅ ONLY FIX: make checkout content text normal (not bold) */
-.box label,
-.box p,
-.summary-item,
-.summary-item span,
-.summary-item div {
-    font-weight: 400 !important;
 }
