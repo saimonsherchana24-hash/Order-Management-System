@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Cart — Amici de Gusto</title>
+<meta name="description" content="Review your order at Amici de Gusto and place your delivery." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">Amici <span class="accent">de</span> Gusto</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#menu">Menu</a>
+      <a href="index.html#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" class="btn-login">Login</a>
+      <a href="cart.html" class="cart-btn" aria-label="View cart">
+        🛒
+        <!-- Backend renders count from session cart -->
+        <span class="cart-badge">3</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container">
+    <div class="page-head">
+      <a href="index.html" class="back-link">← Continue shopping</a>
+      <p class="eyebrow" style="color:var(--gold)">Il Tuo Ordine</p>
+      <h1>Your Cart</h1>
+    </div>
+
+    <!-- ====== FILLED CART STATE ====== -->
+    <!-- Backend: loop session cart items; remove this block & show .empty-cart when empty -->
+    <div class="cart-layout">
+
+      <ul class="cart-list">
+
+        <li class="cart-item">
+          <img src="assets/pizza.jpg" alt="Margherita Pizza" />
+          <div class="info">
+            <div class="top">
+              <div>
+                <h3>Margherita Pizza</h3>
+                <p class="desc">San Marzano tomatoes, fresh buffalo mozzarella, basil, extra virgin olive oil.</p>
+              </div>
+              <form action="cart" method="post">
+                <input type="hidden" name="action" value="remove" />
+                <input type="hidden" name="itemId" value="margherita" />
+                <button class="icon-btn" aria-label="Remove">🗑</button>
+              </form>
+            </div>
+            <div class="cart-bottom">
+              <div class="qty">
+                <form action="cart" method="post" style="display:inline">
+                  <input type="hidden" name="action" value="decrement" />
+                  <input type="hidden" name="itemId" value="margherita" />
+                  <button type="submit" aria-label="Decrease">−</button>
+                </form>
+                <span class="count">1</span>
+                <form action="cart" method="post" style="display:inline">
+                  <input type="hidden" name="action" value="increment" />
+                  <input type="hidden" name="itemId" value="margherita" />
+                  <button type="submit" aria-label="Increase">+</button>
+                </form>
+              </div>
+              <div class="line-total">€16.00</div>
+            </div>
+          </div>
+        </li>
+
+        <li class="cart-item">
+          <img src="assets/lasagna.jpg" alt="Lasagna Classico" />
+          <div class="info">
+            <div class="top">
+              <div>
+                <h3>Lasagna Classico</h3>
+                <p class="desc">Slow-braised beef ragù layered with béchamel and aged pecorino.</p>
+              </div>
+              <form action="cart" method="post">
+                <input type="hidden" name="action" value="remove" />
+                <input type="hidden" name="itemId" value="lasagna" />
+                <button class="icon-btn" aria-label="Remove">🗑</button>
+              </form>
+            </div>
+            <div class="cart-bottom">
+              <div class="qty">
+                <form action="cart" method="post" style="display:inline">
+                  <input type="hidden" name="action" value="decrement" />
+                  <input type="hidden" name="itemId" value="lasagna" />
+                  <button type="submit" aria-label="Decrease">−</button>
+                </form>
+                <span class="count">2</span>
+                <form action="cart" method="post" style="display:inline">
+                  <input type="hidden" name="action" value="increment" />
+                  <input type="hidden" name="itemId" value="lasagna" />
+                  <button type="submit" aria-label="Increase">+</button>
+                </form>
+              </div>
+              <div class="line-total">€42.00</div>
+            </div>
+          </div>
+        </li>
+
+        <li class="cart-item">
+          <img src="assets/red-wine.jpg" alt="Chianti Classico" />
+          <div class="info">
+            <div class="top">
+              <div>
+                <h3>Chianti Classico</h3>
+                <p class="desc">Tuscan Sangiovese, notes of cherry, leather, and warm spice.</p>
+              </div>
+              <form action="cart" method="post">
+                <input type="hidden" name="action" value="remove" />
+                <input type="hidden" name="itemId" value="chianti" />
+                <button class="icon-btn" aria-label="Remove">🗑</button>
+              </form>
+            </div>
+            <div class="cart-bottom">
+              <div class="qty">
+                <form action="cart" method="post" style="display:inline">
+                  <input type="hidden" name="action" value="decrement" />
+                  <input type="hidden" name="itemId" value="chianti" />
+                  <button type="submit" aria-label="Decrease">−</button>
+                </form>
+                <span class="count">1</span>
+                <form action="cart" method="post" style="display:inline">
+                  <input type="hidden" name="action" value="increment" />
+                  <input type="hidden" name="itemId" value="chianti" />
+                  <button type="submit" aria-label="Increase">+</button>
+                </form>
+              </div>
+              <div class="line-total">€12.00</div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+      <aside class="summary">
+        <h2>Order Summary</h2>
+        <dl>
+          <div class="row"><dt>Subtotal</dt><dd>€70.00</dd></div>
+          <div class="row"><dt>Delivery</dt><dd>€3.50</dd></div>
+          <div class="row total"><dt>Total</dt><dd>€73.50</dd></div>
+        </dl>
+        <form action="order" method="post">
+          <button type="submit" class="btn-place">Place Order</button>
+        </form>
+        <p class="note">Secure checkout · Free delivery over €60</p>
+      </aside>
+
+    </div>
+
+    <!-- ====== EMPTY CART STATE (backend renders this when cart is empty) ======
+    <div class="empty-cart">
+      <div class="icon">🛍️</div>
+      <h2>Your cart is empty</h2>
+      <p>Add a dish from our menu to get started.</p>
+      <a href="index.html#menu" class="btn-primary">Browse Menu</a>
+    </div>
+    -->
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Amici de Gusto</h4>
+        <p>Authentic Italian dining since 1972. Crafted with passion, served with love.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Via Roma 24, Milano</li>
+          <li>+39 02 1234 5678</li>
+          <li>hello@amicidegusto.it</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon – Thu: 12:00 – 23:00</li>
+          <li>Fri – Sat: 12:00 – 00:30</li>
+          <li>Sunday: 13:00 – 22:00</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Twitter">X</a>
+        </div>
+      </div>
+    </div>
+    <p class="copy">© 2025 Amici de Gusto · All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
