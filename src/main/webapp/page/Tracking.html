@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Track Order</title>
+    <link rel="stylesheet" href="../css/Tracking.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <a href="#" class="home-btn"><i class="fa-solid fa-house"></i></a>
+        <div class="app-name">Amici de Gusto</div>
+    </div>
+    <i class="fa-solid fa-utensils"></i>
+</header>
+
+<div class="container">
+
+<h1>Track Your Order</h1>
+
+<form>
+    <div class="track-box">
+        <input type="text" placeholder="Enter Order ID">
+        <button type="submit"><i class="fa fa-search"></i> Track</button>
+    </div>
+</form>
+
+<a href="Confirmation.html" class="btn">← Back</a>
+
+<!-- STATUS -->
+<div class="status">
+    <h3><i class="fa fa-utensils"></i> Preparing Your Order</h3>
+    <p>Chefs are preparing your meal.</p>
+</div>
+
+<div class="row">
+    <div class="card">
+        <p>Order Number</p>
+        <b>#12345</b>
+    </div>
+
+    <div class="card">
+        <p>Order Type</p>
+        <b>Dine-In</b>
+        <br>
+        <small>Table #5</small>
+    </div>
+</div>
+
+<div class="time-box">
+    <p><i class="fa fa-clock"></i> Estimated Time</p>
+    <b>15 minutes</b>
+</div>
+
+<div class="progress">
+
+<div class="step">
+    <div class="circle active">✔</div>
+    Order Received
+</div>
+
+<div class="step">
+    <div class="circle active">✔</div>
+    Preparing
+</div>
+
+<div class="step">
+    <div class="circle">✔</div>
+    Being Served
+</div>
+
+<div class="step">
+    <div class="circle">✔</div>
+    Completed
+</div>
+
+</div>
+
+<div class="order-box">
+    <h3>Your Order</h3>
+
+    <div class="item">
+        <span class="item-name">Spaghetti Carbonara</span>
+        <span class="item-qty">Qty: 1</span>
+        <span class="item-price">$18.35</span>
+    </div>
+
+    <div class="item">
+        <span class="item-name">Garlic Bread</span>
+        <span class="item-qty">Qty: 2</span>
+        <span class="item-price">$6.00</span>
+    </div>
+
+    <div class="total-row">
+        <span>Total</span>
+        <span>$24.35</span>
+    </div>
+</div>
+
+<div class="help">
+    <h3>Need Help?</h3>
+    <p>If you have any questions about your order, please contact us:</p>
+
+    <a href="#" class="btn"><i class="fa fa-phone"></i> Call Restaurant</a>
+    <a href="#" class="btn">Order More Items</a>
+</div>
+
+</div>
+
+</body>
+</html>
