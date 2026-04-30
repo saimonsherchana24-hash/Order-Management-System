@@ -1,4 +1,4 @@
-/* ===== AMICI DE GUSTO THEME FOR TRACKING PAGE ===== */
+/* ===== AMICI DE GUSTO TRACKING PAGE ===== */
 
 :root{
   --green:#1B4332;
@@ -27,38 +27,47 @@ body {
 
 /* HEADER */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 30px;
-    background: var(--green);
-    color: var(--cream);
-    box-shadow: var(--shadow-soft);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 30px;
+    background:var(--green);
+    color:var(--cream);
+    box-shadow:var(--shadow-soft);
 }
 
+/* BRAND NAME */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
+/* HOME ICON */
 .home-btn {
-    color: var(--cream);
-    font-size: 20px;
-    padding: 8px;
-    border-radius: 8px;
-    text-decoration: none;
+    color:var(--cream);
+    font-size:20px;
+    padding:8px;
+    border-radius:8px;
+    text-decoration:none;
 }
 
 .home-btn:hover {
-    background: rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.15);
 }
 
+/* RESTAURANT NAME STYLE */
 .app-name {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: .5px;
+    font-family:"Playfair Display", serif;
+    font-size:22px;
+    font-weight:700;
+    color:var(--cream);
+    letter-spacing:.5px;
+}
+
+.app-name .accent {
+    color:var(--gold-soft);
+    font-style:italic;
 }
 
 /* MAIN CONTAINER */
@@ -71,13 +80,13 @@ header {
 
 /* TITLE */
 h1 {
-    font-family: var(--serif);
-    color: var(--green);
-    font-size: 2.5rem;
-    margin-top: 20px;
+    font-family:"Playfair Display", serif;
+    color:var(--green);
+    font-size:2.5rem;
+    margin-top:20px;
 }
 
-/* TRACK BOX */
+/* TRACK INPUT */
 .track-box { 
     display:flex; 
     justify-content:center; 
@@ -90,13 +99,12 @@ h1 {
     border-radius:999px 0 0 999px; 
     border:1px solid var(--border);
     outline:none;
-    font-family: var(--sans);
 }
 
 .track-box button {
     padding:12px 20px; 
     border:none;
-    background: linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 100%);
+    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 100%);
     color:#2a1f00;
     font-weight:700;
     border-radius:0 999px 999px 0;
@@ -105,8 +113,8 @@ h1 {
 }
 
 .track-box button:hover {
-    transform: translateY(-2px);
-    opacity: .95;
+    transform:translateY(-2px);
+    opacity:.95;
 }
 
 /* BACK BUTTON */
@@ -116,34 +124,34 @@ h1 {
     text-decoration:none;
     display:inline-block;
     margin-top:15px;
-    background: var(--cream-2);
-    color: var(--green);
+    background:var(--cream-2);
+    color:var(--green);
     font-weight:600;
+    border:1px solid var(--border);
     transition:0.3s;
 }
 
 .btn:hover {
-    background: var(--green);
-    color: var(--cream);
+    background:var(--green);
+    color:var(--cream);
 }
 
-/* STATUS BOX */
+/* STATUS */
 .status {
     margin-top:25px;
     padding:18px;
     border-radius:var(--radius);
     background:#fff;
     border:1px solid var(--border);
-    box-shadow: var(--shadow-soft);
-    font-family: var(--sans);
+    box-shadow:var(--shadow-soft);
 }
 
 .status h3 {
-    font-family: var(--serif);
-    color: var(--green);
+    font-family:"Playfair Display", serif;
+    color:var(--green);
 }
 
-/* ROW CARDS */
+/* INFO ROW */
 .row { 
     display:flex; 
     gap:10px; 
@@ -156,34 +164,32 @@ h1 {
     padding:15px; 
     border-radius:var(--radius);
     border:1px solid var(--border);
-    box-shadow: var(--shadow-soft);
+    box-shadow:var(--shadow-soft);
 }
 
 .card p {
-    color: var(--muted);
+    color:var(--muted);
     margin:0;
     font-size:.9rem;
 }
 
 .card b {
-    color: var(--green);
-    font-family: var(--serif);
+    color:var(--green);
+    font-family:"Playfair Display", serif;
 }
 
-/* TIME BOX */
+/* TIME */
 .time-box {
     background:#fff;
     padding:15px;
     margin-top:15px;
     border-radius:var(--radius);
     border:1px solid var(--border);
-    box-shadow: var(--shadow-soft);
-    font-family: var(--sans);
 }
 
 .time-box b {
-    font-family: var(--serif);
-    color: var(--gold);
+    font-family:"Playfair Display", serif;
+    color:var(--gold);
     font-size:1.2rem;
 }
 
@@ -195,7 +201,6 @@ h1 {
     border-radius:var(--radius);
     border:1px solid var(--border);
     text-align:left;
-    box-shadow: var(--shadow-soft);
 }
 
 .step {
@@ -203,8 +208,6 @@ h1 {
     align-items:center;
     margin-bottom:20px;
     position:relative;
-    font-family: var(--sans);
-    color: var(--text);
 }
 
 .step::before {
@@ -217,12 +220,10 @@ h1 {
     background:var(--border);
 }
 
-.step:last-child::before { 
-    display:none; 
-}
+.step:last-child::before { display:none; }
 
 .circle {
-    width:30px; 
+    width:30px;
     height:30px;
     border-radius:50%;
     background:#ccc;
@@ -234,11 +235,11 @@ h1 {
     font-weight:700;
 }
 
-.active { 
-    background: var(--green); 
+.active {
+    background:var(--green);
 }
 
-/* ORDER BOX */
+/* ===== ORDER TABLE STYLE ===== */
 .order-box {
     background:white;
     padding:20px;
@@ -246,139 +247,94 @@ h1 {
     border-radius:var(--radius);
     text-align:left;
     border:1px solid var(--border);
-    box-shadow: var(--shadow-soft);
+    box-shadow:var(--shadow-soft);
 }
 
 .order-box h3 {
     text-align:center;
-    font-family: var(--serif);
-    color: var(--green);
+    font-family:"Playfair Display", serif;
+    color:var(--green);
 }
 
-.item {
+/* HEADER ROW */
+.order-header {
     display:flex;
     justify-content:space-between;
-    padding:10px 0;
+    padding:12px 10px;
+    font-family:"Playfair Display", serif;
+    font-weight:700;
+    color:var(--green);
+    border-bottom:2px solid var(--green);
+    margin-bottom:10px;
+}
+
+/* DATA ROW */
+.order-row {
+    display:flex;
+    justify-content:space-between;
+    padding:12px 10px;
     border-bottom:1px solid var(--border);
-    font-family: var(--sans);
 }
 
-.item-name { 
-    font-weight:bold;
-    color: var(--green);
-    font-family: var(--serif);
+.order-row span:nth-child(1) {
+    font-family:"Playfair Display", serif;
+    color:var(--green);
+    font-weight:600;
 }
 
-.item-qty { color: var(--muted); }
-
-.item-price { 
-    color: var(--gold); 
-    font-weight:bold; 
-    font-family: var(--serif);
+.order-row span:nth-child(2) {
+    color:var(--muted);
 }
 
+.order-row span:nth-child(3) {
+    font-family:"Playfair Display", serif;
+    color:var(--gold);
+    font-weight:700;
+}
+
+/* TOTAL */
 .total-row {
     display:flex;
     justify-content:space-between;
-    padding:12px 0;
-    font-size:16px;
-    font-weight:bold;
-    font-family: var(--serif);
-    color: var(--green);
+    padding:14px 10px;
+    font-family:"Playfair Display", serif;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--green);
+    border-top:2px solid var(--green);
 }
 
-/* HELP BOX */
+/* HELP BUTTONS */
 .help {
     background:white;
     padding:20px;
     margin-top:20px;
     border-radius:var(--radius);
     border:1px solid var(--border);
-    box-shadow: var(--shadow-soft);
+    box-shadow:var(--shadow-soft);
 }
 
 .help h3 {
-    font-family: var(--serif);
-    color: var(--green);
+    font-family:"Playfair Display", serif;
+    color:var(--green);
 }
 
-/* BUTTONS */
+/* BUTTON STYLE (SAME AS BACK BUTTON) */
 .help .btn {
     padding:10px 18px;
     border-radius:999px;
     text-decoration:none;
     display:inline-block;
     margin-top:10px;
-    background: var(--cream-2);
-    color: var(--green);
+    background:var(--cream-2);
+    color:var(--green);
     font-weight:600;
+    border:1px solid var(--border);
     transition:0.3s;
-    border: 1px solid var(--border);
 }
 
 .help .btn:hover {
-    background: var(--green);
-    color: var(--cream);
-}
-
-/* ===== ORDER TABLE STYLE ===== */
-
-.order-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 10px;
-    font-family: var(--serif);
-    font-weight: 700;
-    color: var(--green);
-    border-bottom: 2px solid var(--green);
-    margin-bottom: 10px;
-}
-
-.order-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 10px;
-    border-bottom: 1px solid var(--border);
-    font-family: var(--sans);
-}
-
-.order-row span:nth-child(1) {
-    font-family: var(--serif);
-    color: var(--green);
-    font-weight: 600;
-}
-
-.order-row span:nth-child(2) {
-    color: var(--muted);
-}
-
-.order-row span:nth-child(3) {
-    font-family: var(--serif);
-    color: var(--gold);
-    font-weight: 700;
-}
-
-/* TOTAL ROW */
-.total-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 14px 10px;
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--green);
-    border-top: 2px solid var(--green);
-    margin-top: 10px;
-}
-
-/* ===== BUTTON HOVER (ONLY HELP SECTION) ===== */
-
-.help .btn {
-    transition: all 0.3s ease;
-}
-
-.help .btn:hover {
-    background: var(--gold);
-    color: #2a1f00;
-    transform: translateY(-2px);
+    background:var(--gold);
+    color:#2a1f00;
+    transform:translateY(-2px);
 }
