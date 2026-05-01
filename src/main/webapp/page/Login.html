@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amici De Gusto - Admin Access</title>
+    <title>Amici De Gusto - Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/adminLogin.css">
+    <link rel="stylesheet" href="../css/Login.css">
 </head>
 <body>
 
@@ -16,36 +16,24 @@
 <div class="login-wrapper">
     <div class="login-card">
 
-        <!-- Shield Icon -->
-        <div class="shield-icon">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2L3 7v5c0 5.25 3.83 10.15 9 11.25C17.17 22.15 21 17.25 21 12V7l-9-5z"/>
-                <path d="M9 12l2 2 4-4"/>
-            </svg>
-        </div>
-
         <!-- Header -->
         <div class="card-header">
+            <h1 class="card-title">Welcome back</h1>
             <span class="brand-label">Amici De Gusto</span>
-            <h1 class="card-title">Management</h1>
-            <p class="card-subtitle">
-                <span>Admin Access</span><br>
-                Please authenticate to access the terminal.
-            </p>
         </div>
 
         <!-- Form -->
         <form autocomplete="off">
 
-            <!-- Admin ID -->
+            <!-- Username -->
             <div class="form-group">
-                <label class="form-label" for="admin-id">Admin ID or Email</label>
+                <label class="form-label" for="username">USERNAME</label>
                 <div class="input-wrapper">
                     <input
                             class="form-input"
                             type="text"
-                            id="admin-id"
-                            placeholder="Enter your admin ID or email"
+                            id="username"
+                            placeholder="e.g. jsmith"
                             autocomplete="off"
                     />
                     <svg class="input-icon" viewBox="0 0 24 24">
@@ -57,7 +45,7 @@
 
             <!-- Password -->
             <div class="form-group">
-                <label class="form-label" for="password">Password</label>
+                <label class="form-label" for="password">PASSWORD</label>
                 <div class="input-wrapper">
                     <input
                             class="form-input"
@@ -73,37 +61,34 @@
                 </div>
             </div>
 
-            <!-- Forgot -->
+            <!-- Options Row: Remember me + Forgot -->
             <div class="options-row">
-                <a href="#" class="forgot-link">FORGOT?</a>
+                <label class="remember-label">
+                    <input type="checkbox" class="remember-checkbox" />
+                    <span class="remember-checkmark"></span>
+                    <span class="remember-text">Remember me</span>
+                </label>
+                <a href="#" class="forgot-link">Forgot password?</a>
             </div>
 
-            <!-- Submit Button -->
-            <button type="submit" class="btn-authorize">
-                AUTHORIZE ACCESS
-                <svg class="btn-arrow" viewBox="0 0 24 24">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                </svg>
+            <!-- Login Button -->
+            <button type="submit" class="btn-login">
+                LOGIN
             </button>
 
         </form>
 
-        <!-- Divider -->
-        <div class="divider"></div>
-
-        <!-- Card Footer -->
-        <div class="card-footer">
-            <a href="#" class="footer-link">Support</a>
-            <a href="#" class="footer-link">Privacy</a>
-        </div>
+        <!-- Register Link -->
+        <p class="register-text">
+            Don't have an account? <a href="#" class="register-link">Register here</a>
+        </p>
 
     </div>
 </div>
 
 <!-- Page Footer -->
 <div class="page-footer">
-    <span>&copy; 2026 Amici De Gusto</span>
+    <span>&copy; 2026 AMICI DE GUSTO</span>
 </div>
 
 </body>
