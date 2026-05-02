@@ -49,7 +49,7 @@
 
             <!-- FIXED IMAGE PATH -->
             <li class="cart-item animate-fade-in-up">
-              <img src="../resource/pizza.jpg" alt="Margherita Pizza" loading="lazy" />
+              <img src="../Resource/pizza.jpg" alt="Margherita Pizza" loading="lazy" />
               <div class="info">
                 <div class="top">
                   <div style="min-width:0;">
@@ -70,7 +70,7 @@
 
             <!-- FIXED IMAGE PATH -->
             <li class="cart-item animate-fade-in-up">
-              <img src="../resource/tiramisu.jpg" alt="Tiramisù" loading="lazy" />
+              <img src="../Resource/tiramisu.jpg" alt="Tiramisù" loading="lazy" />
               <div class="info">
                 <div class="top">
                   <div style="min-width:0;">

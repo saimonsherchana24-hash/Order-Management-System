@@ -31,7 +31,7 @@
 
   <main>
     <section class="hero">
-      <img src="../resource/hero.jpg" alt="Elegant Italian fine dining table with pasta and red wine" class="hero-img" />
+      <img src="../Resource/hero.jpg" alt="Elegant Italian fine dining table with pasta and red wine" class="hero-img" />
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <p class="eyebrow">Ristorante · Est. 1972</p>

@@ -40,17 +40,17 @@
 
         <div class="tabs">
           <div class="tabs-inner">
-            <a class="tab active" href="menu.html">All</a>
-            <a class="tab" href="menu.html#food">Food</a>
-            <a class="tab" href="menu.html#drinks">Drinks</a>
-            <a class="tab" href="menu.html#dessert">Dessert</a>
+            <a class="tab active" href="menu.jsp">All</a>
+            <a class="tab" href="menu.jsp#food">Food</a>
+            <a class="tab" href="menu.jsp#drinks">Drinks</a>
+            <a class="tab" href="menu.jsp#dessert">Dessert</a>
           </div>
         </div>
 
         <div class="grid menu-grid animate-fade-in-up">
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/pizza.jpg" alt="Margherita Pizza" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/pizza.jpg" alt="Margherita Pizza" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Margherita Pizza</h3><span class="price">NPR 850</span></div>
             <p>San Marzano tomatoes, fresh buffalo mozzarella, basil, extra virgin olive oil.</p>
@@ -59,7 +59,7 @@
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/pasta.jpg" alt="Creamy Alfredo Pasta" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/pasta.jpg" alt="Creamy Alfredo Pasta" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Creamy Alfredo Pasta</h3><span class="price">NPR 920</span></div>
             <p>Hand-rolled fettuccine in a velvet parmesan and butter sauce.</p>
@@ -68,7 +68,7 @@
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/lasagna.jpg" alt="Lasagna Classico" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/lasagna.jpg" alt="Lasagna Classico" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Lasagna Classico</h3><span class="price">NPR 1,100</span></div>
             <p>Slow-braised beef ragù layered with béchamel and aged pecorino.</p>
@@ -77,7 +77,7 @@
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/risotto.jpg" alt="Mushroom Risotto" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/risotto.jpg" alt="Mushroom Risotto" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Mushroom Risotto</h3><span class="price">NPR 1,050</span></div>
             <p>Carnaroli rice, wild porcini, white wine, and shaved Grana Padano.</p>
@@ -86,7 +86,7 @@
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/gnocchi.jpg" alt="Gnocchi al Pesto" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/gnocchi.jpg" alt="Gnocchi al Pesto" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Gnocchi al Pesto</h3><span class="price">NPR 880</span></div>
             <p>Pillowy potato gnocchi tossed in fragrant Genovese basil pesto.</p>
@@ -95,7 +95,7 @@
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/caprese.jpg" alt="Caprese Salad" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/caprese.jpg" alt="Caprese Salad" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Caprese Salad</h3><span class="price">NPR 720</span></div>
             <p>Heirloom tomatoes, buffalo mozzarella, basil, balsamic reduction.</p>
@@ -106,7 +106,7 @@
         <!-- same pattern continues for all images -->
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/bruschetta.jpg" alt="Bruschetta al Pomodoro" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/bruschetta.jpg" alt="Bruschetta al Pomodoro" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Bruschetta al Pomodoro</h3><span class="price">NPR 540</span></div>
             <p>Toasted sourdough topped with tomato, garlic, basil and olive oil.</p>
