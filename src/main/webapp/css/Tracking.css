@@ -1,0 +1,340 @@
+/* ===== AMICI DE GUSTO TRACKING PAGE ===== */
+
+:root{
+  --green:#1B4332;
+  --green-dark:#0F2E22;
+  --cream:#F5F1E8;
+  --cream-2:#EFE9DA;
+  --gold:#C9A227;
+  --gold-soft:#E0BE52;
+  --text:#1f2a25;
+  --muted:#6b7770;
+  --border:rgba(27,67,50,.12);
+  --shadow-soft:0 6px 24px rgba(27,67,50,.08);
+  --shadow-elegant:0 18px 50px -20px rgba(27,67,50,.35);
+  --radius:18px;
+  --serif:"Playfair Display", Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* GLOBAL */
+body { 
+    font-family: var(--sans);
+    margin:0; 
+    background: linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%);
+    color: var(--text);
+}
+
+/* HEADER */
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 30px;
+    background:var(--green);
+    color:var(--cream);
+    box-shadow:var(--shadow-soft);
+}
+
+/* BRAND NAME */
+.logo {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+/* HOME ICON */
+.home-btn {
+    color:var(--cream);
+    font-size:20px;
+    padding:8px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.home-btn:hover {
+    background:rgba(255,255,255,0.15);
+}
+
+/* RESTAURANT NAME STYLE */
+.app-name {
+    font-family:"Playfair Display", serif;
+    font-size:22px;
+    font-weight:700;
+    color:var(--cream);
+    letter-spacing:.5px;
+}
+
+.app-name .accent {
+    color:var(--gold-soft);
+    font-style:italic;
+}
+
+/* MAIN CONTAINER */
+.container { 
+    width:75%; 
+    margin:auto; 
+    padding:30px; 
+    text-align:center; 
+}
+
+/* TITLE */
+h1 {
+    font-family:"Playfair Display", serif;
+    color:var(--green);
+    font-size:2.5rem;
+    margin-top:20px;
+}
+
+/* TRACK INPUT */
+.track-box { 
+    display:flex; 
+    justify-content:center; 
+    margin-top:20px; 
+}
+
+.track-box input {
+    width:45%; 
+    padding:12px;
+    border-radius:999px 0 0 999px; 
+    border:1px solid var(--border);
+    outline:none;
+}
+
+.track-box button {
+    padding:12px 20px; 
+    border:none;
+    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 100%);
+    color:#2a1f00;
+    font-weight:700;
+    border-radius:0 999px 999px 0;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.track-box button:hover {
+    transform:translateY(-2px);
+    opacity:.95;
+}
+
+/* BACK BUTTON */
+.btn {
+    padding:10px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:15px;
+    background:var(--cream-2);
+    color:var(--green);
+    font-weight:600;
+    border:1px solid var(--border);
+    transition:0.3s;
+}
+
+.btn:hover {
+    background:var(--green);
+    color:var(--cream);
+}
+
+/* STATUS */
+.status {
+    margin-top:25px;
+    padding:18px;
+    border-radius:var(--radius);
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-soft);
+}
+
+.status h3 {
+    font-family:"Playfair Display", serif;
+    color:var(--green);
+}
+
+/* INFO ROW */
+.row { 
+    display:flex; 
+    gap:10px; 
+    margin-top:15px; 
+}
+
+.card {
+    flex:1; 
+    background:#fff;
+    padding:15px; 
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-soft);
+}
+
+.card p {
+    color:var(--muted);
+    margin:0;
+    font-size:.9rem;
+}
+
+.card b {
+    color:var(--green);
+    font-family:"Playfair Display", serif;
+}
+
+/* TIME */
+.time-box {
+    background:#fff;
+    padding:15px;
+    margin-top:15px;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+}
+
+.time-box b {
+    font-family:"Playfair Display", serif;
+    color:var(--gold);
+    font-size:1.2rem;
+}
+
+/* PROGRESS */
+.progress {
+    background:white;
+    margin-top:20px;
+    padding:20px;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+    text-align:left;
+}
+
+.step {
+    display:flex;
+    align-items:center;
+    margin-bottom:20px;
+    position:relative;
+}
+
+.step::before {
+    content:"";
+    position:absolute;
+    left:15px;
+    top:35px;
+    height:30px;
+    width:2px;
+    background:var(--border);
+}
+
+.step:last-child::before { display:none; }
+
+.circle {
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#ccc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    margin-right:15px;
+    font-weight:700;
+}
+
+.active {
+    background:var(--green);
+}
+
+/* ===== ORDER TABLE STYLE ===== */
+.order-box {
+    background:white;
+    padding:20px;
+    margin-top:20px;
+    border-radius:var(--radius);
+    text-align:left;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-soft);
+}
+
+.order-box h3 {
+    text-align:center;
+    font-family:"Playfair Display", serif;
+    color:var(--green);
+}
+
+/* HEADER ROW */
+.order-header {
+    display:flex;
+    justify-content:space-between;
+    padding:12px 10px;
+    font-family:"Playfair Display", serif;
+    font-weight:700;
+    color:var(--green);
+    border-bottom:2px solid var(--green);
+    margin-bottom:10px;
+}
+
+/* DATA ROW */
+.order-row {
+    display:flex;
+    justify-content:space-between;
+    padding:12px 10px;
+    border-bottom:1px solid var(--border);
+}
+
+.order-row span:nth-child(1) {
+    font-family:"Playfair Display", serif;
+    color:var(--green);
+    font-weight:600;
+}
+
+.order-row span:nth-child(2) {
+    color:var(--muted);
+}
+
+.order-row span:nth-child(3) {
+    font-family:"Playfair Display", serif;
+    color:var(--gold);
+    font-weight:700;
+}
+
+/* TOTAL */
+.total-row {
+    display:flex;
+    justify-content:space-between;
+    padding:14px 10px;
+    font-family:"Playfair Display", serif;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--green);
+    border-top:2px solid var(--green);
+}
+
+/* HELP BUTTONS */
+.help {
+    background:white;
+    padding:20px;
+    margin-top:20px;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-soft);
+}
+
+.help h3 {
+    font-family:"Playfair Display", serif;
+    color:var(--green);
+}
+
+/* BUTTON STYLE (SAME AS BACK BUTTON) */
+.help .btn {
+    padding:10px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:10px;
+    background:var(--cream-2);
+    color:var(--green);
+    font-weight:600;
+    border:1px solid var(--border);
+    transition:0.3s;
+}
+
+.help .btn:hover {
+    background:var(--gold);
+    color:#2a1f00;
+    transform:translateY(-2px);
+}
