@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +12,14 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="home.html" class="brand">Amici <span class="de">de</span> Gusto</a>
+      <a href="home.jsp" class="brand">Amici <span class="de">de</span> Gusto</a>
       <div class="header-actions">
         <a href="profile.html" class="icon-btn" aria-label="Profile" title="Profile">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
           </svg>
         </a>
-        <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <a href="cart.jsp" class="icon-btn" aria-label="Cart">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
             <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
@@ -53,7 +54,7 @@
           <div class="body">
             <div class="row"><h3>Margherita Pizza</h3><span class="price">NPR 850</span></div>
             <p>San Marzano tomatoes, fresh buffalo mozzarella, basil, extra virgin olive oil.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
@@ -62,7 +63,7 @@
           <div class="body">
             <div class="row"><h3>Creamy Alfredo Pasta</h3><span class="price">NPR 920</span></div>
             <p>Hand-rolled fettuccine in a velvet parmesan and butter sauce.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
@@ -71,7 +72,7 @@
           <div class="body">
             <div class="row"><h3>Lasagna Classico</h3><span class="price">NPR 1,100</span></div>
             <p>Slow-braised beef ragù layered with béchamel and aged pecorino.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
@@ -80,7 +81,7 @@
           <div class="body">
             <div class="row"><h3>Mushroom Risotto</h3><span class="price">NPR 1,050</span></div>
             <p>Carnaroli rice, wild porcini, white wine, and shaved Grana Padano.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
@@ -89,7 +90,7 @@
           <div class="body">
             <div class="row"><h3>Gnocchi al Pesto</h3><span class="price">NPR 880</span></div>
             <p>Pillowy potato gnocchi tossed in fragrant Genovese basil pesto.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
@@ -98,7 +99,7 @@
           <div class="body">
             <div class="row"><h3>Caprese Salad</h3><span class="price">NPR 720</span></div>
             <p>Heirloom tomatoes, buffalo mozzarella, basil, balsamic reduction.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
@@ -109,7 +110,7 @@
           <div class="body">
             <div class="row"><h3>Bruschetta al Pomodoro</h3><span class="price">NPR 540</span></div>
             <p>Toasted sourdough topped with tomato, garlic, basil and olive oil.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 

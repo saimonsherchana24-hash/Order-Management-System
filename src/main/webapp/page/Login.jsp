@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,7 +81,7 @@
 
         <!-- Register Link -->
         <p class="register-text">
-            Don't have an account? <a href="UserRegister.html" class="register-link">Register here</a>
+            Don't have an account? <a href="UserRegister.jsp" class="register-link">Register here</a>
         </p>
 
     </div>

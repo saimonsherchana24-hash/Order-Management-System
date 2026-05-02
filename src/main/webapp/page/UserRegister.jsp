@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +92,7 @@
             </button>
 
             <p class="login-link-text">
-                Already have an account? <a href="Login.html" class="login-link">Log in here</a>
+                Already have an account? <a href="Login.jsp" class="login-link">Log in here</a>
             </p>
 
         </form>

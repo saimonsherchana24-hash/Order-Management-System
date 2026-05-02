@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +22,10 @@
   </div>
   <div class="ornament">◆</div>
   <nav>
-    <a class="nav-item" href="AdminDashboard.html"><span class="nav-icon">🏠</span> Dashboard</a>
+    <a class="nav-item" href="AdminDashboard.jsp"><span class="nav-icon">🏠</span> Dashboard</a>
     <a class="nav-item" href="order.html"><span class="nav-icon">📋</span> Order Management</a>
     <a class="nav-item active" href="AdminMenu.html"><span class="nav-icon">🍴</span> Menu Management</a>
-    <a class="nav-item" href="AdminBilling.html"><span class="nav-icon">🧾</span> Billing System</a>
+    <a class="nav-item" href="AdminBilling.jsp"><span class="nav-icon">🧾</span> Billing System</a>
   </nav>
 </aside>
 

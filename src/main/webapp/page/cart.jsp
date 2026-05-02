@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="home.html" class="brand">Amici <span class="de">de</span> Gusto</a>
+      <a href="home.jsp" class="brand">Amici <span class="de">de</span> Gusto</a>
       <div class="header-actions">
         <a href="profile.html" class="icon-btn" aria-label="Profile" title="Profile">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -33,7 +34,7 @@
     <div class="cart-wrap">
       <div class="container">
         <div class="cart-head">
-          <a href="menu.html" class="back-link">
+          <a href="menu.jsp" class="back-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>
@@ -97,7 +98,7 @@
               <div><dt>Delivery</dt><dd>NPR 150</dd></div>
               <div class="total"><dt>Total</dt><dd>NPR 2,330</dd></div>
             </dl>
-            <a href="home.html" class="btn btn-gold btn-block">Place Order</a>
+            <a href="home.jsp" class="btn btn-gold btn-block">Place Order</a>
             <p class="note">Secure checkout · Free delivery over NPR 5,000</p>
           </aside>
         </div>
