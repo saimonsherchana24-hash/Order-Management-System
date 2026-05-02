@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +12,14 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="home.html" class="brand">Amici <span class="de">de</span> Gusto</a>
+      <a href="home.jsp" class="brand">Amici <span class="de">de</span> Gusto</a>
       <div class="header-actions">
         <a href="profile.html" class="icon-btn" aria-label="Profile" title="Profile">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
           </svg>
         </a>
-        <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <a href="cart.jsp" class="icon-btn" aria-label="Cart">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
             <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
@@ -39,77 +40,77 @@
 
         <div class="tabs">
           <div class="tabs-inner">
-            <a class="tab active" href="menu.html">All</a>
-            <a class="tab" href="menu.html#food">Food</a>
-            <a class="tab" href="menu.html#drinks">Drinks</a>
-            <a class="tab" href="menu.html#dessert">Dessert</a>
+            <a class="tab active" href="menu.jsp">All</a>
+            <a class="tab" href="menu.jsp#food">Food</a>
+            <a class="tab" href="menu.jsp#drinks">Drinks</a>
+            <a class="tab" href="menu.jsp#dessert">Dessert</a>
           </div>
         </div>
 
         <div class="grid menu-grid animate-fade-in-up">
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/pizza.jpg" alt="Margherita Pizza" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/pizza.jpg" alt="Margherita Pizza" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Margherita Pizza</h3><span class="price">NPR 850</span></div>
             <p>San Marzano tomatoes, fresh buffalo mozzarella, basil, extra virgin olive oil.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/pasta.jpg" alt="Creamy Alfredo Pasta" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/pasta.jpg" alt="Creamy Alfredo Pasta" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Creamy Alfredo Pasta</h3><span class="price">NPR 920</span></div>
             <p>Hand-rolled fettuccine in a velvet parmesan and butter sauce.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/lasagna.jpg" alt="Lasagna Classico" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/lasagna.jpg" alt="Lasagna Classico" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Lasagna Classico</h3><span class="price">NPR 1,100</span></div>
             <p>Slow-braised beef ragù layered with béchamel and aged pecorino.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/risotto.jpg" alt="Mushroom Risotto" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/risotto.jpg" alt="Mushroom Risotto" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Mushroom Risotto</h3><span class="price">NPR 1,050</span></div>
             <p>Carnaroli rice, wild porcini, white wine, and shaved Grana Padano.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/gnocchi.jpg" alt="Gnocchi al Pesto" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/gnocchi.jpg" alt="Gnocchi al Pesto" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Gnocchi al Pesto</h3><span class="price">NPR 880</span></div>
             <p>Pillowy potato gnocchi tossed in fragrant Genovese basil pesto.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/caprese.jpg" alt="Caprese Salad" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/caprese.jpg" alt="Caprese Salad" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Caprese Salad</h3><span class="price">NPR 720</span></div>
             <p>Heirloom tomatoes, buffalo mozzarella, basil, balsamic reduction.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
         <!-- same pattern continues for all images -->
 
         <article class="menu-card" data-cat="food">
-          <div class="img-wrap"><img src="../resource/bruschetta.jpg" alt="Bruschetta al Pomodoro" loading="lazy" width="800" height="600" /></div>
+          <div class="img-wrap"><img src="../Resource/bruschetta.jpg" alt="Bruschetta al Pomodoro" loading="lazy" width="800" height="600" /></div>
           <div class="body">
             <div class="row"><h3>Bruschetta al Pomodoro</h3><span class="price">NPR 540</span></div>
             <p>Toasted sourdough topped with tomato, garlic, basil and olive oil.</p>
-            <a href="cart.html" class="btn btn-gold">+ Add to Cart</a>
+            <a href="cart.jsp" class="btn btn-gold">+ Add to Cart</a>
           </div>
         </article>
 
@@ -127,7 +128,7 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li>Thamel Marg, Kathmandu, Nepal</li>
+          <li>Pokhara, Nepal</li>
           <li>+977 01-4567890</li>
           <li>namaste@amicidegusto.com.np</li>
         </ul>

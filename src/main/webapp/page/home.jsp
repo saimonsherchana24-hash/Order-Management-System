@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
           </svg>
         </a>
-        <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <a href="cart.jsp" class="icon-btn" aria-label="Cart">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
             <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
@@ -30,14 +31,14 @@
 
   <main>
     <section class="hero">
-      <img src="../resource/hero.jpg" alt="Elegant Italian fine dining table with pasta and red wine" class="hero-img" />
+      <img src="../Resource/hero.jpg" alt="Elegant Italian fine dining table with pasta and red wine" class="hero-img" />
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <p class="eyebrow">Ristorante · Est. 1972</p>
         <h1>Amici <span class="it">de</span> Gusto</h1>
         <p class="hero-tag">Authentic Italian Taste in Every Bite</p>
         <p class="hero-desc">A premium Italian dining experience offering handcrafted pasta, wood-fired pizzas, and fine wines.</p>
-        <a href="menu.html" class="btn btn-gold">Explore Menu</a>
+        <a href="menu.jsp" class="btn btn-gold">Explore Menu</a>
       </div>
     </section>
 

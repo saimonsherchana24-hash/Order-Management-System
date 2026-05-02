@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,8 +94,8 @@
     </div>
 
     <!-- BUTTONS -->
-    <a href="Tracking.html" class="btn">Track Order Status →</a>
-    <a href="Checkout.html" class="btn">← Back to Checkout</a>
+    <a href="Tracking.jsp" class="btn">Track Order Status →</a>
+    <a href="Checkout.jsp" class="btn">← Back to Checkout</a>
     <a href="#" class="btn">Order More Items</a>
 
 </div>
