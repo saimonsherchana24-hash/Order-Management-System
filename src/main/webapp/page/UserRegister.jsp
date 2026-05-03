@@ -15,33 +15,35 @@
 </div>
 
 <div class="page">
-
     <div class="register-card">
 
         <h1 class="brand-title">AMICI DE GUSTO</h1>
         <p class="card-subtitle">Create Account</p>
 
-        <form class="register-form" autocomplete="off">
+        <% if (request.getAttribute("error") != null) { %>
+        <div class="error-message">
+            <%= request.getAttribute("error") %>
+        </div>
+        <% } %>
 
-            <div class="field">
+        <form class="register-form" action="<%= request.getContextPath() %>/register" method="post" autocomplete="off">
+
+        <div class="field">
                 <label class="field-label" for="fullname">Full Name</label>
                 <div class="field-input-wrap">
                     <svg class="field-icon" viewBox="0 0 24 24">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                         <circle cx="12" cy="7" r="4"/>
                     </svg>
-                    <input class="field-input" type="text" id="fullname" placeholder="Enter your full name" autocomplete="off"/>
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="field-label" for="username">Username</label>
-                <div class="field-input-wrap">
-                    <svg class="field-icon" viewBox="0 0 24 24">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                    <input class="field-input" type="text" id="username" placeholder="Choose a username" autocomplete="off"/>
+                    <input
+                            class="field-input"
+                            type="text"
+                            id="fullname"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            autocomplete="off"
+                            required
+                    />
                 </div>
             </div>
 
@@ -52,7 +54,15 @@
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                         <polyline points="22,6 12,13 2,6"/>
                     </svg>
-                    <input class="field-input" type="email" id="email" placeholder="Enter your email address" autocomplete="off"/>
+                    <input
+                            class="field-input"
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="off"
+                            required
+                    />
                 </div>
             </div>
 
@@ -64,9 +74,18 @@
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                         </svg>
-                        <input class="field-input" type="password" id="password" placeholder="Create password" autocomplete="off"/>
+                        <input
+                                class="field-input"
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create password"
+                                autocomplete="new-password"
+                                required
+                        />
                     </div>
                 </div>
+
                 <div class="field field-half">
                     <label class="field-label" for="confirm-password">Confirm Password</label>
                     <div class="field-input-wrap">
@@ -74,21 +93,28 @@
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                         </svg>
-                        <input class="field-input" type="password" id="confirm-password" placeholder="Confirm password" autocomplete="off"/>
+                        <input
+                                class="field-input"
+                                type="password"
+                                id="confirm-password"
+                                name="confirmPassword"
+                                placeholder="Confirm password"
+                                autocomplete="new-password"
+                                required
+                        />
                     </div>
                 </div>
             </div>
 
             <label class="terms-label">
-                <input type="checkbox" class="terms-checkbox"/>
+                <input type="checkbox" class="terms-checkbox" name="terms" value="yes" required/>
                 <span class="terms-checkmark"></span>
                 <span class="terms-text">I agree to the <a href="#" class="terms-link">Terms of Service</a></span>
             </label>
 
             <button type="submit" class="btn-create">
                 Create Account
-                <svg class="btn-arrow" viewBox="0 0 24 24">
-                </svg>
+                <svg class="btn-arrow" viewBox="0 0 24 24"></svg>
             </button>
 
             <p class="login-link-text">
@@ -101,7 +127,6 @@
     <div class="page-footer">
         <span>&copy; 2024 AMICI DE GUSTO</span>
     </div>
-
 </div>
 
 </body>
