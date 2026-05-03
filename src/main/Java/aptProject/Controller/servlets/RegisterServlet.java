@@ -1,6 +1,5 @@
 package aptProject.Controller.servlets;
 
-import aptProject.doa.inerface.UserDAOImpl;
 import aptProject.model.User;
 import aptProject.utilities.PasswordUtil;
 
@@ -15,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-    private final UserDAO userDAO = new UserDAOImpl();
+    private final UserDAO userDAO = new UserDAOInterface();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
