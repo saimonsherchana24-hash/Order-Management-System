@@ -1,5 +1,7 @@
 package aptProject.Controller.servlets;
 
+import aptProject.dao.UserDAO;
+import aptProject.dao.Interface.UserDAOInterface;
 import aptProject.model.User;
 import aptProject.utilities.PasswordUtil;
 
@@ -12,9 +14,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/register")
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet {
-    private final UserDAO userDAO = new UserDAOInterface();
+
+    private final UserDAOInterface userDAO = new UserDAO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -29,38 +32,43 @@ public class RegisterServlet extends HttpServlet {
         if (fullName == null || email == null || password == null
                 || fullName.isBlank() || email.isBlank() || password.isBlank()) {
             request.setAttribute("error", "Please fill all required fields.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
             return;
         }
 
         if (!password.equals(confirmPassword)) {
             request.setAttribute("error", "Passwords do not match.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
             return;
         }
 
         if (terms == null) {
             request.setAttribute("error", "Please agree to the Terms of Service and Privacy Policy.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
             return;
         }
 
         if (userDAO.findByEmail(email) != null) {
             request.setAttribute("error", "Email already exists.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
             return;
         }
 
         String username = generateUsername();
-        String hashedPassword = PasswordUtil.hashPassword(password);
+        String savedPassword = PasswordUtil.hashPassword(password);
 
-        User user = new User(fullName, username, email, hashedPassword, "USER");
+        User user = new User();
+        user.setFullName(fullName);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPasswordHash(savedPassword);
+        user.setRole("USER");
 
         if (userDAO.register(user)) {
-            response.sendRedirect(request.getContextPath() + "/page/login.jsp?registered=true");
+            response.sendRedirect(request.getContextPath() + "/login.jsp?registered=true");
         } else {
             request.setAttribute("error", "Registration failed. Please try again.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
         }
     }
 

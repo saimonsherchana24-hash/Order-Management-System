@@ -1,5 +1,7 @@
 package aptProject.Controller.servlets;
 
+import aptProject.dao.Interface.UserDAOInterface;
+import aptProject.dao.UserDAO;
 import aptProject.model.User;
 
 import java.io.IOException;
@@ -11,9 +13,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/login")
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
-    private final UserDAO userDAO = new UserDAOInterface();
+    private final UserDAOInterface userDAO = new UserDAO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -1,4 +1,4 @@
-package aptProject.doa.Interface;
+package aptProject.dao.Interface;
 
 import aptProject.model.User;
 

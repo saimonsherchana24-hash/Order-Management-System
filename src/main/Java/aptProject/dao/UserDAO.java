@@ -1,6 +1,6 @@
-package aptProject.doa;
+package aptProject.dao;
 
-import aptProject.doa.Interface.UserDAOInterface;
+import aptProject.dao.Interface.UserDAOInterface;
 import aptProject.model.User;
 import aptProject.utilities.DBConnection;
 import aptProject.utilities.PasswordUtil;
