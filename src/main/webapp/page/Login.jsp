@@ -24,8 +24,7 @@
         </div>
 
         <!-- Form -->
-        <form autocomplete="off">
-
+            <form action="<%= request.getContextPath() %>/page/AdminDashboard.jsp" method="post" autocomplete="off">
             <!-- Username -->
             <div class="form-group">
                 <label class="form-label" for="username">USERNAME</label>

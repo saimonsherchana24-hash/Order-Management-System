@@ -5,3 +5,6 @@ CREATE TABLE `users` (
                          `email` varchar(100) DEFAULT NULL,
                          `password_hash` varchar(255) NOT NULL,
                          `role` varchar(20) NOT NULL DEFAULT 'USER'
+
+INSERT INTO `users` (`id`, `full_name`, `username`, `email`, `password_hash`, `role`) VALUES
+(1, 'Admin', 'admin', 'admin@gmail.com', 'admin123', 'ADMIN');
