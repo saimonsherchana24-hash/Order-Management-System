@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amici De Gusto - Login</title>
+    <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/Login.css">
 </head>
@@ -24,7 +25,18 @@
         </div>
 
         <!-- Form -->
-            <form action="<%= request.getContextPath() %>/page/AdminDashboard.jsp" method="post" autocomplete="off">
+            <form action="<%= request.getContextPath() %>/page/login" method="post" autocomplete="off">
+
+            <% if (request.getAttribute("error") != null) { %>
+            <div style="color:#e74c3c; background:#fdecea; border:1px solid #e74c3c; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:0.9rem;">
+                <%= request.getAttribute("error") %>
+            </div>
+            <% } %>
+            <% if (request.getParameter("registered") != null) { %>
+            <div style="color:#27ae60; background:#eafaf1; border:1px solid #27ae60; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:0.9rem;">
+                Account created successfully! Please log in.
+            </div>
+            <% } %>
             <!-- Username -->
             <div class="form-group">
                 <label class="form-label" for="username">USERNAME</label>
@@ -33,7 +45,9 @@
                             class="form-input"
                             type="text"
                             id="username"
+                            name="username"
                             placeholder="e.g. jsmith"
+                            value="<%= request.getAttribute("rememberedUsername") != null ? request.getAttribute("rememberedUsername") : "" %>"
                             autocomplete="off"
                     />
                     <svg class="input-icon" viewBox="0 0 24 24">
@@ -51,6 +65,7 @@
                             class="form-input"
                             type="password"
                             id="password"
+                            name="password"
                             placeholder="Enter your password"
                             autocomplete="off"
                     />
@@ -64,7 +79,7 @@
             <!-- Options Row: Remember me + Forgot -->
             <div class="options-row">
                 <label class="remember-label">
-                    <input type="checkbox" class="remember-checkbox" />
+                    <input type="checkbox" class="remember-checkbox" name="rememberMe" value="on" />
                     <span class="remember-checkmark"></span>
                     <span class="remember-text">Remember me</span>
                 </label>

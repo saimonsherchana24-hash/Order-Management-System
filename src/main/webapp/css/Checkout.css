@@ -1,142 +1,177 @@
-:root{
-  --green:#1B4332;
-  --green-dark:#0F2E22;
-  --cream:#F5F1E8;
-  --cream-2:#EFE9DA;
-  --gold:#C9A227;
-  --gold-soft:#E0BE52;
-  --text:#1f2a25;
-  --muted:#6b7770;
-  --border:rgba(27,67,50,.12);
-  --shadow-soft:0 6px 24px rgba(27,67,50,.08);
-  --shadow-elegant:0 18px 50px -20px rgba(27,67,50,.35);
-  --radius:18px;
-  --serif:"Playfair Display", Georgia, "Times New Roman", serif;
-  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ===== CHECKOUT PAGE — Amici de Gusto ===== */
+
+:root {
+  --crimson:    #8B1A1A;
+  --crimson-lt: #C0392B;
+  --gold:       #C9A84C;
+  --gold-lt:    #E8C96A;
+  --cream:      #FAF7F2;
+  --white:      #FFFFFF;
+  --text-dark:  #2C1810;
+  --text-mid:   #5A4A42;
+  --text-light: #8B7B74;
+  --border:     #EDE8E0;
+  --shadow:     0 4px 20px rgba(139,26,26,.08);
+  --radius:     16px;
 }
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
 body {
-    font-family: Arial;
-    margin: 0;
-    background: #F5F1E8;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
 }
 
-/* HEADER */
+/* ── HEADER ── */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 30px;
-     background:var(--green);
-    color:var(--cream);
-    box-shadow:var(--shadow-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #7A0E0E 0%, #5A0A0A 100%);
+  box-shadow: 0 2px 12px rgba(139,26,26,.3);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+.logo { display: flex; align-items: center; gap: 12px; }
 
 .home-btn {
-    color:var(--cream);
-    font-size:20px;
-    padding:8px;
-    border-radius:8px;
-    text-decoration:none;
+  color: #E8C96A;
+  font-size: 18px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background .2s;
 }
-
-.home-btn:hover {
-    background: rgba(255,255,255,0.15);
-}
+.home-btn:hover { background: rgba(255,255,255,.12); }
 
 .app-name {
-    font-family:"Playfair Display", serif;
-    font-size:25px;
-    font-weight:700;
-    color:var(--cream);
-    letter-spacing:.5px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
 }
-.app-name .accent {
-    color:var(--gold-soft);
-    font-style:italic;
-}
-.success h1 {
-    font-family: "Playfair Display", serif;
-    color: #1e2a38;
-    font-weight: 700;
-}
+.app-name .accent { color: #E8C96A; font-style: italic; }
 
-/* TITLE */
+/* ── PAGE TITLE ── */
 .title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 32px;
-    margin: 25px 30px;
-    color: #1e2a38;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--crimson);
+  margin: 28px 32px 0;
 }
 
-/* CONTAINER */
+/* ── CONTAINER ── */
 .container {
-    padding: 0 30px 30px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 24px 60px;
 }
 
-/* BOX */
+/* ── BOX ── */
 .box {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    border: 1px solid #e6e6e6;
+  background: var(--white);
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
 }
 
-/* TABLE */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+.box h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  color: var(--crimson);
+  margin-bottom: 16px;
 }
+
+/* ── TABLE ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead tr { background: #FDF6EE; }
 
 th {
-    padding: 12px;
-    background: #f0f0f0;
-    text-align: left;
+  padding: 10px 12px;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
 }
 
 td {
-    padding: 12px;
+  padding: 11px 12px;
+  font-size: .92rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dark);
 }
 
-tr {
-    border-bottom: 1px solid #eee;
+tr:last-child td { border-bottom: none; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 14px 0;
 }
 
-/* SUMMARY */
+/* ── SUMMARY ROW ── */
 .summary-item {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: .95rem;
+  color: var(--text-mid);
+  padding: 4px 0;
 }
 
-.total {
-    font-size: 18px;
+.summary-item.total {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--crimson);
+  padding-top: 8px;
 }
 
-/* BUTTON */
-button {
-    width: 100%;
-    padding: 20px;
-    background: #ddd;
-    color: black;
-    border: none;
-    border-radius: 14px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.25s;
+/* ── SPECIAL NOTE ── */
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: .92rem;
+  color: var(--text-dark);
+  background: var(--cream);
+  resize: vertical;
+  outline: none;
+  transition: border-color .2s;
 }
+textarea:focus { border-color: var(--gold); background: var(--white); }
 
-button:hover {
-    background: #1c4a31;
-    color: rgb(255, 255, 255);
-    transform: translateY(-2px);
+/* ── PLACE ORDER BUTTON ── */
+#placeOrderBtn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-lt) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(139,26,26,.3);
+  transition: opacity .2s, transform .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
 }
+#placeOrderBtn:hover { opacity: .9; transform: translateY(-2px); }

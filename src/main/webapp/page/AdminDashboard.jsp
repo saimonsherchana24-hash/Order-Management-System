@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="aptProject.model.User" %>
+<% User adminUser = (User) session.getAttribute("user");
+   String adminInitial = (adminUser != null && adminUser.getFullName() != null)
+                         ? adminUser.getFullName().substring(0,1).toUpperCase() : "A";
+   String adminName = (adminUser != null) ? adminUser.getFullName() : "Admin"; %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amici De Gusto – Dashboard</title>
+<link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
@@ -23,10 +29,11 @@
   <div class="ornament">◆</div>
   <nav>
 
-      <a class="nav-item active" href="<%= request.getContextPath() %>/page/AdminDashboard.jsp"><span class="nav-icon">🏠</span> Dashboard</a>
-      <a class="nav-item" href="<%= request.getContextPath() %>/page/order.jsp"><span class="nav-icon">📋</span> Order Management</a>
-      <a class="nav-item" href="<%= request.getContextPath() %>/page/AdminMenu.jsp"><span class="nav-icon">🍴</span> Menu Management</a>
-      <a class="nav-item" href="<%= request.getContextPath() %>/page/AdminBilling.jsp"><span class="nav-icon">🧾</span> Billing System</a>
+      <a class="nav-item active" href="<%= request.getContextPath() %>/admin/dashboard"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a class="nav-item" href="<%= request.getContextPath() %>/admin/orders"><span class="nav-icon">📋</span> Order Management</a>
+      <a class="nav-item" href="<%= request.getContextPath() %>/admin/menu"><span class="nav-icon">🍴</span> Menu Management</a>
+      <a class="nav-item" href="<%= request.getContextPath() %>/admin/billing"><span class="nav-icon">🧾</span> Billing System</a>
+      <a class="nav-item" href="<%= request.getContextPath() %>/logout"><span class="nav-icon">🚪</span> Logout</a>
 
   </nav>
 </aside>
@@ -40,10 +47,13 @@
         <span>Admin Dashboard</span>
       </div>
     </div>
-    <button class="admin-btn">
-      <div class="admin-avatar">👤</div>
-      Admin ▾
-    </button>
+    <a href="<%= request.getContextPath() %>/admin/profile" class="admin-profile-link">
+      <div class="admin-avatar"><%= adminInitial %></div>
+      <div class="admin-profile-info">
+        <span class="admin-profile-name"><%= adminName %></span>
+        <span class="admin-profile-role">Administrator</span>
+      </div>
+    </a>
   </div>
 
   <div class="content">
@@ -59,26 +69,22 @@
       <div class="stat-card">
         <div class="stat-icon-wrap icon-red">📋</div>
         <div class="stat-label">Total Orders</div>
-        <div class="stat-value val-red">256</div>
-        <div class="stat-change"><span class="up">↑ 12%</span> from yesterday</div>
+        <div class="stat-value val-red"><%= request.getAttribute("totalOrders") != null ? request.getAttribute("totalOrders") : 0 %></div>
       </div>
       <div class="stat-card">
         <div class="stat-icon-wrap icon-gold">⏳</div>
         <div class="stat-label">Pending Orders</div>
-        <div class="stat-value val-gold">34</div>
-        <div class="stat-change"><span class="down">↓ 5%</span> from yesterday</div>
+        <div class="stat-value val-gold"><%= request.getAttribute("pendingOrders") != null ? request.getAttribute("pendingOrders") : 0 %></div>
       </div>
       <div class="stat-card">
         <div class="stat-icon-wrap icon-green">✅</div>
         <div class="stat-label">Completed Orders</div>
-        <div class="stat-value val-green">222</div>
-        <div class="stat-change"><span class="up">↑ 18%</span> from yesterday</div>
+        <div class="stat-value val-green"><%= request.getAttribute("completedOrders") != null ? request.getAttribute("completedOrders") : 0 %></div>
       </div>
       <div class="stat-card">
         <div class="stat-icon-wrap icon-red">💲</div>
         <div class="stat-label">Total Revenue</div>
-        <div class="stat-value val-red" style="font-size:28px;">$12,450</div>
-        <div class="stat-change"><span class="up">↑ 15%</span> from yesterday</div>
+        <div class="stat-value val-red" style="font-size:28px;">NPR <%= request.getAttribute("totalRevenue") != null ? request.getAttribute("totalRevenue") : "0.00" %></div>
       </div>
     </div>
 

@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Amici de Gusto - Authentic Italian Dining in Kathmandu</title>
+  <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
   <meta name="description" content="Premium Italian dining in Kathmandu. Handcrafted pasta, wood-fired pizzas, and curated wines since 1972." />
   <link rel="stylesheet" href="../css/home.css" />
 </head>
@@ -13,7 +14,7 @@
   <div class="container header-inner">
     <a href="home.jsp" class="brand">Amici <span class="de">de</span> Gusto</a>
     <div class="header-actions">
-      <a href="profile.html" class="icon-btn" aria-label="Profile" title="Profile">
+      <a href="<%= request.getContextPath() %>/profile" class="icon-btn" aria-label="Profile" title="Profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
         </svg>
@@ -37,7 +38,7 @@
       <h1>Amici <span class="it">de</span> Gusto</h1>
       <p class="hero-tag">Authentic Italian Taste in Every Bite</p>
       <p class="hero-desc">A premium Italian dining experience offering handcrafted pasta, wood-fired pizzas, and fine wines.</p>
-      <a href="menu.jsp" class="btn btn-gold">Explore Menu</a>
+      <a href="<%= request.getContextPath() %>/menu" class="btn btn-gold">Explore Menu</a>
     </div>
   </section>
   <section class="section section-cream">
