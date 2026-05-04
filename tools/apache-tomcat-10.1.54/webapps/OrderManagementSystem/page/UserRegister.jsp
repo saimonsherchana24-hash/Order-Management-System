@@ -1,0 +1,108 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amici De Gusto - Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/UserResgister.css">
+</head>
+<body>
+
+<div class="bg-layer">
+    <img class="bg-image" src="../Resource/RegisterImage.png" alt="Restaurant table with pizza and pasta"/>
+</div>
+
+<div class="page">
+
+    <div class="register-card">
+
+        <h1 class="brand-title">AMICI DE GUSTO</h1>
+        <p class="card-subtitle">Create Account</p>
+
+        <form class="register-form" autocomplete="off">
+
+            <div class="field">
+                <label class="field-label" for="fullname">Full Name</label>
+                <div class="field-input-wrap">
+                    <svg class="field-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <input class="field-input" type="text" id="fullname" placeholder="Enter your full name" autocomplete="off"/>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="username">Username</label>
+                <div class="field-input-wrap">
+                    <svg class="field-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <input class="field-input" type="text" id="username" placeholder="Choose a username" autocomplete="off"/>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="email">Email Address</label>
+                <div class="field-input-wrap">
+                    <svg class="field-icon" viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <input class="field-input" type="email" id="email" placeholder="Enter your email address" autocomplete="off"/>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="field field-half">
+                    <label class="field-label" for="password">Password</label>
+                    <div class="field-input-wrap">
+                        <svg class="field-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <input class="field-input" type="password" id="password" placeholder="Create password" autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="field field-half">
+                    <label class="field-label" for="confirm-password">Confirm Password</label>
+                    <div class="field-input-wrap">
+                        <svg class="field-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <input class="field-input" type="password" id="confirm-password" placeholder="Confirm password" autocomplete="off"/>
+                    </div>
+                </div>
+            </div>
+
+            <label class="terms-label">
+                <input type="checkbox" class="terms-checkbox"/>
+                <span class="terms-checkmark"></span>
+                <span class="terms-text">I agree to the <a href="#" class="terms-link">Terms of Service</a></span>
+            </label>
+
+            <button type="submit" class="btn-create">
+                Create Account
+                <svg class="btn-arrow" viewBox="0 0 24 24">
+                </svg>
+            </button>
+
+            <p class="login-link-text">
+                Already have an account? <a href="Login.jsp" class="login-link">Log in here</a>
+            </p>
+
+        </form>
+    </div>
+
+    <div class="page-footer">
+        <span>&copy; 2024 AMICI DE GUSTO</span>
+    </div>
+
+</div>
+
+</body>
+</html>

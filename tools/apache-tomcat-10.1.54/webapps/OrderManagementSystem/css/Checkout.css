@@ -1,0 +1,142 @@
+:root{
+  --green:#1B4332;
+  --green-dark:#0F2E22;
+  --cream:#F5F1E8;
+  --cream-2:#EFE9DA;
+  --gold:#C9A227;
+  --gold-soft:#E0BE52;
+  --text:#1f2a25;
+  --muted:#6b7770;
+  --border:rgba(27,67,50,.12);
+  --shadow-soft:0 6px 24px rgba(27,67,50,.08);
+  --shadow-elegant:0 18px 50px -20px rgba(27,67,50,.35);
+  --radius:18px;
+  --serif:"Playfair Display", Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #F5F1E8;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px;
+     background:var(--green);
+    color:var(--cream);
+    box-shadow:var(--shadow-soft);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.home-btn {
+    color:var(--cream);
+    font-size:20px;
+    padding:8px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.home-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.app-name {
+    font-family:"Playfair Display", serif;
+    font-size:25px;
+    font-weight:700;
+    color:var(--cream);
+    letter-spacing:.5px;
+}
+.app-name .accent {
+    color:var(--gold-soft);
+    font-style:italic;
+}
+.success h1 {
+    font-family: "Playfair Display", serif;
+    color: #1e2a38;
+    font-weight: 700;
+}
+
+/* TITLE */
+.title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 32px;
+    margin: 25px 30px;
+    color: #1e2a38;
+}
+
+/* CONTAINER */
+.container {
+    padding: 0 30px 30px;
+}
+
+/* BOX */
+.box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e6e6e6;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    padding: 12px;
+    background: #f0f0f0;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+}
+
+tr {
+    border-bottom: 1px solid #eee;
+}
+
+/* SUMMARY */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.total {
+    font-size: 18px;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 20px;
+    background: #ddd;
+    color: black;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: #1c4a31;
+    color: rgb(255, 255, 255);
+    transform: translateY(-2px);
+}

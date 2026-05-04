@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Checkout - Amici de Gusto</title>
+
+<link rel="stylesheet" href="../css/Checkout.css">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <a href="index.html" class="home-btn">
+            <i class="fa-solid fa-house"></i>
+        </a>
+        <div class="app-name">
+             Amici <span class="accent">de</span> Gusto
+        </div>
+    </div>
+    <i class="fa-solid fa-utensils"></i>
+</header>
+
+<!-- TITLE -->
+<div class="title">Checkout</div>
+
+<div class="container">
+
+    <!-- ORDER SUMMARY -->
+    <div class="box">
+        <h3>Order Summary</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Spaghetti Carbonara</td>
+                    <td>1</td>
+                    <td>$16.99</td>
+                </tr>
+
+                <tr>
+                    <td>Margherita Pizza</td>
+                    <td>2</td>
+                    <td>$12.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <div class="summary-item">
+            <span>Subtotal</span>
+            <span>$28.99</span>
+        </div>
+
+        <div class="summary-item">
+            <span>Tax (8%)</span>
+            <span>$2.32</span>
+        </div>
+
+        <hr>
+
+        <div class="summary-item total">
+            <b>Total</b>
+            <b>$31.31</b>
+        </div>
+    </div>
+
+    <!-- BUTTON -->
+    <button onclick="location.href='confirmation.jsp'">
+        Place Order
+    </button>
+
+</div>
+
+</body>
+</html>
