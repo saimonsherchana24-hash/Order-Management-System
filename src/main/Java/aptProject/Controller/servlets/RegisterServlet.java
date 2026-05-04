@@ -33,28 +33,28 @@ public class RegisterServlet extends HttpServlet {
         if (fullName == null || email == null || password == null
                 || fullName.isBlank() || email.isBlank() || password.isBlank()) {
             request.setAttribute("error", "Please fill all required fields.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response); // FIXED PATH
+            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
             return;
         }
 
         // 2. Check password match
         if (!password.equals(confirmPassword)) {
             request.setAttribute("error", "Passwords do not match.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response); // FIXED PATH
+            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
             return;
         }
 
         // 3. Check terms
         if (terms == null) {
             request.setAttribute("error", "Please agree to the Terms of Service and Privacy Policy.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response); // FIXED PATH
+            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
             return;
         }
 
         // 4. Check if email exists
         if (userDAO.findByEmail(email) != null) {
             request.setAttribute("error", "Email already exists.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response); // FIXED PATH
+            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
             return;
         }
 
@@ -78,11 +78,11 @@ public class RegisterServlet extends HttpServlet {
         // 6. Save to Database
         if (userDAO.register(user)) {
             System.out.println("SUCCESS: User saved to database!");
-            response.sendRedirect(request.getContextPath() + "/page/login.jsp?registered=true"); // FIXED PATH
+            response.sendRedirect(request.getContextPath() + "/page/Login.jsp?registered=true");
         } else {
             System.out.println("FAILURE: userDAO.register() returned false!");
             request.setAttribute("error", "Registration failed. Please try again.");
-            request.getRequestDispatcher("/page/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
         }
     }
 

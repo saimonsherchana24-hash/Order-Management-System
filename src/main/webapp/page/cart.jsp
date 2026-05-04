@@ -5,14 +5,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Your Cart - Amici de Gusto</title>
+  <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/cart.css" />
 </head>
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a href="home.jsp" class="brand">Amici <span class="de">de</span> Gusto</a>
+    <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
     <div class="header-actions">
-      <a href="profile.html" class="icon-btn" aria-label="Profile" title="Profile">
+      <a href="<%= request.getContextPath() %>/profile" class="icon-btn" aria-label="Profile" title="Profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
         </svg>
@@ -32,7 +33,7 @@
   <div class="cart-wrap">
     <div class="container">
       <div class="cart-head">
-        <a href="menu.jsp" class="back-link">
+        <a href="<%= request.getContextPath() %>/menu" class="back-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
           </svg>
@@ -45,7 +46,7 @@
       <div class="empty" id="emptyCart" hidden>
         <h2>Your cart is empty</h2>
         <p>Add food, drinks, or dessert from the menu.</p>
-        <a href="menu.jsp" class="btn btn-gold">Browse Menu</a>
+        <a href="<%= request.getContextPath() %>/menu" class="btn btn-gold">Browse Menu</a>
       </div>
       <div class="cart-actions" id="cartActions" hidden>
         <a href="Checkout.jsp" class="btn btn-gold btn-block">Place Order</a>

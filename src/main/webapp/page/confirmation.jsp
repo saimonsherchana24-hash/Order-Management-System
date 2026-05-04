@@ -1,29 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="aptProject.model.Order, aptProject.model.OrderItem" %>
+<% Order order = (Order) request.getAttribute("order"); %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Order Confirmation</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed - Amici de Gusto</title>
+<link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/Confirmation.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/confirmation.css">
 </head>
-
 <body>
 
 <!-- HEADER -->
 <header>
     <div class="logo">
-        <a href="index.html" class="home-btn">
+        <a href="<%= request.getContextPath() %>/menu" class="home-btn">
             <i class="fa-solid fa-house"></i>
         </a>
-        <div class="app-name">
-            Amici <span class="accent">de</span> Gusto
-        </div>
+        <div class="app-name">Amici <span class="accent">de</span> Gusto</div>
     </div>
-    <i class="fa-solid fa-utensils"></i>
+    <i class="fa-solid fa-utensils" style="color:#E8C96A;font-size:20px;"></i>
 </header>
 
 <div class="container">
@@ -32,91 +31,52 @@
     <div class="success">
         <div class="check">✔</div>
         <h1>Order Confirmed!</h1>
-        <p>Thank you for your order, <span id="customerName">Customer</span></p>
+        <p>Thank you for your order, <b><%= order != null ? order.getCustomerName() : "Customer" %></b></p>
     </div>
 
-    <!-- ORDER ID -->
+    <!-- TOKEN -->
     <div class="order-box">
-        <p>Order ID</p>
-        <h2 id="orderId"></h2>
-        <p>Save this ID to track your order</p>
+        <p>Your Token Number</p>
+        <h2><%= order != null ? order.getToken() : "—" %></h2>
+        <p>Show this token to collect your order</p>
     </div>
 
     <!-- ORDER DETAILS -->
     <div class="box">
         <h3>Order Details</h3>
-
         <table>
             <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
+                <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
             </thead>
-
             <tbody>
-                <tr>
-                    <td>Spaghetti Carbonara</td>
-                    <td>1</td>
-                    <td>$16.99</td>
-                </tr>
+            <% if (order != null && order.getItems() != null) {
+                 for (OrderItem oi : order.getItems()) { %>
+            <tr>
+                <td><%= oi.getItemName() %></td>
+                <td><%= oi.getQuantity() %></td>
+                <td>NPR <%= String.format("%.2f", oi.getSubtotal()) %></td>
+            </tr>
+            <% } } %>
             </tbody>
         </table>
-
         <hr>
-
-        <div class="summary-item">
-            <span>Subtotal</span>
-            <span>$16.99</span>
-        </div>
-
-        <div class="summary-item">
-            <span>Tax (8%)</span>
-            <span>$1.36</span>
-        </div>
-
-        <hr>
-
         <div class="summary-item total">
             <b>Total</b>
-            <b>$18.35</b>
+            <b>NPR <%= order != null ? String.format("%.2f", order.getTotalPrice()) : "0.00" %></b>
         </div>
-
-    </div>
-
-    <!-- CUSTOMER INFO -->
-    <div class="customer">
-        <h3>Customer Info</h3>
-        <p><b>Name:</b> <span id="name"></span></p>
-        <p><b>Phone:</b> <span id="phone"></span></p>
-        <p><b>Note:</b> <span id="note"></span></p>
     </div>
 
     <!-- BUTTONS -->
-    <a href="Tracking.jsp" class="btn">Track Order Status →</a>
-    <a href="Checkout.jsp" class="btn">← Back to Checkout</a>
-    <a href="#" class="btn">Order More Items</a>
+    <a href="<%= request.getContextPath() %>/tracking?orderId=<%= order != null ? order.getId() : "" %>" class="btn btn-primary">
+        <i class="fa fa-location-dot"></i> Track Order Status
+    </a>
+    <a href="<%= request.getContextPath() %>/profile" class="btn btn-secondary">
+        <i class="fa fa-user"></i> My Profile & Orders
+    </a>
+    <a href="<%= request.getContextPath() %>/menu" class="btn btn-secondary">
+        <i class="fa fa-utensils"></i> Order More Items
+    </a>
 
 </div>
-
-<!-- JS for dynamic data -->
-<script>
-    // Generate Order ID
-    document.getElementById("orderId").innerText = "ADG" + Math.floor(Math.random()*1000000);
-
-    // Get URL parameters (simulate JSP request.getParameter)
-    const params = new URLSearchParams(window.location.search);
-
-    const name = params.get("name") || "Soniya Thapa";
-    const phone = params.get("phone") || "12345";
-    const note = params.get("instructions") || "No Spicy";
-
-    document.getElementById("customerName").innerText = name;
-    document.getElementById("name").innerText = name;
-    document.getElementById("phone").innerText = phone;
-    document.getElementById("note").innerText = note;
-</script>
-
 </body>
 </html>

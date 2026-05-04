@@ -1,11 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="aptProject.model.User" %>
+<% User adminUser = (User) request.getAttribute("adminUser");
+   if (adminUser == null) adminUser = (User) session.getAttribute("user"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Admin Profile - Amici de Gusto</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%238B1A1A'/><text x='50' y='68' text-anchor='middle' font-family='Georgia,serif' font-size='48' font-weight='700' fill='%23C9A84C'>AdG</text></svg>">
     <link rel="stylesheet" href="../css/AdminProfile.css" />
+    <style>
+        /* Hide edit panel by default, show when targeted via #editPanel anchor */
+        .edit-panel          { display: none; }
+        .edit-panel:target   { display: block; }
+    </style>
 </head>
 <body>
 <main>
@@ -18,19 +27,19 @@
             </div>
             <div class="admin-grid">
                 <section class="panel admin-panel">
-                    <div class="avatar">SR</div>
+                    <div class="avatar"><%= adminUser != null ? adminUser.getFullName().substring(0,1).toUpperCase() : "A" %></div>
                     <div class="admin-info">
                         <div class="title-row">
                             <div>
-                                <h2 id="displayName">Sophia Russo</h2>
-                                <p class="role" id="displayRole">Administrator</p>
+                                <h2 id="displayName"><%= adminUser != null ? adminUser.getFullName() : "" %></h2>
+                                <p class="role" id="displayRole"><%= adminUser != null ? adminUser.getRole() : "ADMIN" %></p>
                             </div>
-                            <button class="btn btn-gold" type="button" id="editToggle">Edit Profile</button>
+                            <a href="#editPanel" class="btn btn-gold">Edit Profile</a>
                         </div>
                         <dl>
-                            <div><dt>Name</dt><dd id="detailName">Sophia Russo</dd></div>
-                            <div><dt>Role</dt><dd id="detailRole">Administrator</dd></div>
-                            <div><dt>Email</dt><dd id="detailEmail">sophia.russo@amicidegusto.com.np</dd></div>
+                            <div><dt>Name</dt><dd id="detailName"><%= adminUser != null ? adminUser.getFullName() : "" %></dd></div>
+                            <div><dt>Role</dt><dd id="detailRole"><%= adminUser != null ? adminUser.getRole() : "" %></dd></div>
+                            <div><dt>Email</dt><dd id="detailEmail"><%= adminUser != null ? adminUser.getEmail() : "" %></dd></div>
                         </dl>
                     </div>
                 </section>
@@ -52,57 +61,35 @@
                     </div>
                 </section>
             </div>
-            <section class="panel edit-panel" id="editPanel" hidden>
+            <section class="panel edit-panel" id="editPanel">
                 <div class="section-title">
                     <p class="eyebrow small">Edit Details</p>
                     <h2>Update Admin Profile</h2>
                 </div>
-                <form class="admin-form" id="adminProfileForm">
+                <form class="admin-form" action="<%= request.getContextPath() %>/admin/profile/update" method="post">
                     <label>
                         Admin Name
-                        <input type="text" id="adminName" value="Sophia Russo" />
+                        <input type="text" name="adminName" id="adminName" value="<%= adminUser != null ? adminUser.getFullName() : "" %>" />
                     </label>
                     <label>
                         Email
-                        <input type="email" id="adminEmail" value="sophia.russo@amicidegusto.com.np" />
+                        <input type="email" name="adminEmail" id="adminEmail" value="<%= adminUser != null ? adminUser.getEmail() : "" %>" />
                     </label>
                     <label>
                         Role
-                        <input type="text" id="adminRole" value="Administrator" readonly />
+                        <input type="text" id="adminRole" value="<%= adminUser != null ? adminUser.getRole() : "" %>" readonly />
                     </label>
+                    <% if (request.getAttribute("success") != null) { %>
+                    <p style="color:green"><%= request.getAttribute("success") %></p>
+                    <% } %>
                     <div class="form-actions">
                         <button class="btn btn-gold" type="submit">Save Changes</button>
-                        <button class="btn btn-soft" type="button" id="cancelEdit">Cancel</button>
+                        <a href="#" class="btn btn-soft">Cancel</a>
                     </div>
                 </form>
             </section>
         </div>
     </section>
 </main>
-<script>
-    const editToggle = document.getElementById("editToggle");
-    const editPanel = document.getElementById("editPanel");
-    const cancelEdit = document.getElementById("cancelEdit");
-    const form = document.getElementById("adminProfileForm");
-    editToggle.addEventListener("click", () => {
-        editPanel.hidden = false;
-        document.getElementById("adminName").focus();
-    });
-    cancelEdit.addEventListener("click", () => {
-        editPanel.hidden = true;
-    });
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const name = document.getElementById("adminName").value.trim();
-        const email = document.getElementById("adminEmail").value.trim();
-        const role = document.getElementById("adminRole").value.trim();
-        document.getElementById("displayName").textContent = name;
-        document.getElementById("displayRole").textContent = role;
-        document.getElementById("detailName").textContent = name;
-        document.getElementById("detailEmail").textContent = email;
-        document.getElementById("detailRole").textContent = role;
-        editPanel.hidden = true;
-    });
-</script>
 </body>
 </html>
