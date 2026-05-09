@@ -2,67 +2,81 @@
 
 /* ===== CHECKOUT PAGE — Amici de Gusto ===== */
 
-:root {
-  --crimson:    #8B1A1A;
-  --crimson-lt: #C0392B;
-  --gold:       #C9A84C;
-  --gold-lt:    #E8C96A;
-  --cream:      #FAF7F2;
-  --white:      #FFFFFF;
-  --text-dark:  #2C1810;
-  --text-mid:   #5A4A42;
-  --text-light: #8B7B74;
-  --border:     #EDE8E0;
-  --shadow:     0 4px 20px rgba(139,26,26,.08);
-  --radius:     16px;
-}
-
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--cream);
-  color: var(--text-dark);
+  background: #f4eedd;
+  color: #15281e;
   min-height: 100vh;
 }
 
-/* ── HEADER ── */
-header {
+a { text-decoration: none; color: inherit; }
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
+
+/* ── NAVBAR (EXACT SAME AS CART.CSS) ── */
+.navbar {
+  background: #1c3d2c;
+  padding: 0 2rem;
+  height: 70px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  background: linear-gradient(135deg, #7A0E0E 0%, #5A0A0A 100%);
-  box-shadow: 0 2px 12px rgba(139,26,26,.3);
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
-.logo { display: flex; align-items: center; gap: 12px; }
-
-.home-btn {
-  color: #E8C96A;
-  font-size: 18px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background .2s;
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #f4eedd;
+  text-decoration: none; /* Removes underline */
 }
-.home-btn:hover { background: rgba(255,255,255,.12); }
 
-.app-name {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 22px;
-  font-weight: 700;
+.brand .de {
+  color: #c99836;
+  font-style: italic;
+}
+
+.nav-end {
+  display: flex;
+  align-items: center;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(244, 238, 221, 0.1);
+  border: 1px solid rgba(244, 238, 221, 0.2);
+  color: #f4eedd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.icon-btn:hover {
+  background: #c99836;
   color: #fff;
+  border-color: #c99836;
 }
-.app-name .accent { color: #E8C96A; font-style: italic; }
+
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
 
 /* ── PAGE TITLE ── */
 .title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--crimson);
-  margin: 28px 32px 0;
+  color: #1c3d2c;
+  margin: 28px 0 0;
+  text-align: center;
 }
 
 /* ── CONTAINER ── */
@@ -74,59 +88,55 @@ header {
 
 /* ── BOX ── */
 .box {
-  background: var(--white);
+  background: #ffffff;
   padding: 24px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  border-radius: 16px;
+  border: 1px solid #d6caa8;
+  box-shadow: 0 4px 16px rgba(20, 40, 28, 0.06);
   margin-bottom: 20px;
 }
 
 .box h3 {
-  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.15rem;
-  color: var(--crimson);
+  color: #1c3d2c;
   margin-bottom: 16px;
 }
 
 /* ── TABLE ── */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+table { width: 100%; border-collapse: collapse; }
 
-thead tr { background: #FDF6EE; }
+thead tr { background: #f4eedd; }
 
 th {
   padding: 10px 12px;
   font-size: .85rem;
   font-weight: 700;
-  color: var(--text-mid);
+  color: #4d5a52;
   text-align: left;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #d6caa8;
 }
 
 td {
   padding: 11px 12px;
   font-size: .92rem;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-dark);
+  border-bottom: 1px solid #ece3cf;
+  color: #15281e;
 }
 
 tr:last-child td { border-bottom: none; }
 
 hr {
   border: none;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #d6caa8;
   margin: 14px 0;
 }
 
-/* ── SUMMARY ROW ── */
+/* ── TOTAL ROW ── */
 .summary-item {
   display: flex;
   justify-content: space-between;
   font-size: .95rem;
-  color: var(--text-mid);
+  color: #4d5a52;
   padding: 4px 0;
 }
 
@@ -134,39 +144,39 @@ hr {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--crimson);
+  color: #1c3d2c;
   padding-top: 8px;
 }
 
 /* ── SPECIAL NOTE ── */
 textarea {
   width: 100%;
-  border: 1px solid var(--border);
+  border: 1px solid #d6caa8;
   border-radius: 10px;
   padding: 12px 14px;
   font-family: 'Inter', sans-serif;
   font-size: .92rem;
-  color: var(--text-dark);
-  background: var(--cream);
+  color: #15281e;
+  background: #f4eedd;
   resize: vertical;
   outline: none;
   transition: border-color .2s;
 }
-textarea:focus { border-color: var(--gold); background: var(--white); }
+textarea:focus { border-color: #c99836; background: #ffffff; }
 
 /* ── PLACE ORDER BUTTON ── */
 #placeOrderBtn {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-lt) 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #1c3d2c, #2d5a3d);
+  color: #f4eedd;
   border: none;
-  border-radius: 999px;
+  border-radius: 9999px;
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(139,26,26,.3);
+  box-shadow: 0 4px 16px rgba(20, 40, 28, 0.25);
   transition: opacity .2s, transform .2s;
   display: flex;
   align-items: center;

@@ -2,61 +2,62 @@
 
 /* ===== CONFIRMATION PAGE — Amici de Gusto ===== */
 
-:root {
-  --crimson:    #8B1A1A;
-  --crimson-lt: #C0392B;
-  --gold:       #C9A84C;
-  --gold-lt:    #E8C96A;
-  --cream:      #FAF7F2;
-  --white:      #FFFFFF;
-  --text-dark:  #2C1810;
-  --text-mid:   #5A4A42;
-  --text-light: #8B7B74;
-  --green:      #2D7A4F;
-  --border:     #EDE8E0;
-  --shadow:     0 4px 20px rgba(139,26,26,.08);
-  --radius:     16px;
-}
-
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--cream);
-  color: var(--text-dark);
+  background: #f4eedd;
+  color: #15281e;
   min-height: 100vh;
 }
 
-/* ── HEADER ── */
-header {
+/* ── HEADER (EXACT MATCH TO CART.JSP) ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #1c3d2c;
+  color: #f4eedd;
+  height: 70px;
+  padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  background: linear-gradient(135deg, #7A0E0E 0%, #5A0A0A 100%);
-  box-shadow: 0 2px 12px rgba(139,26,26,.3);
+  justify-content: space-between;
 }
 
-.logo { display: flex; align-items: center; gap: 12px; }
-
-.home-btn {
-  color: #E8C96A;
-  font-size: 18px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background .2s;
+.site-header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
-.home-btn:hover { background: rgba(255,255,255,.12); }
 
-.app-name {
+.brand {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: .5px;
+  font-size: 1.4rem;
+  color: #f4eedd;
+  letter-spacing: .02em;
+  text-decoration: none;
 }
-.app-name .accent { color: #E8C96A; font-style: italic; }
+.brand .de { color: #c99836; font-style: italic; }
+
+.header-actions { display: flex; align-items: center; gap: 0.5rem; }
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(244, 238, 221, 0.1);
+  border: 1px solid rgba(244, 238, 221, 0.2);
+  color: #f4eedd;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.icon-btn:hover { background: #c99836; color: #ffffff; border-color: #c99836; }
+.icon-btn svg { width: 18px; height: 18px; }
 
 /* ── CONTAINER ── */
 .container {
@@ -75,9 +76,9 @@ header {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(45,122,79,.12);
-  border: 2px solid var(--green);
-  color: var(--green);
+  background: rgba(45, 122, 79, 0.12);
+  border: 2px solid #2D7A4F;
+  color: #2D7A4F;
   font-size: 28px;
   display: flex;
   align-items: center;
@@ -89,45 +90,45 @@ header {
 .success h1 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2rem;
-  color: var(--crimson);
+  color: #1c3d2c;
   margin-bottom: 8px;
 }
 
-.success p { color: var(--text-mid); font-size: .95rem; }
+.success p { color: #4d5a52; font-size: .95rem; }
 
 /* ── TOKEN BOX ── */
 .order-box {
-  background: linear-gradient(135deg, #7A0E0E 0%, #5A0A0A 100%);
+  background: #1c3d2c;
   padding: 24px;
-  border-radius: var(--radius);
+  border-radius: 16px;
   text-align: center;
   margin-bottom: 24px;
-  box-shadow: 0 8px 24px rgba(139,26,26,.25);
+  box-shadow: 0 8px 24px rgba(20, 40, 28, 0.2);
 }
 
-.order-box p { color: rgba(255,255,255,.75); font-size: .9rem; margin-bottom: 6px; }
+.order-box p { color: rgba(244, 238, 221, 0.75); font-size: .9rem; margin-bottom: 6px; }
 .order-box p:last-child { margin-top: 6px; margin-bottom: 0; }
 
 .order-box h2 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.2rem;
-  color: #E8C96A;
+  color: #c99836;
   letter-spacing: 2px;
 }
 
 /* ── ORDER DETAILS BOX ── */
 .box {
-  background: var(--white);
+  background: #ffffff;
   padding: 24px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  border-radius: 16px;
+  border: 1px solid #d6caa8;
+  box-shadow: 0 4px 20px rgba(20, 40, 28, 0.06);
   margin-bottom: 24px;
 }
 
 .box h3 {
   font-family: 'Playfair Display', Georgia, serif;
-  color: var(--crimson);
+  color: #1c3d2c;
   font-size: 1.15rem;
   margin-bottom: 16px;
 }
@@ -138,29 +139,29 @@ table {
   margin-bottom: 12px;
 }
 
-thead tr { background: #FDF6EE; }
+thead tr { background: #f4eedd; }
 
 th {
   padding: 10px 12px;
   font-size: .85rem;
   font-weight: 700;
-  color: var(--text-mid);
+  color: #4d5a52;
   text-align: left;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #d6caa8;
 }
 
 td {
   padding: 11px 12px;
   font-size: .92rem;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-dark);
+  border-bottom: 1px solid #ece3cf;
+  color: #15281e;
 }
 
 tr:last-child td { border-bottom: none; }
 
 hr {
   border: none;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #d6caa8;
   margin: 12px 0;
 }
 
@@ -168,7 +169,7 @@ hr {
   display: flex;
   justify-content: space-between;
   font-size: .95rem;
-  color: var(--text-mid);
+  color: #4d5a52;
   padding: 4px 0;
 }
 
@@ -176,7 +177,7 @@ hr {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--crimson);
+  color: #1c3d2c;
   padding-top: 8px;
 }
 
@@ -200,19 +201,19 @@ hr {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-lt) 100%);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(139,26,26,.3);
+  background: linear-gradient(135deg, #1c3d2c, #2d5a3d);
+  color: #f4eedd;
+  box-shadow: 0 4px 14px rgba(20, 40, 28, 0.25);
 }
 .btn-primary:hover { opacity: .9; transform: translateY(-1px); }
 
 .btn-secondary {
-  background: var(--white);
-  color: var(--text-dark);
-  border: 1px solid var(--border);
+  background: #ffffff;
+  color: #15281e;
+  border: 1px solid #d6caa8;
 }
 .btn-secondary:hover {
-  background: var(--crimson);
-  color: #fff;
-  border-color: var(--crimson);
+  background: #1c3d2c;
+  color: #f4eedd;
+  border-color: #1c3d2c;
 }

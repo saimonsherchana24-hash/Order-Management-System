@@ -2,44 +2,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout - Amici de Gusto</title>
-<link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../css/Checkout.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Amici de Gusto</title>
+    <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/Checkout.css">
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-    <div class="logo">
-        <a href="<%= request.getContextPath() %>/menu" class="home-btn">
-            <i class="fa-solid fa-house"></i>
+<!-- NAVBAR (EXACT SAME AS CART.JSP) -->
+<header class="navbar">
+    <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
+    <div class="nav-end">
+        <a href="<%= request.getContextPath() %>/profile" class="icon-btn" aria-label="Profile" title="Profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
         </a>
-        <div class="app-name">Amici <span class="accent">de</span> Gusto</div>
     </div>
-    <i class="fa-solid fa-utensils" style="color:#E8C96A;font-size:20px;"></i>
 </header>
 
 <div class="title">Checkout</div>
 
 <div class="container">
 
-    <!-- ORDER SUMMARY — filled by JavaScript from localStorage -->
+    <!-- ORDER SUMMARY -->
     <div class="box">
         <h3>Order Summary</h3>
         <table>
             <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                </tr>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
             </thead>
-            <tbody id="cartTableBody">
-                <!-- rows added by JS below -->
-            </tbody>
+            <tbody id="cartTableBody"></tbody>
         </table>
         <hr>
         <div class="summary-item total">
@@ -59,27 +58,21 @@
         <p>Your cart is empty. <a href="<%= request.getContextPath() %>/menu">Browse the menu →</a></p>
     </div>
 
-    <!--
-        Hidden form — JavaScript fills this with cart data before submitting.
-        The servlet reads: totalPrice, specialNote, itemCount,
-        and for each item: itemId_0, itemName_0, itemPrice_0, itemQty_0
-    -->
+    <!-- Hidden form for servlet -->
     <form id="orderForm" method="post" action="<%= request.getContextPath() %>/order/place">
         <input type="hidden" name="totalPrice"   id="formTotal">
         <input type="hidden" name="specialNote"  id="formNote">
         <input type="hidden" name="itemCount"    id="formItemCount">
-        <!-- item fields added dynamically by JS -->
         <div id="formItems"></div>
 
         <button type="button" id="placeOrderBtn">
-            <i class="fa fa-check"></i> Place Order
+            ✔ Place Order
         </button>
     </form>
 
 </div>
 
 <script>
-    // Read cart from localStorage (same key used in cart.js)
     var CART_KEY = "amiciCart";
 
     function getCart() {
@@ -87,7 +80,6 @@
         catch(e) { return []; }
     }
 
-    // Show cart items in the table
     function showCart() {
         var cart = getCart();
         var tbody = document.getElementById("cartTableBody");
@@ -120,7 +112,6 @@
         totalDisplay.textContent = "NPR " + total.toLocaleString();
     }
 
-    // When Place Order is clicked — fill the hidden form and submit
     document.getElementById("placeOrderBtn").addEventListener("click", function() {
         var cart = getCart();
 
@@ -134,12 +125,10 @@
             total += cart[i].price * cart[i].qty;
         }
 
-        // Fill hidden fields
         document.getElementById("formTotal").value     = total.toFixed(2);
         document.getElementById("formNote").value      = document.getElementById("specialNote").value;
         document.getElementById("formItemCount").value = cart.length;
 
-        // Add one hidden input per item
         var container = document.getElementById("formItems");
         container.innerHTML = "";
         for (var j = 0; j < cart.length; j++) {
@@ -151,16 +140,11 @@
                 "<input type='hidden' name='itemQty_"   + j + "' value='" + item.qty   + "'>";
         }
 
-        // Clear cart after placing order
         localStorage.removeItem(CART_KEY);
-
-        // Submit the form to the servlet
         document.getElementById("orderForm").submit();
     });
 
-    // Run on page load
     showCart();
 </script>
-
 </body>
 </html>

@@ -4,25 +4,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Confirmed - Amici de Gusto</title>
-<link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/confirmation.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Amici de Gusto</title>
+    <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/confirmation.css">
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-    <div class="logo">
-        <a href="<%= request.getContextPath() %>/menu" class="home-btn">
-            <i class="fa-solid fa-house"></i>
-        </a>
-        <div class="app-name">Amici <span class="accent">de</span> Gusto</div>
+<!-- HEADER (EXACT MATCH TO CART.JSP) -->
+<header class="site-header">
+    <div class="header-inner">
+        <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
+        <div class="header-actions">
+            <a href="<%= request.getContextPath() %>/profile" class="icon-btn" aria-label="Profile" title="Profile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </a>
+        </div>
     </div>
-    <i class="fa-solid fa-utensils" style="color:#E8C96A;font-size:20px;"></i>
 </header>
 
 <div class="container">
@@ -46,11 +48,11 @@
         <h3>Order Details</h3>
         <table>
             <thead>
-                <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
+            <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
             </thead>
             <tbody>
             <% if (order != null && order.getItems() != null) {
-                 for (OrderItem oi : order.getItems()) { %>
+                for (OrderItem oi : order.getItems()) { %>
             <tr>
                 <td><%= oi.getItemName() %></td>
                 <td><%= oi.getQuantity() %></td>
@@ -68,13 +70,13 @@
 
     <!-- BUTTONS -->
     <a href="<%= request.getContextPath() %>/tracking?orderId=<%= order != null ? order.getId() : "" %>" class="btn btn-primary">
-        <i class="fa fa-location-dot"></i> Track Order Status
+         Track Order Status
     </a>
     <a href="<%= request.getContextPath() %>/profile" class="btn btn-secondary">
-        <i class="fa fa-user"></i> My Profile & Orders
+         My Profile & Orders
     </a>
     <a href="<%= request.getContextPath() %>/menu" class="btn btn-secondary">
-        <i class="fa fa-utensils"></i> Order More Items
+        Order More Items
     </a>
 
 </div>
