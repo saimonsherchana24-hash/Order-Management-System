@@ -6,11 +6,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Your Cart - Amici de Gusto</title>
   <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../css/cart.css" />
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/cart.css" />
 </head>
 <body>
 
-<!-- NAVBAR - brand flush left, profile icon on right, no cart icon -->
 <header class="navbar">
   <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
   <div class="nav-end">
@@ -23,12 +22,10 @@
   </div>
 </header>
 
-<!-- MAIN -->
 <main>
-  <div class="cart-page">
+  <div class="cart-wrap">
     <div class="container">
-
-      <div class="cart-header">
+      <div class="cart-head">
         <a href="<%= request.getContextPath() %>/menu" class="back-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -38,29 +35,29 @@
         <p class="eyebrow">Il Tuo Ordine</p>
         <h1>Your Cart</h1>
       </div>
-
-      <!-- Empty state visible by default since no JS loads items -->
-      <div class="empty-state" id="emptyCart">
+      <ul class="cart-list" id="cartItems"></ul>
+      <div class="empty" id="emptyCart" hidden>
         <h2>Your cart is empty</h2>
         <p>Add food, drinks, or dessert from the menu.</p>
-        <a href="<%= request.getContextPath() %>/menu" class="btn">Browse Menu</a>
+        <a href="<%= request.getContextPath() %>/menu" class="btn btn-gold">Browse Menu</a>
       </div>
-
+      <div class="cart-actions" id="cartActions" hidden>
+        <a href="/page/Checkout.jsp" class="btn btn-gold btn-block">Place Order</a>
+      </div>
     </div>
   </div>
 </main>
 
-<!-- FOOTER -->
-<footer class="footer">
+<footer class="site-footer">
   <div class="container footer-grid">
     <div>
       <h3>Amici <span class="accent">de</span> Gusto</h3>
-      <p>Authentic Italian dining in the heart of Kathmandu since 1972.</p>
+      <p>Authentic Italian dining in the heart of Kathmandu since 1972. Handcrafted pasta, wood-fired pizzas, and curated wines.</p>
     </div>
     <div>
       <h4>Contact</h4>
       <ul>
-        <li>Thamel Marg, Kathmandu</li>
+        <li>Thamel Marg, Kathmandu, Nepal</li>
         <li>+977 01-4567890</li>
         <li>namaste@amicidegusto.com.np</li>
       </ul>
@@ -70,14 +67,15 @@
       <ul>
         <li>Tuesday - Sunday</li>
         <li>12:00 - 23:00</li>
-        <li>Closed Mondays</li>
+        <li style="opacity:.6;">Closed Mondays</li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">&copy; 2026 Amici de Gusto</div>
+    <div class="container">&copy; 2026 Amici de Gusto - Crafted with passion in Kathmandu, Nepal</div>
   </div>
 </footer>
 
+<script src="<%= request.getContextPath() %>/js/cart.js"></script>
 </body>
 </html>
