@@ -7,43 +7,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Track Order - Amici de Gusto</title>
 <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/Tracking.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        <a href="<%= request.getContextPath() %>/menu" class="home-btn">
-            <i class="fa-solid fa-house"></i>
-        </a>
-        <div class="app-name">Amici <span class="accent">de</span> Gusto</div>
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-inner">
+        <span class="brand">Amici <span class="de">de</span> Gusto</span>
     </div>
-    <i class="fa-solid fa-utensils" style="color:#E8C96A;font-size:20px;"></i>
 </header>
 
+<main>
 <div class="container">
 
-    <h1>Track Your Order</h1>
-
-    <%-- Search form --%>
-    <form method="get" action="<%= request.getContextPath() %>/tracking">
-        <div class="track-box">
-            <input type="text" name="orderId"
-                   placeholder="Enter Order ID  e.g. 5"
-                   value="<%= request.getParameter("orderId") != null ? request.getParameter("orderId") : "" %>">
-            <button type="submit"><i class="fa fa-search"></i> Track</button>
-        </div>
-    </form>
-
-    <%-- Nav buttons --%>
-    <a href="<%= request.getContextPath() %>/profile" class="btn">👤 My Profile & Orders</a>
-    <a href="<%= request.getContextPath() %>/menu"    class="btn">🍽️ Order More</a>
+    <div class="page-header">
+        <p class="eyebrow">Il Tuo Ordine</p>
+        <h1>Order Status</h1>
+    </div>
 
     <%-- Error message --%>
     <% if (request.getAttribute("error") != null) { %>
-    <div class="status" style="border-color:#f5c6c2; background:#fdecea;">
-        <h3 style="color:#c0392b;">⚠️ <%= request.getAttribute("error") %></h3>
+    <div class="error-box">
+        ⚠️ <%= request.getAttribute("error") %>
     </div>
     <% } %>
 
@@ -51,38 +38,26 @@
     <%
       Order order = (Order) request.getAttribute("order");
       if (order != null) {
+          boolean isPending   = "PENDING".equalsIgnoreCase(order.getStatus());
+          boolean isCompleted = "COMPLETED".equalsIgnoreCase(order.getStatus());
           List<String> doneStatuses = Arrays.asList("ACCEPTED","PREPARING","READY","COMPLETED");
     %>
 
-    <%-- Status banner --%>
-    <div class="status">
-        <h3><i class="fa fa-utensils"></i> <%= order.getStatus() %></h3>
-        <p>Token: <b><%= order.getToken() %></b> &nbsp;|&nbsp; Total: <b>NPR <%= String.format("%.2f", order.getTotalPrice()) %></b></p>
+    <%-- Token & Status card --%>
+    <div class="status-card">
+        <div class="token-label">Token Number</div>
+        <div class="token-number"><%= order.getToken() %></div>
+        <div class="status-badge <%= isCompleted ? "badge-complete" : isPending ? "badge-pending" : "badge-active" %>">
+            <%= order.getStatus() %>
+        </div>
+        <div class="order-total">Total: <b>NPR <%= String.format("%.2f", order.getTotalPrice()) %></b></div>
     </div>
 
-    <%-- Progress steps --%>
-    <div class="progress">
-        <div class="step <%= doneStatuses.contains(order.getStatus()) ? "active-step" : "" %>">
-            <div class="circle <%= doneStatuses.contains(order.getStatus()) ? "active" : "" %>">✔</div>
-            Order Received
-        </div>
-        <div class="step <%= Arrays.asList("PREPARING","READY","COMPLETED").contains(order.getStatus()) ? "active-step" : "" %>">
-            <div class="circle <%= Arrays.asList("PREPARING","READY","COMPLETED").contains(order.getStatus()) ? "active" : "" %>">✔</div>
-            Preparing
-        </div>
-        <div class="step <%= Arrays.asList("READY","COMPLETED").contains(order.getStatus()) ? "active-step" : "" %>">
-            <div class="circle <%= Arrays.asList("READY","COMPLETED").contains(order.getStatus()) ? "active" : "" %>">✔</div>
-            Being Served
-        </div>
-        <div class="step <%= "COMPLETED".equals(order.getStatus()) ? "active-step" : "" %>">
-            <div class="circle <%= "COMPLETED".equals(order.getStatus()) ? "active" : "" %>">✔</div>
-            Completed
-        </div>
-    </div>
+   
 
     <%-- Order items --%>
     <div class="order-box">
-        <h3>Order Items</h3>
+        <h3>Your Order</h3>
         <div class="order-header">
             <span>Item</span><span>Qty</span><span>Price</span>
         </div>
@@ -100,8 +75,21 @@
         </div>
     </div>
 
+    <% } else if (request.getAttribute("error") == null) { %>
+    <%-- No order loaded yet — show message --%>
+    <div class="empty-box">
+        <p>No order to display. Go to your profile to view your orders.</p>
+        <a href="<%= request.getContextPath() %>/profile" class="btn btn-gold">View My Orders</a>
+    </div>
     <% } %>
 
+    <div class="nav-links">
+        <a href="<%= request.getContextPath() %>/profile" class="btn btn-outline">My Profile</a>
+        <a href="<%= request.getContextPath() %>/menu"    class="btn btn-gold">Order More</a>
+    </div>
+
 </div>
+</main>
+
 </body>
 </html>

@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ===== ADMIN ORDER MANAGEMENT — Green & White Theme ===== */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f4eedd;
+    color: #15281e;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    background: linear-gradient(180deg, #1c3d2c 0%, #15281e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 0 0;
+    overflow-y: auto;
+}
+
+.logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(201,152,54,.25);
+    width: 80%;
+}
+
+.logo-icon {
+    width: 60px; height: 60px;
+    background: rgba(201,152,54,.15);
+    border: 2px solid #c99836;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #c99836;
+    text-align: center;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo-sub {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,152,54,.6);
+}
+
+.ornament {
+    color: rgba(201,152,54,.4);
+    font-size: 11px;
+    margin: 12px 0;
+}
+
+nav { width: 100%; padding: 8px 14px; }
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: rgba(255,255,255,.7);
+    font-size: 14px;
+    text-decoration: none;
+    transition: all .2s;
+    margin-bottom: 4px;
+}
+.nav-item:hover  { background: rgba(255,255,255,.1); color: #fff; }
+.nav-item.active { background: #1c3d2c; color: #fff; font-weight: 600; box-shadow: 0 4px 12px rgba(28,61,44,.4); border: 1px solid rgba(201,152,54,.3); }
+.nav-icon { font-size: 17px; width: 20px; text-align: center; }
+
+/* ── MAIN ── */
+.main {
+    flex: 1;
+    overflow-y: auto;
+    background: #f4eedd;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    background: #ffffff;
+    border-bottom: 1px solid #d6caa8;
+    box-shadow: 0 2px 8px rgba(20,40,28,.06);
+}
+
+.title-row { display: flex; align-items: center; gap: 12px; }
+
+.title-bar {
+    width: 4px; height: 40px;
+    background: #c99836;
+    border-radius: 2px;
+}
+
+.page-title h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #15281e;
+}
+
+.page-title span {
+    font-size: 13px;
+    color: #c99836;
+    font-weight: 600;
+    letter-spacing: .4px;
+}
+
+/* Profile link in topbar */
+.admin-profile-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #d6caa8;
+    border-radius: 50px;
+    padding: 6px 14px 6px 6px;
+    transition: box-shadow .2s, border-color .2s;
+}
+.admin-profile-link:hover { box-shadow: 0 4px 12px rgba(20,40,28,.1); border-color: #c99836; }
+
+.admin-avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: #1c3d2c;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.admin-profile-info { display: flex; flex-direction: column; line-height: 1.2; }
+.admin-profile-name { font-size: 13px; font-weight: 700; color: #15281e; }
+.admin-profile-role { font-size: 11px; color: #c99836; font-weight: 600; }
+
+/* ── CONTENT ── */
+.content { padding: 24px 28px; }
+
+/* ── TABLE CARD ── */
+.table-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #d6caa8;
+    box-shadow: 0 4px 16px rgba(20,40,28,.08);
+    overflow: hidden;
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    border-bottom: 1px solid #d6caa8;
+}
+
+.table-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #1c3d2c;
+}
+
+.empty-msg {
+    padding: 40px;
+    text-align: center;
+    color: #4d5a52;
+    font-size: .95rem;
+}
+
+/* ── TABLE ── */
+table { width: 100%; border-collapse: collapse; }
+
+thead tr { background: #f4eedd; }
+
+th {
+    padding: 12px 16px;
+    font-size: .82rem;
+    font-weight: 700;
+    color: #4d5a52;
+    text-align: left;
+    border-bottom: 1px solid #d6caa8;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+tbody tr { border-bottom: 1px solid #ece3cf; transition: background .15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #f8f1de; }
+
+td {
+    padding: 13px 16px;
+    font-size: .9rem;
+    color: #15281e;
+    vertical-align: middle;
+}
+
+.token { font-family: 'Playfair Display', serif; font-weight: 700; color: #1c3d2c; }
+
+.items-cell { font-size: .82rem; color: #4d5a52; line-height: 1.6; }
+
+/* ── STATUS BADGES ── */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+.badge-pending  { background: rgba(201,152,54,.15); color: #7a5a00; }
+.badge-active   { background: rgba(28,61,44,.12);   color: #1c3d2c; }
+.badge-complete { background: rgba(28,61,44,.2);    color: #0f2e22; }
+
+/* ── ACTION BUTTONS ── */
+.action-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.btn-complete, .btn-pending {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: .82rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: opacity .2s, transform .15s;
+}
+
+.btn-complete {
+    background: #1c3d2c;
+    color: #fff;
+}
+.btn-complete:hover { opacity: .85; transform: translateY(-1px); }
+
+.btn-pending {
+    background: #ece3cf;
+    color: #15281e;
+    border: 1px solid #d6caa8;
+}
+.btn-pending:hover { background: #d6caa8; }
+
+.done-text {
+    font-size: .82rem;
+    font-weight: 600;
+    color: #1c3d2c;
+}
