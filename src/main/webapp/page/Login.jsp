@@ -39,7 +39,7 @@
             <% } %>
             <!-- Username -->
             <div class="form-group">
-                <label class="form-label" for="username">USERNAME</label>
+                <label class="form-label" for="username">Email/Username</label>
                 <div class="input-wrapper">
                     <input
                             class="form-input"
