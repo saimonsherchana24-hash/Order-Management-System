@@ -5,11 +5,11 @@
                          ? adminUser.getFullName().substring(0,1).toUpperCase() : "A";
    String adminName = (adminUser != null) ? adminUser.getFullName() : "Admin"; %>
 <!DOCTYPE html>
-<html lang="en">x
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Billing System</title>
+  <title>Billing</title>
   <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
       <span class="nav-icon">🍴</span> Menu Management
     </a>
     <a class="nav-item active" href="${pageContext.request.contextPath}/admin/billing">
-      <span class="nav-icon">🧾</span> Billing System
+      <span class="nav-icon">🧾</span> Billing
     </a>
     <a class="nav-item" href="${pageContext.request.contextPath}/logout">
       <span class="nav-icon">🚪</span> Logout

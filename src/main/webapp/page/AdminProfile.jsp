@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Admin Profile - Amici de Gusto</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%238B1A1A'/><text x='50' y='68' text-anchor='middle' font-family='Georgia,serif' font-size='48' font-weight='700' fill='%23C9A84C'>AdG</text></svg>">
+    <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../css/AdminProfile.css" />
     <style>
         /* Hide edit panel by default, show when targeted via #editPanel anchor */

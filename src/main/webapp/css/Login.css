@@ -1,23 +1,7 @@
-/* Reset */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ===== LOGIN PAGE — Amici de Gusto ===== */
 
-/* Colors */
-:root {
-    --dark: #1a1a1a;
-    --muted: #999;
-    --secondary: #6b6b6b;
-    --border: #e0e0e0;
-    --gold: #8b6914;
-    --gold-hover: #a07a10;
-    --white: #fff;
-    --light-bg: #fafafa;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Body */
 body {
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
@@ -28,34 +12,30 @@ body {
     overflow: hidden;
 }
 
-/* Background */
 .bg-restaurant {
     position: fixed;
     inset: 0;
     z-index: 0;
     background: url(../Resource/loginImage.png) center/cover no-repeat;
 }
-
 .bg-restaurant::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(12, 10, 8, 0.65);
+    background: rgba(12,10,8,.65);
     backdrop-filter: blur(2px);
 }
-
 .bg-restaurant::before {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 1;
     background:
-        radial-gradient(ellipse 600px 500px at 20% 40%, rgba(180, 120, 40, 0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 500px 400px at 80% 60%, rgba(160, 100, 30, 0.10) 0%, transparent 70%),
-        radial-gradient(ellipse 300px 300px at 50% 20%, rgba(200, 150, 60, 0.06) 0%, transparent 70%);
+        radial-gradient(ellipse 600px 500px at 20% 40%, rgba(180,120,40,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 500px 400px at 80% 60%, rgba(160,100,30,.10) 0%, transparent 70%),
+        radial-gradient(ellipse 300px 300px at 50% 20%, rgba(200,150,60,.06) 0%, transparent 70%);
 }
 
-/* Card Container */
 .login-wrapper {
     position: relative;
     z-index: 10;
@@ -64,39 +44,32 @@ body {
     padding: 20px;
 }
 
-/* Card */
 .login-card {
-    background: var(--white);
+    background: #ffffff;
     border-radius: 16px;
     padding: 44px 36px 32px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 25px 60px rgba(0,0,0,.4), 0 8px 20px rgba(0,0,0,.2);
     position: relative;
     overflow: hidden;
 }
 
-/* Gold Top Bar */
 .login-card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 36px;
-    right: 36px;
+    left: 36px; right: 36px;
     height: 3px;
     background: linear-gradient(90deg, transparent, #c9a84c, #8b6914, #c9a84c, transparent);
     border-radius: 0 0 4px 4px;
 }
 
-/* Header */
-.card-header {
-    text-align: center;
-    margin-bottom: 6px;
-}
+.card-header { text-align: center; margin-bottom: 6px; }
 
 .card-title {
     font-family: 'Playfair Display', serif;
     font-size: 24px;
     font-weight: 700;
-    color: var(--dark);
+    color: #1a1a1a;
     margin-bottom: 8px;
 }
 
@@ -106,13 +79,10 @@ body {
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--gold);
+    color: #8b6914;
 }
 
-/* Form */
-.form-group {
-    margin-top: 24px;
-}
+.form-group { margin-top: 24px; }
 
 .form-label {
     display: block;
@@ -120,28 +90,24 @@ body {
     font-weight: 600;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: var(--secondary);
+    color: #6b6b6b;
     margin-bottom: 8px;
 }
 
-/* Input */
-.input-wrapper {
-    position: relative;
-}
+.input-wrapper { position: relative; }
 
 .input-icon {
     position: absolute;
     left: 14px;
     top: 50%;
     transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
+    width: 16px; height: 16px;
     fill: none;
     stroke: #b0b0b0;
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
-    transition: stroke 0.2s;
+    transition: stroke .2s;
     pointer-events: none;
 }
 
@@ -151,30 +117,21 @@ body {
     padding: 0 16px 0 44px;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    color: var(--dark);
-    background: var(--light-bg);
-    border: 1.5px solid var(--border);
+    color: #1a1a1a;
+    background: #fafafa;
+    border: 1.5px solid #e0e0e0;
     border-radius: 10px;
     outline: none;
-    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    transition: border-color .25s, box-shadow .25s, background .25s;
 }
-
-.form-input::placeholder {
-    color: #c0c0c0;
-    font-weight: 300;
-}
-
+.form-input::placeholder { color: #c0c0c0; font-weight: 300; }
 .form-input:focus {
-    border-color: var(--gold);
-    background: var(--white);
-    box-shadow: 0 0 0 3px rgba(139, 105, 20, 0.08);
+    border-color: #8b6914;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(139,105,20,.08);
 }
+.form-input:focus ~ .input-icon { stroke: #8b6914; }
 
-.form-input:focus ~ .input-icon {
-    stroke: var(--gold);
-}
-
-/* Remember Me + Forgot Row */
 .options-row {
     display: flex;
     align-items: center;
@@ -182,73 +139,42 @@ body {
     margin-top: 14px;
 }
 
-.remember-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    user-select: none;
-}
-
-.remember-checkbox {
-    display: none;
-}
+.remember-label { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+.remember-checkbox { display: none; }
 
 .remember-checkmark {
-    width: 16px;
-    height: 16px;
+    width: 16px; height: 16px;
     border: 1.5px solid #ccc;
     border-radius: 4px;
     position: relative;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color .2s, background .2s;
     flex-shrink: 0;
 }
-
 .remember-checkmark::after {
     content: '';
     position: absolute;
-    left: 4.5px;
-    top: 1px;
-    width: 5px;
-    height: 9px;
-    border: solid var(--white);
+    left: 4.5px; top: 1px;
+    width: 5px; height: 9px;
+    border: solid #ffffff;
     border-width: 0 1.5px 1.5px 0;
     transform: rotate(45deg);
     opacity: 0;
-    transition: opacity 0.15s;
+    transition: opacity .15s;
 }
+.remember-checkbox:checked ~ .remember-checkmark { background: #1a1a1a; border-color: #1a1a1a; }
+.remember-checkbox:checked ~ .remember-checkmark::after { opacity: 1; }
 
-.remember-checkbox:checked ~ .remember-checkmark {
-    background: var(--dark);
-    border-color: var(--dark);
-}
+.remember-text { font-size: 13px; color: #6b6b6b; }
 
-.remember-checkbox:checked ~ .remember-checkmark::after {
-    opacity: 1;
-}
-
-.remember-text {
-    font-size: 13px;
-    color: var(--secondary);
-}
-
-/* Links */
-.forgot-link,
-.register-link {
+.forgot-link, .register-link {
     font-size: 13px;
     font-weight: 500;
-    color: var(--gold);
+    color: #8b6914;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color .2s;
 }
+.forgot-link:hover, .register-link:hover { color: #a07a10; text-decoration: underline; }
 
-.forgot-link:hover,
-.register-link:hover {
-    color: var(--gold-hover);
-    text-decoration: underline;
-}
-
-/* Button */
 .btn-login {
     display: flex;
     align-items: center;
@@ -261,53 +187,21 @@ body {
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--white);
-    background: var(--dark);
+    color: #ffffff;
+    background: #1a1a1a;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+    transition: background .25s, transform .15s, box-shadow .25s;
 }
+.btn-login:hover { background: #2a2a2a; box-shadow: 0 6px 20px rgba(0,0,0,.25); transform: translateY(-1px); }
+.btn-login:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,.2); }
 
-.btn-login:hover {
-    background: #2a2a2a;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    transform: translateY(-1px);
-}
+.register-text { text-align: center; margin-top: 22px; font-size: 13px; color: #999; }
 
-.btn-login:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
+.page-footer { position: fixed; bottom: 0; left: 0; right: 0; z-index: 10; text-align: center; padding: 16px 20px; }
+.page-footer span { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.3); }
 
-/* Register Text */
-.register-text {
-    text-align: center;
-    margin-top: 22px;
-    font-size: 13px;
-    color: var(--muted);
-}
-
-/* Footer */
-.page-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    text-align: center;
-    padding: 16px 20px;
-}
-
-.page-footer span {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.3);
-}
-
-/* Mobile */
 @media (max-width: 480px) {
     .login-wrapper { padding: 16px; }
     .login-card { padding: 36px 24px 24px; border-radius: 12px; }
