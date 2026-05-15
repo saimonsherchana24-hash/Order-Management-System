@@ -92,6 +92,35 @@ public class UserDAO implements UserDAOInterface {
         return null;
     }
 
+    @Override
+    public boolean updatePassword(int userId, String newHashedPassword) {
+        String sql = "UPDATE users SET password_hash = ? WHERE id = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, newHashedPassword);
+            statement.setInt(2, userId);
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateProfile(int userId, String fullName, String email) {
+        String sql = "UPDATE users SET full_name = ?, email = ? WHERE id = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, fullName);
+            statement.setString(2, email);
+            statement.setInt(3, userId);
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private User mapUser(ResultSet resultSet) throws SQLException {
         User user = new User();
         user.setId(resultSet.getInt("id"));

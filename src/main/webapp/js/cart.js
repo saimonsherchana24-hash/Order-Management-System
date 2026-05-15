@@ -98,7 +98,7 @@ function renderCart() {
 
     cart.forEach((item) => {
         const row = document.createElement("li");
-        row.className = "cart-item animate-fade-in-up";
+        row.className = "cart-item"; // Removed animate class here
         row.innerHTML = `
       <img src="${item.img}" alt="${item.name}" loading="lazy" />
       <div class="info">

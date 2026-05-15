@@ -1,131 +1,85 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="aptProject.model.Order, aptProject.model.OrderItem, java.util.List, java.util.Arrays" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Track Order</title>
-
-<link rel="stylesheet" href="../css/Tracking.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - Amici de Gusto</title>
+    <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Tracking.css">
 </head>
-
 <body>
 
-<header>
-    <div class="logo">
-        <a href="index.html" class="home-btn"><i class="fa-solid fa-house"></i></a>
-
-        <!-- UPDATED BRAND STYLE -->
-        <div class="app-name">
-            Amici <span class="accent">de</span> Gusto
-        </div>
-    </div>
-
-    <i class="fa-solid fa-utensils"></i>
+<header class="navbar">
+    <span class="brand">Amici <span class="de">de</span> Gusto</span>
 </header>
 
-<div class="container">
+<main>
+    <div class="container">
 
-<h1>Track Your Order</h1>
+        <div class="page-header">
+            <p class="eyebrow">Il Tuo Ordine</p>
+            <h1>Order Status</h1>
+        </div>
 
-<form>
-    <div class="track-box">
-        <input type="text" placeholder="Enter Order ID">
-        <button type="submit"><i class="fa fa-search"></i> Track</button>
+        <% if (request.getAttribute("error") != null) { %>
+        <div class="error-box">
+            ⚠️ <%= request.getAttribute("error") %>
+        </div>
+        <% } %>
+
+        <%
+            Order order = (Order) request.getAttribute("order");
+            if (order != null) {
+                boolean isPending   = "PENDING".equalsIgnoreCase(order.getStatus());
+                boolean isCompleted = "COMPLETED".equalsIgnoreCase(order.getStatus());
+                List<String> doneStatuses = Arrays.asList("ACCEPTED","PREPARING","READY","COMPLETED");
+        %>
+
+        <div class="status-card">
+            <div class="token-label">Token Number</div>
+            <div class="token-number"><%= order.getToken() %></div>
+            <div class="status-badge <%= isCompleted ? "badge-complete" : isPending ? "badge-pending" : "badge-active" %>">
+                <%= order.getStatus() %>
+            </div>
+            <div class="order-total">Total: <b>NPR <%= String.format("%.2f", order.getTotalPrice()) %></b></div>
+        </div>
+
+        <div class="order-box">
+            <h3>Your Order</h3>
+            <div class="order-header">
+                <span>Item</span><span>Qty</span><span>Price</span>
+            </div>
+            <% if (order.getItems() != null) {
+                for (OrderItem oi : order.getItems()) { %>
+            <div class="order-row">
+                <span><%= oi.getItemName() %></span>
+                <span><%= oi.getQuantity() %></span>
+                <span>NPR <%= String.format("%.2f", oi.getSubtotal()) %></span>
+            </div>
+            <% } } %>
+            <div class="total-row">
+                <span>Total</span><span></span>
+                <span>NPR <%= String.format("%.2f", order.getTotalPrice()) %></span>
+            </div>
+        </div>
+
+        <% } else if (request.getAttribute("error") == null) { %>
+        <div class="empty-box">
+            <p>No order to display. Go to your profile to view your orders.</p>
+            <a href="<%= request.getContextPath() %>/profile" class="btn btn-gold">View My Orders</a>
+        </div>
+        <% } %>
+
+        <div class="nav-links">
+            <a href="<%= request.getContextPath() %>/profile" class="btn btn-outline">My Profile</a>
+            <a href="<%= request.getContextPath() %>/menu"    class="btn btn-gold">Order More</a>
+        </div>
+
     </div>
-</form>
-
-<a href="Confirmation.html" class="btn">← Back</a>
-
-<div class="status">
-    <h3><i class="fa fa-utensils"></i> Preparing Your Order</h3>
-    <p>Chefs are preparing your meal.</p>
-</div>
-
-<div class="row">
-    <div class="card">
-        <p>Order Number</p>
-        <b>#12345</b>
-    </div>
-
-    <div class="card">
-        <p>Order Type</p>
-        <b>Dine-In</b>
-        <br>
-        <small>Table #5</small>
-    </div>
-</div>
-
-<div class="time-box">
-    <p><i class="fa fa-clock"></i> Estimated Time</p>
-    <b>15 minutes</b>
-</div>
-
-<div class="progress">
-
-<div class="step">
-    <div class="circle active">✔</div>
-    Order Received
-</div>
-
-<div class="step">
-    <div class="circle active">✔</div>
-    Preparing
-</div>
-
-<div class="step">
-    <div class="circle">✔</div>
-    Being Served
-</div>
-
-<div class="step">
-    <div class="circle">✔</div>
-    Completed
-</div>
-
-</div>
-
-<!-- TABLE STYLE ORDER BOX -->
-<div class="order-box">
-    <h3>Your Order</h3>
-
-    <div class="order-header">
-        <span>Order Item</span>
-        <span>Quantity</span>
-        <span>Price</span>
-    </div>
-
-    <div class="order-row">
-        <span>Spaghetti Carbonara</span>
-        <span>1</span>
-        <span>$18.35</span>
-    </div>
-
-    <div class="order-row">
-        <span>Garlic Bread</span>
-        <span>2</span>
-        <span>$6.00</span>
-    </div>
-
-    <div class="total-row">
-        <span>Total</span>
-        <span></span>
-        <span>$24.35</span>
-    </div>
-</div>
-
-<!-- HELP BUTTONS -->
-<div class="help">
-    <h3>Need Help?</h3>
-    <p>If you have any questions about your order, please contact us:</p>
-
-    <a href="#" class="btn">Call Restaurant</a>
-    <a href="#" class="btn">Order More Items</a>
-</div>
-
-</div>
+</main>
 
 </body>
 </html>
