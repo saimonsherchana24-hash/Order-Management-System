@@ -66,26 +66,26 @@
     </div>
 
     <div class="stats-grid">
-      <div class="stat-card">
+      <a class="stat-card" href="<%= request.getContextPath() %>/admin/orders">
         <div class="stat-icon-wrap icon-red">📋</div>
         <div class="stat-label">Total Orders</div>
         <div class="stat-value val-red"><%= request.getAttribute("totalOrders") != null ? request.getAttribute("totalOrders") : 0 %></div>
-      </div>
-      <div class="stat-card">
+      </a>
+      <a class="stat-card" href="<%= request.getContextPath() %>/admin/orders?filter=PENDING">
         <div class="stat-icon-wrap icon-gold">⏳</div>
         <div class="stat-label">Pending Orders</div>
         <div class="stat-value val-gold"><%= request.getAttribute("pendingOrders") != null ? request.getAttribute("pendingOrders") : 0 %></div>
-      </div>
-      <div class="stat-card">
+      </a>
+      <a class="stat-card" href="<%= request.getContextPath() %>/admin/orders?filter=COMPLETED">
         <div class="stat-icon-wrap icon-green">✅</div>
         <div class="stat-label">Completed Orders</div>
         <div class="stat-value val-green"><%= request.getAttribute("completedOrders") != null ? request.getAttribute("completedOrders") : 0 %></div>
-      </div>
-      <div class="stat-card">
+      </a>
+      <a class="stat-card" href="<%= request.getContextPath() %>/admin/billing">
         <div class="stat-icon-wrap icon-red">💲</div>
         <div class="stat-label">Total Revenue</div>
         <div class="stat-value val-red" style="font-size:28px;">NPR <%= request.getAttribute("totalRevenue") != null ? request.getAttribute("totalRevenue") : "0.00" %></div>
-      </div>
+      </a>
     </div>
 
     <div class="bottom-row">

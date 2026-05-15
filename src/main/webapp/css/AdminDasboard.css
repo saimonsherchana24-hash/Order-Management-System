@@ -568,3 +568,15 @@ nav {
     height: 1px;
     background: linear-gradient(90deg, #C9A84C, transparent);
 }
+
+/* ── STAT CARDS AS LINKS ── */
+a.stat-card {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(139,26,26,.15);
+}

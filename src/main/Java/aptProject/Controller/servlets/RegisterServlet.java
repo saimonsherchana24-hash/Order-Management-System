@@ -78,7 +78,7 @@ public class RegisterServlet extends HttpServlet {
         // 6. Save to Database
         if (userDAO.register(user)) {
             System.out.println("SUCCESS: User saved to database!");
-            response.sendRedirect(request.getContextPath() + "/page/Login.jsp?registered=true");
+            response.sendRedirect(request.getContextPath() + "/login?registered=true");
         } else {
             System.out.println("FAILURE: userDAO.register() returned false!");
             request.setAttribute("error", "Registration failed. Please try again.");

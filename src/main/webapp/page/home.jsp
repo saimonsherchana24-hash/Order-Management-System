@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Amici de Gusto - Authentic Italian Dining in Kathmandu</title>
-  <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
   <meta name="description" content="Premium Italian dining in Kathmandu. Handcrafted pasta, wood-fired pizzas, and curated wines since 1972." />
-  <link rel="stylesheet" href="../css/home.css" />
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css" />
 </head>
 <body>
 <header class="site-header transparent">
@@ -17,14 +17,14 @@
 </header>
 <main>
   <section class="hero">
-    <img src="../Resource/hero.jpg" alt="Elegant Italian fine dining table with pasta and red wine" class="hero-img" />
+    <img src="<%= request.getContextPath() %>/Resource/hero.jpg" alt="Elegant Italian fine dining table with pasta and red wine" class="hero-img" />
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="eyebrow">Ristorante - Est. 1972</p>
       <h1>Amici <span class="it">de</span> Gusto</h1>
       <p class="hero-tag">Authentic Italian Taste in Every Bite</p>
       <p class="hero-desc">A premium Italian dining experience offering handcrafted pasta, wood-fired pizzas, and fine wines.</p>
-      <a href="<%= request.getContextPath() %>/menu" class="btn btn-gold">Explore Menu</a>
+      <a href="<%= request.getContextPath() %>/login?redirect=menu" class="btn btn-gold">Explore Menu</a>
     </div>
   </section>
   <section class="section section-cream">

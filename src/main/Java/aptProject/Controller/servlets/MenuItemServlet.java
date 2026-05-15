@@ -105,12 +105,12 @@ public class MenuItemServlet extends HttpServlet {
     private void updateItem(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
-        String idParam     = request.getParameter("itemId");
-        String name        = request.getParameter("itemName");
-        String category    = request.getParameter("category");
-        String priceParam  = request.getParameter("price");
-        String description = request.getParameter("description");
-        String imageUrl    = request.getParameter("imageUrl"); // keep existing URL for edit
+        String idParam        = request.getParameter("itemId");
+        String name           = request.getParameter("itemName");
+        String category       = request.getParameter("category");
+        String priceParam     = request.getParameter("price");
+        String description    = request.getParameter("description");
+        String existingImage  = request.getParameter("existingImage"); // keep old image if no new upload
 
         if (idParam == null || name == null || name.isBlank() || priceParam == null) {
             request.setAttribute("error", "Please fill all required fields.");
@@ -122,6 +122,14 @@ public class MenuItemServlet extends HttpServlet {
         try {
             int    id    = Integer.parseInt(idParam.trim());
             double price = Double.parseDouble(priceParam.trim());
+
+            // Check if a new image was uploaded
+            String imageUrl = existingImage; // default: keep existing
+            Part filePart = request.getPart("imageFile");
+            if (filePart != null && filePart.getSize() > 0) {
+                String uploaded = saveUploadedImage(request, "imageFile");
+                if (uploaded != null) imageUrl = uploaded;
+            }
 
             MenuItem item = new MenuItem(name.trim(), category.trim().toLowerCase(),
                                          price, description, imageUrl);
@@ -192,7 +200,7 @@ public class MenuItemServlet extends HttpServlet {
     private boolean isAdmin(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/page/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login");
             return false;
         }
         return true;

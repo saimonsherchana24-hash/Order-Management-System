@@ -24,7 +24,7 @@ public class BillingServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/page/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 
@@ -40,7 +40,7 @@ public class BillingServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/page/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 

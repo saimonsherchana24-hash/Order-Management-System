@@ -180,8 +180,9 @@
       <span class="form-header-icon">✏️</span>
       <h2>Edit Item</h2>
     </div>
-    <form method="post" action="<%= request.getContextPath() %>/admin/menu/update">
-      <input type="hidden" name="itemId" id="editItemId">
+    <form method="post" action="<%= request.getContextPath() %>/admin/menu/update" enctype="multipart/form-data">
+      <input type="hidden" name="itemId"       id="editItemId">
+      <input type="hidden" name="existingImage" id="editExistingImage">
       <div class="form-group">
         <label>Item Name</label>
         <input type="text" name="itemName" id="editItemName" required>
@@ -201,8 +202,9 @@
         <input type="number" name="price" id="editPrice" step="0.01" required>
       </div>
       <div class="form-group">
-        <label>Image URL</label>
-        <input type="text" name="imageUrl" id="editImageUrl">
+        <label>Upload New Image <small style="color:#8B7B74;">(leave empty to keep current)</small></label>
+        <div id="editCurrentImg" style="margin-bottom:6px;font-size:12px;color:#5A4A42;"></div>
+        <input type="file" name="imageFile" accept="image/*">
       </div>
       <div class="form-group">
         <label>Description</label>
@@ -214,16 +216,25 @@
   </div>
 </div>
 
-<%-- Edit still needs JS only to pre-fill the form fields with item data --%>
 <script>
 function openEdit(id, name, category, price, description, imageUrl) {
-    document.getElementById('editItemId').value      = id;
-    document.getElementById('editItemName').value    = name;
-    document.getElementById('editCategory').value    = category;
-    document.getElementById('editPrice').value       = price;
-    document.getElementById('editDescription').value = description;
-    document.getElementById('editImageUrl').value    = imageUrl;
-    window.location.hash = 'editPopup'; /* trigger CSS :target to show popup */
+    document.getElementById('editItemId').value         = id;
+    document.getElementById('editItemName').value       = name;
+    document.getElementById('editCategory').value       = category;
+    document.getElementById('editPrice').value          = price;
+    document.getElementById('editDescription').value    = description;
+    document.getElementById('editExistingImage').value  = imageUrl;
+
+    // Show current image name so admin knows what's already set
+    var imgLabel = document.getElementById('editCurrentImg');
+    if (imageUrl) {
+        var fileName = imageUrl.split('/').pop();
+        imgLabel.textContent = 'Current: ' + fileName;
+    } else {
+        imgLabel.textContent = 'No image set';
+    }
+
+    window.location.hash = 'editPopup';
 }
 </script>
 

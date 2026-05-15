@@ -119,7 +119,7 @@
             </button>
 
             <p class="login-link-text">
-                Already have an account? <a href="Login.jsp" class="login-link">Log in here</a>
+                Already have an account? <a href="<%= request.getContextPath() %>/login" class="login-link">Log in here</a>
             </p>
 
         </form>

@@ -24,7 +24,7 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (!SessionUtil.isLoggedIn(request)) {
-            response.sendRedirect(request.getContextPath() + "/page/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 
