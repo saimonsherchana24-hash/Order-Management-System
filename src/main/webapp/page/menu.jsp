@@ -11,9 +11,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Our Menu - Amici de Gusto</title>
-  <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
   <meta name="description" content="Browse the full Amici de Gusto menu - savory plates, curated drinks, and sweet endings." />
-  <link rel="stylesheet" href="../css/menu.css" />
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/menu.css" />
 </head>
 <body>
 <header class="site-header">
@@ -58,7 +58,7 @@
         </p>
         <% } else {
                for (MenuItem item : menuItems) {
-                   String img = item.getImageUrl() != null ? item.getImageUrl() : "../Resource/default.jpg";
+                   String img = item.getImageUrl() != null ? item.getImageUrl() : request.getContextPath() + "/Resource/default.jpg";
         %>
         <article class="menu-card" data-cat="<%= item.getCategory() %>">
           <div class="img-wrap">
@@ -93,6 +93,6 @@
   </div>
   <div class="footer-bottom"><div class="container">&copy; 2026 Amici de Gusto - Crafted with passion in Kathmandu, Nepal</div></div>
 </footer>
-<script src="../js/cart.js"></script>
+<script src="<%= request.getContextPath() %>/js/cart.js"></script>
 </body>
 </html>

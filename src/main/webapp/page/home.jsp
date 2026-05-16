@@ -44,7 +44,7 @@
     <div>
       <h4>Contact</h4>
       <ul>
-        <li>Pokhara,Lakeside, Nepal</li>
+        <li>Pokhara, Lakeside, Nepal</li>
         <li>+977 01-4567890</li>
         <li>namaste@amicidegusto.com.np</li>
       </ul>

@@ -10,10 +10,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Billing</title>
-  <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/AdminBilling.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminBilling.css">
 </head>
 
 <body>

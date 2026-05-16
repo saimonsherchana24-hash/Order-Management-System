@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amici De Gusto - Create Account</title>
-    <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/UserResgister.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/UserResgister.css">
 </head>
 <body>
 
 <div class="bg-layer">
-    <img class="bg-image" src="../Resource/RegisterImage.png" alt="Restaurant table with pizza and pasta"/>
+    <img class="bg-image" src="<%= request.getContextPath() %>/Resource/RegisterImage.png" alt="Restaurant table with pizza and pasta"/>
 </div>
 
 <div class="page">
