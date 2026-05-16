@@ -134,7 +134,7 @@
         for (var j = 0; j < cart.length; j++) {
             var item = cart[j];
             container.innerHTML +=
-                "<input type='hidden' name='itemId_"    + j + "' value='0'>" +
+                "<input type='hidden' name='itemId_"    + j + "' value='" + item.id    + "'>" +
                 "<input type='hidden' name='itemName_"  + j + "' value='" + item.name  + "'>" +
                 "<input type='hidden' name='itemPrice_" + j + "' value='" + item.price + "'>" +
                 "<input type='hidden' name='itemQty_"   + j + "' value='" + item.qty   + "'>";

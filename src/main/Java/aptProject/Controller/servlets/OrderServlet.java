@@ -68,10 +68,17 @@ public class OrderServlet extends HttpServlet {
         // Build list of ordered items
         List<OrderItem> items = new ArrayList<>();
         for (int i = 0; i < itemCount; i++) {
-            int    menuItemId = Integer.parseInt(request.getParameter("itemId_"    + i));
-            String itemName   = request.getParameter("itemName_"  + i);
-            double itemPrice  = Double.parseDouble(request.getParameter("itemPrice_" + i));
-            int    qty        = Integer.parseInt(request.getParameter("itemQty_"   + i));
+            String idParam  = request.getParameter("itemId_"    + i);
+            String itemName = request.getParameter("itemName_"  + i);
+            double itemPrice = Double.parseDouble(request.getParameter("itemPrice_" + i));
+            int    qty       = Integer.parseInt(request.getParameter("itemQty_"   + i));
+
+            // Parse menu item id — 0 or blank means unknown (cart item with no DB id)
+            int menuItemId = 0;
+            if (idParam != null && !idParam.isBlank() && !idParam.equals("0")) {
+                try { menuItemId = Integer.parseInt(idParam); } catch (NumberFormatException ignored) {}
+            }
+
             items.add(new OrderItem(menuItemId, itemName, itemPrice, qty));
         }
         // Build and save the order

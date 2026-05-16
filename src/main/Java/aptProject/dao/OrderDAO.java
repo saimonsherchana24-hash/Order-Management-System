@@ -45,7 +45,12 @@ public class OrderDAO implements OrderDAOInterface {
             try (PreparedStatement ps = conn.prepareStatement(itemSql)) {
                 for (OrderItem item : order.getItems()) {
                     ps.setInt(1, generatedId);
-                    ps.setInt(2, item.getMenuItemId());
+                    // Use NULL for menu_item_id when id is 0 (item not linked to menu)
+                    if (item.getMenuItemId() > 0) {
+                        ps.setInt(2, item.getMenuItemId());
+                    } else {
+                        ps.setNull(2, java.sql.Types.INTEGER);
+                    }
                     ps.setString(3, item.getItemName());
                     ps.setDouble(4, item.getItemPrice());
                     ps.setInt(5, item.getQuantity());
