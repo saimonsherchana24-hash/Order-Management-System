@@ -258,15 +258,110 @@ td .btn { margin-right: 10px; }
     background: rgba(0,0,0,.6);
     opacity: 0;
     visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 }
 .popup:target { opacity: 1; visibility: visible; }
 
 .popup-content {
-    width: 380px;
+    width: 400px;
+    max-width: 95vw;
     background: #fff;
-    margin: 8% auto;
-    padding: 20px;
-    border-radius: 12px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    animation: popIn .2s ease;
 }
 
-.close { float: right; font-size: 22px; text-decoration: none; }
+@keyframes popIn {
+    from { transform: scale(.95); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+}
+
+.close {
+    float: right;
+    font-size: 22px;
+    text-decoration: none;
+    color: #5A4A42;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background .15s;
+}
+.close:hover { background: #f0e8e0; }
+
+/* ── RECEIPT HEADER ── */
+.receipt-header {
+    background: linear-gradient(135deg, #1c3d2c 0%, #15281e 100%);
+    color: #f4eedd;
+    text-align: center;
+    padding: 20px 24px 16px;
+}
+.receipt-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #C9A84C;
+    margin-bottom: 4px;
+}
+.receipt-header p {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(244,238,221,.7);
+}
+
+/* ── RECEIPT BODY ── */
+.receipt-body {
+    padding: 20px 24px 24px;
+}
+.receipt-body p {
+    font-size: 13px;
+    color: #5A4A42;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+.receipt-body p b { color: #2C1810; }
+
+.receipt-body hr {
+    border: none;
+    border-top: 1px dashed #d6caa8;
+    margin: 12px 0;
+}
+
+.receipt-body .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #2C1810;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0e8e0;
+}
+.receipt-body .item:last-of-type { border-bottom: none; }
+
+.receipt-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: #1c3d2c;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ── STATUS BADGES ── */
+.status {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 5px 16px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+.paid     { background: rgba(39,174,96,.12);  color: #1a7a40; }
+.unpaid   { background: rgba(192,57,43,.12);  color: #8B1A1A; }
+.progress { background: rgba(36,113,163,.12); color: #1a5276; }
