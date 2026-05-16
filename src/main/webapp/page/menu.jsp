@@ -19,6 +19,11 @@
 <header class="site-header">
   <div class="container header-inner">
     <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
+    <nav class="header-nav">
+      <a href="<%= request.getContextPath() %>/menu"             class="nav-link active">Menu</a>
+      <a href="<%= request.getContextPath() %>/page/About.jsp"   class="nav-link">About Us</a>
+      <a href="<%= request.getContextPath() %>/page/Contact.jsp" class="nav-link">Contact</a>
+    </nav>
     <div class="header-actions">
       <a href="<%= request.getContextPath() %>/profile" class="icon-btn" aria-label="Profile" title="Profile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
