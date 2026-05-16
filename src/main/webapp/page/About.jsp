@@ -16,7 +16,7 @@
     <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
     <nav class="header-nav">
       <a href="<%= request.getContextPath() %>/menu"             class="nav-link">Menu</a>
-      <a href="<%= request.getContextPath() %>/page/About.jsp"   class="nav-link active">About</a>
+      <a href="<%= request.getContextPath() %>/page/About.jsp"   class="nav-link active">About Us</a>
       <a href="<%= request.getContextPath() %>/page/Contact.jsp" class="nav-link">Contact</a>
     </nav>
     <div class="header-actions">
