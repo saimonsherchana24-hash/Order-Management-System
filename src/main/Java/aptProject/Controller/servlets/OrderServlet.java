@@ -26,7 +26,7 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (!SessionUtil.isLoggedIn(request)) {
-            response.sendRedirect(request.getContextPath() + "/page/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 
@@ -56,7 +56,7 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (!SessionUtil.isLoggedIn(request)) {
-            response.sendRedirect(request.getContextPath() + "/page/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 

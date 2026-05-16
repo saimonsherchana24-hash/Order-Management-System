@@ -19,7 +19,7 @@ public class LogoutServlet extends HttpServlet {
             throws IOException {
         SessionUtil.destroySession(request);
         CookieUtil.clearRememberMe(response);
-        response.sendRedirect(request.getContextPath() + "/page/Login.jsp");
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 
     @Override

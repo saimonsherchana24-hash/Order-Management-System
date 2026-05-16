@@ -35,7 +35,7 @@ public class UserDAO implements UserDAOInterface {
 
     @Override
     public User findByEmail(String email) {
-        String sql = "SELECT id, full_name, username, email, password_hash, role FROM users WHERE email = ?";
+        String sql = "SELECT id, full_name, username, email, password_hash, role, profile_image FROM users WHERE email = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -57,7 +57,7 @@ public class UserDAO implements UserDAOInterface {
 
     @Override
     public User findByUsername(String username) {
-        String sql = "SELECT id, full_name, username, email, password_hash, role FROM users WHERE username = ?";
+        String sql = "SELECT id, full_name, username, email, password_hash, role, profile_image FROM users WHERE username = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -121,6 +121,19 @@ public class UserDAO implements UserDAOInterface {
         }
     }
 
+    public boolean updateProfileImage(int userId, String imagePath) {
+        String sql = "UPDATE users SET profile_image = ? WHERE id = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, imagePath);
+            statement.setInt(2, userId);
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private User mapUser(ResultSet resultSet) throws SQLException {
         User user = new User();
         user.setId(resultSet.getInt("id"));
@@ -129,6 +142,7 @@ public class UserDAO implements UserDAOInterface {
         user.setEmail(resultSet.getString("email"));
         user.setPasswordHash(resultSet.getString("password_hash"));
         user.setRole(resultSet.getString("role"));
+        try { user.setProfileImage(resultSet.getString("profile_image")); } catch (SQLException ignored) {}
         return user;
     }
 }

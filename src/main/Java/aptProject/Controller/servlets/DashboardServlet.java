@@ -24,7 +24,7 @@ public class DashboardServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/page/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 

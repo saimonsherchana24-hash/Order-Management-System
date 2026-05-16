@@ -100,12 +100,16 @@ main{flex:1;}
     gap:1.5rem;
     align-items:flex-start;
 }
+.avatar-wrap {
+    flex-shrink: 0;
+}
+
 .avatar{
     width:5.25rem;
     height:5.25rem;
     border-radius:9999px;
-    background:var(--primary);
-    color:var(--background);
+    background:#1c3d2c;
+    color:#f4eedd;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -114,6 +118,15 @@ main{flex:1;}
     font-weight:700;
     flex-shrink:0;
     box-shadow:0 10px 25px -12px rgba(28,61,44,.8);
+}
+
+.avatar-img {
+    width: 5.25rem;
+    height: 5.25rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 3px solid #C9A84C;
+    box-shadow: 0 10px 25px -12px rgba(28,61,44,.8);
 }
 
 .admin-info{flex:1;min-width:0;}

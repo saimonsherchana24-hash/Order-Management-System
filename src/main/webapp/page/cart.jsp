@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Your Cart - Amici de Gusto</title>
-  <link rel="icon" href="../Resource/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/cart.css" />
 </head>
 <body>
