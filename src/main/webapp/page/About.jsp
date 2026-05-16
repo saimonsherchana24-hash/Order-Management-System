@@ -16,7 +16,7 @@
     <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
     <nav class="header-nav">
       <a href="<%= request.getContextPath() %>/menu"             class="nav-link">Menu</a>
-      <a href="<%= request.getContextPath() %>/page/About.jsp"   class="nav-link active">About Us</a>
+      <a href="<%= request.getContextPath() %>/page/About.jsp"   class="nav-link active">About</a>
       <a href="<%= request.getContextPath() %>/page/Contact.jsp" class="nav-link">Contact</a>
     </nav>
     <div class="header-actions">
@@ -38,135 +38,100 @@
 
 <main>
 
-  <!-- ── PAGE HEADER ── -->
+  <!-- ── HERO ── -->
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">Our Team</p>
-      <h1>Meet the Developers</h1>
-      <p class="lead">Five students who designed and built this Order Management System for the Advanced Programming Techniques coursework.</p>
+      <p class="eyebrow">Our Story</p>
+      <h1>About Amici de Gusto</h1>
+      <p class="lead">A family-owned Italian restaurant bringing authentic flavours of Italy to the heart of Pokhara since 1972.</p>
     </div>
   </section>
 
-  <!-- ── MEMBERS ── -->
-  <section class="members-section">
+  <!-- ── ABOUT CONTENT ── -->
+  <section class="about-section">
     <div class="container">
 
-      <!-- Member 1 — photo left -->
-      <div class="member-row">
-        <div class="member-photo-wrap">
-          <img src="<%= request.getContextPath() %>/Resource/team/member1.jpg" alt="Member 1"
-               class="member-photo"
+      <!-- ── ROW 1: Our Story (image left) ── -->
+      <div class="about-row">
+        <div class="about-img-wrap">
+          <img src="<%= request.getContextPath() %>/Resource/hero.jpg"
+               alt="Amici de Gusto restaurant interior"
+               class="about-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="member-initial" style="display:none;">A</div>
+          <div class="about-img-fallback" style="display:none;">
+            <span>🍝</span>
+          </div>
         </div>
-        <div class="member-details">
-          <h2>Member Name 1</h2>
-          <span class="member-role">Full Stack Developer</span>
-          <div class="member-divider"></div>
-          <dl class="member-dl">
-            <div><dt>Student ID</dt><dd>STU001</dd></div>
-            <div><dt>Contribution</dt><dd>Backend servlet architecture, database design, order management logic</dd></div>
-            <div><dt>Technologies</dt><dd>Java, JSP, MySQL, Apache Tomcat</dd></div>
+        <div class="about-details">
+          <p class="eyebrow">Est. 1972</p>
+          <h2>Our Story</h2>
+          <div class="about-divider"></div>
+          <p class="about-text">Amici de Gusto was founded in 1972 by the Russo family, who brought their cherished recipes from Naples to the lakeside city of Pokhara. What began as a small trattoria with just eight tables has grown into one of Nepal's most beloved Italian dining destinations.</p>
+          <p class="about-text">The name <em>Amici de Gusto</em> — meaning "Friends of Taste" in Italian — reflects our core belief: that great food brings people together. Every dish we serve is a tribute to that philosophy.</p>
+          <dl class="about-dl">
+            <div><dt>Founded</dt><dd>1972</dd></div>
+            <div><dt>Location</dt><dd>Lakeside, Pokhara, Nepal</dd></div>
+            <div><dt>Cuisine</dt><dd>Authentic Italian</dd></div>
+            <div><dt>Seating</dt><dd>Indoor &amp; Outdoor, 80 covers</dd></div>
           </dl>
-          <p class="member-bio">Write a short bio or personal note about this member here. Describe their role in the project and what they learned.</p>
         </div>
       </div>
 
-      <!-- Member 2 — photo right -->
-      <div class="member-row reverse">
-        <div class="member-photo-wrap">
-          <img src="<%= request.getContextPath() %>/Resource/team/member2.jpg" alt="Member 2"
-               class="member-photo"
+      <!-- ── ROW 2: Our Mission (image right) ── -->
+      <div class="about-row reverse">
+        <div class="about-img-wrap">
+          <img src="<%= request.getContextPath() %>/Resource/hero.jpg"
+               alt="Chef preparing fresh pasta"
+               class="about-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="member-initial" style="display:none;">B</div>
+          <div class="about-img-fallback" style="display:none;">
+            <span>👨‍🍳</span>
+          </div>
         </div>
-        <div class="member-details">
-          <h2>Member Name 2</h2>
-          <span class="member-role">Frontend Developer</span>
-          <div class="member-divider"></div>
-          <dl class="member-dl">
-            <div><dt>Student ID</dt><dd>STU002</dd></div>
-            <div><dt>Contribution</dt><dd>UI design, CSS styling, responsive layouts across all pages</dd></div>
-            <div><dt>Technologies</dt><dd>HTML, CSS, JavaScript, JSP</dd></div>
+        <div class="about-details">
+          <p class="eyebrow">What We Stand For</p>
+          <h2>Our Mission</h2>
+          <div class="about-divider"></div>
+          <p class="about-text">Our mission is simple — to serve food that feels like home. We source the finest local ingredients and combine them with traditional Italian techniques passed down through three generations of the Russo family.</p>
+          <p class="about-text">From hand-pulled pasta to wood-fired pizzas and carefully selected wines, every element of your dining experience is crafted with care, consistency, and passion.</p>
+          <dl class="about-dl">
+            <div><dt>Specialty</dt><dd>Handcrafted pasta &amp; wood-fired pizza</dd></div>
+            <div><dt>Ingredients</dt><dd>Locally sourced, seasonally fresh</dd></div>
+            <div><dt>Wine Selection</dt><dd>Curated Italian &amp; Nepali labels</dd></div>
+            <div><dt>Experience</dt><dd>50+ years of Italian dining</dd></div>
           </dl>
-          <p class="member-bio">Write a short bio or personal note about this member here. Describe their role in the project and what they learned.</p>
         </div>
       </div>
 
-      <!-- Member 3 — photo left -->
-      <div class="member-row">
-        <div class="member-photo-wrap">
-          <img src="<%= request.getContextPath() %>/Resource/team/member3.jpg" alt="Member 3"
-               class="member-photo"
+      <!-- ── ROW 3: The Institute / System (image left) ── -->
+      <div class="about-row">
+        <div class="about-img-wrap">
+          <img src="<%= request.getContextPath() %>/Resource/hero.jpg"
+               alt="Digital ordering system"
+               class="about-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="member-initial" style="display:none;">C</div>
+          <div class="about-img-fallback" style="display:none;">
+            <span>💻</span>
+          </div>
         </div>
-        <div class="member-details">
-          <h2>Member Name 3</h2>
-          <span class="member-role">Database Engineer</span>
-          <div class="member-divider"></div>
-          <dl class="member-dl">
-            <div><dt>Student ID</dt><dd>STU003</dd></div>
-            <div><dt>Contribution</dt><dd>Relational database schema, SQL queries, DAO layer implementation</dd></div>
-            <div><dt>Technologies</dt><dd>MySQL, JDBC, SQL</dd></div>
+        <div class="about-details">
+          <p class="eyebrow">Digital Transformation</p>
+          <h2>Our Order Management System</h2>
+          <div class="about-divider"></div>
+          <p class="about-text">This Order Management System was developed as part of the Advanced Programming Techniques coursework at <strong>Islington College</strong>, affiliated with <strong>London Metropolitan University</strong>.</p>
+          <p class="about-text">The system enables customers to browse the menu, manage their cart, place orders, and track order status in real time — while giving administrators full control over menu management, order processing, and billing.</p>
+          <dl class="about-dl">
+            <div><dt>Institution</dt><dd>Islington College, Kathmandu</dd></div>
+            <div><dt>Affiliation</dt><dd>London Metropolitan University</dd></div>
+            <div><dt>Module</dt><dd>Advanced Programming Techniques</dd></div>
+            <div><dt>Technology</dt><dd>Java, JSP, MySQL, Apache Tomcat</dd></div>
           </dl>
-          <p class="member-bio">Write a short bio or personal note about this member here. Describe their role in the project and what they learned.</p>
-        </div>
-      </div>
-
-      <!-- Member 4 — photo right -->
-      <div class="member-row reverse">
-        <div class="member-photo-wrap">
-          <img src="<%= request.getContextPath() %>/Resource/team/member4.jpg" alt="Member 4"
-               class="member-photo"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="member-initial" style="display:none;">D</div>
-        </div>
-        <div class="member-details">
-          <h2>Member Name 4</h2>
-          <span class="member-role">Backend Developer</span>
-          <div class="member-divider"></div>
-          <dl class="member-dl">
-            <div><dt>Student ID</dt><dd>STU004</dd></div>
-            <div><dt>Contribution</dt><dd>Authentication system, session management, admin panel functionality</dd></div>
-            <div><dt>Technologies</dt><dd>Java Servlets, BCrypt, Session API</dd></div>
-          </dl>
-          <p class="member-bio">Write a short bio or personal note about this member here. Describe their role in the project and what they learned.</p>
-        </div>
-      </div>
-
-      <!-- Member 5 — photo left -->
-      <div class="member-row">
-        <div class="member-photo-wrap">
-          <img src="<%= request.getContextPath() %>/Resource/team/member5.jpg" alt="Member 5"
-               class="member-photo"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="member-initial" style="display:none;">E</div>
-        </div>
-        <div class="member-details">
-          <h2>Member Name 5</h2>
-          <span class="member-role">QA &amp; Documentation</span>
-          <div class="member-divider"></div>
-          <dl class="member-dl">
-            <div><dt>Student ID</dt><dd>STU005</dd></div>
-            <div><dt>Contribution</dt><dd>Testing, bug tracking, project documentation, deployment configuration</dd></div>
-            <div><dt>Technologies</dt><dd>Maven, Tomcat, Git</dd></div>
-          </dl>
-          <p class="member-bio">Write a short bio or personal note about this member here. Describe their role in the project and what they learned.</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ── PROJECT SECTION ── -->
-  <section class="project-section">
-    <div class="container center">
-      <p class="eyebrow">The Project</p>
-      <h2>Order Management System</h2>
-      <p class="lead">Built with Java Servlets, JSP, MySQL, and Apache Tomcat as part of the Advanced Programming Techniques module. Supports user registration, menu browsing, cart management, order placement, real-time tracking, and a full admin panel.</p>
-    </div>
-  </section>
 
 </main>
 

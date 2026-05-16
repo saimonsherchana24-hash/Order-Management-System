@@ -85,8 +85,13 @@ public class UserDAO implements UserDAOInterface {
             user = findByEmail(usernameOrEmail);
         }
 
-        if (user != null && PasswordUtil.verifyPassword(password, user.getPasswordHash())) {
-            return user;
+        if (user != null) {
+            boolean match = PasswordUtil.verifyPassword(password, user.getPasswordHash());
+            System.out.println("[LOGIN] user=" + usernameOrEmail
+                + " | stored_hash=" + user.getPasswordHash()
+                + " | entered_hash=" + PasswordUtil.hashPassword(password)
+                + " | match=" + match);
+            if (match) return user;
         }
 
         return null;

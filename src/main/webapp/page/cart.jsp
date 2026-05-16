@@ -42,7 +42,7 @@
         <a href="<%= request.getContextPath() %>/menu" class="btn btn-gold">Browse Menu</a>
       </div>
       <div class="cart-actions" id="cartActions" hidden>
-        <a href="/page/Checkout.jsp" class="btn btn-gold btn-block">Place Order</a>
+        <a href="<%= request.getContextPath() %>/order/checkout" class="btn btn-gold btn-block">Place Order</a>
       </div>
     </div>
   </div>
