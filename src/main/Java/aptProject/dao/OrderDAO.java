@@ -157,6 +157,35 @@ public class OrderDAO implements OrderDAOInterface {
         }
     }
 
+    // ------------------------------------------------------------------ daily revenue (last 7 days)
+    /**
+     * Returns revenue per day for the last 7 days (including today).
+     * Result: double[7] where index 0 = 6 days ago, index 6 = today.
+     */
+    public double[] getDailyRevenue() {
+        double[] revenue = new double[7];
+        String sql = "SELECT DATEDIFF(CURDATE(), DATE(created_at)) AS days_ago, " +
+                     "       COALESCE(SUM(total_price), 0) AS daily_total " +
+                     "FROM orders " +
+                     "WHERE payment_status = 'PAID' " +
+                     "  AND created_at >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) " +
+                     "GROUP BY days_ago";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                int daysAgo = rs.getInt("days_ago");
+                if (daysAgo >= 0 && daysAgo <= 6) {
+                    // index 6 = today, index 0 = 6 days ago
+                    revenue[6 - daysAgo] = rs.getDouble("daily_total");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return revenue;
+    }
+
     // ------------------------------------------------------------------ dashboard stats
     @Override
     public int getTotalOrders() {

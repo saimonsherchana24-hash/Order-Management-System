@@ -91,26 +91,42 @@
     <div class="bottom-row">
       <div class="chart-card">
         <div class="chart-header">
-          <h3>Order Activity</h3>
-          <button class="select-btn">This Week ▾</button>
+          <h3>Daily Revenue</h3>
+          <span class="select-btn">Last 7 Days</span>
         </div>
+        <%
+          double[] rev = (double[]) request.getAttribute("dailyRevenue");
+          String[] lbl = (String[]) request.getAttribute("dayLabels");
+          // Find max for scaling bars
+          double maxRev = 1; // avoid divide-by-zero
+          for (double d : rev) if (d > maxRev) maxRev = d;
+        %>
         <div class="bar-chart">
           <div class="y-axis">
-            <span>0</span><span>20</span><span>40</span><span>60</span><span>80</span><span>100</span>
+            <span>NPR <%= String.format("%,.0f", maxRev) %></span>
+            <span>NPR <%= String.format("%,.0f", maxRev * 0.75) %></span>
+            <span>NPR <%= String.format("%,.0f", maxRev * 0.5) %></span>
+            <span>NPR <%= String.format("%,.0f", maxRev * 0.25) %></span>
+            <span>0</span>
           </div>
           <div class="gridlines">
             <div class="gridline"></div><div class="gridline"></div>
             <div class="gridline"></div><div class="gridline"></div>
-            <div class="gridline"></div><div class="gridline"></div>
+            <div class="gridline"></div>
           </div>
           <div class="bars-wrap">
-            <div class="bar-group"><div class="bar" style="height:48%" data-val="28"></div><span class="bar-label">Mon</span></div>
-            <div class="bar-group"><div class="bar" style="height:72%" data-val="43"></div><span class="bar-label">Tue</span></div>
-            <div class="bar-group"><div class="bar" style="height:55%" data-val="33"></div><span class="bar-label">Wed</span></div>
-            <div class="bar-group"><div class="bar" style="height:100%" data-val="60"></div><span class="bar-label">Thu</span></div>
-            <div class="bar-group"><div class="bar" style="height:88%" data-val="53"></div><span class="bar-label">Fri</span></div>
-            <div class="bar-group"><div class="bar" style="height:115%;background:linear-gradient(180deg,#C0392B,#8B1A1A);" data-val="68"></div><span class="bar-label">Sat</span></div>
-            <div class="bar-group"><div class="bar" style="height:65%" data-val="39"></div><span class="bar-label">Sun</span></div>
+            <% for (int i = 0; i < 7; i++) {
+                 int heightPct = (int) Math.round((rev[i] / maxRev) * 100);
+                 boolean isToday = (i == 6);
+                 String barStyle = isToday
+                     ? "height:" + heightPct + "%;background:linear-gradient(180deg,#C0392B,#8B1A1A);"
+                     : "height:" + heightPct + "%;";
+            %>
+            <div class="bar-group">
+              <div class="bar" style="<%= barStyle %>" title="NPR <%= String.format("%,.2f", rev[i]) %>"></div>
+              <span class="bar-label"><%= lbl[i] %></span>
+            </div>
+            <% } %>
           </div>
         </div>
       </div>
@@ -118,9 +134,20 @@
       <div class="promo-card">
         <div class="pasta-img">🍝</div>
         <div style="font-size:22px;margin-top:-6px;">🍷</div>
-        <div class="promo-label">More orders on</div>
-        <div class="promo-day">Saturday!</div>
-        <div class="promo-sub">Keep up the great work!</div>
+        <%
+          String bestDay = (String) request.getAttribute("bestDay");
+          double bestRev = request.getAttribute("bestDayRevenue") != null
+                           ? (double) request.getAttribute("bestDayRevenue") : 0;
+        %>
+        <% if (bestRev > 0) { %>
+        <div class="promo-label">Best day this week</div>
+        <div class="promo-day"><%= bestDay %></div>
+        <div class="promo-sub">NPR <%= String.format("%,.2f", bestRev) %> revenue</div>
+        <% } else { %>
+        <div class="promo-label">No paid orders yet</div>
+        <div class="promo-day">—</div>
+        <div class="promo-sub">Revenue will appear here once orders are marked paid.</div>
+        <% } %>
         <div class="promo-ornament">◆</div>
       </div>
     </div>
