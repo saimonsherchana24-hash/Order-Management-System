@@ -2,6 +2,8 @@ package aptProject.dao.Interface;
 
 import aptProject.model.Order;
 import java.util.List;
+import java.util.ArrayList;
+import aptProject.model.WeeklyRevenue;
 
 public interface OrderDAOInterface {
     /** Place a new order; returns the generated order ID, or -1 on failure */
@@ -27,4 +29,6 @@ public interface OrderDAOInterface {
     int getPendingOrders();
     int getCompletedOrders();
     double getTotalRevenue();
+
+    ArrayList<WeeklyRevenue> getWeeklyRevenue();
 }

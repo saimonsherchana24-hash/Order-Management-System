@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <% User adminUser = (User) session.getAttribute("user");
    String adminInitial = (adminUser != null && adminUser.getFullName() != null)
                          ? adminUser.getFullName().substring(0,1).toUpperCase() : "A";
@@ -16,6 +18,8 @@
 
 <!-- External CSS -->
 <link rel="stylesheet" href="../css/AdminDasboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
@@ -94,26 +98,11 @@
           <h3>Order Activity</h3>
           <button class="select-btn">This Week ▾</button>
         </div>
-        <div class="bar-chart">
-          <div class="y-axis">
-            <span>0</span><span>20</span><span>40</span><span>60</span><span>80</span><span>100</span>
-          </div>
-          <div class="gridlines">
-            <div class="gridline"></div><div class="gridline"></div>
-            <div class="gridline"></div><div class="gridline"></div>
-            <div class="gridline"></div><div class="gridline"></div>
-          </div>
-          <div class="bars-wrap">
-            <div class="bar-group"><div class="bar" style="height:48%" data-val="28"></div><span class="bar-label">Mon</span></div>
-            <div class="bar-group"><div class="bar" style="height:72%" data-val="43"></div><span class="bar-label">Tue</span></div>
-            <div class="bar-group"><div class="bar" style="height:55%" data-val="33"></div><span class="bar-label">Wed</span></div>
-            <div class="bar-group"><div class="bar" style="height:100%" data-val="60"></div><span class="bar-label">Thu</span></div>
-            <div class="bar-group"><div class="bar" style="height:88%" data-val="53"></div><span class="bar-label">Fri</span></div>
-            <div class="bar-group"><div class="bar" style="height:115%;background:linear-gradient(180deg,#C0392B,#8B1A1A);" data-val="68"></div><span class="bar-label">Sat</span></div>
-            <div class="bar-group"><div class="bar" style="height:65%" data-val="39"></div><span class="bar-label">Sun</span></div>
-          </div>
-        </div>
+        
+        <div style="height:350px; padding:20px;">
+          <canvas id="revenueChart"></canvas>
       </div>
+
 
       <div class="promo-card">
         <div class="pasta-img">🍝</div>
@@ -126,5 +115,72 @@
     </div>
   </div>
 </main>
+      //Chart
+<script>
+
+  // Extracting X-axis labels (dates)
+  // These come from DashboardServlet via request.setAttribute("dates", dates)
+  // Example: ["2026-05-10", "2026-05-11", ...]
+  const dates = [
+  <c:forEach var="d" items="${dates}" varStatus="status">
+      "${d}"${!status.last ? ',' : ''}
+  </c:forEach>
+  ];
+  
+  // Extracting Y-axis values (revenue)
+  // These come from DashboardServlet via request.setAttribute("revenues", revenues)
+  // Example: [1200, 2500, 1800, ...]
+  const revenues = [
+  <c:forEach var="r" items="${revenues}" varStatus="status">
+      ${r}${!status.last ? ',' : ''}
+  </c:forEach>
+  ];
+  
+  
+  // Get the canvas element where the chart will be drawn
+  const ctx = document.getElementById('revenueChart');
+  
+  
+  // Creating a new Chart.js bar chart
+  new Chart(ctx, {
+      type: 'bar', // Chart type: bar chart (can be line, pie, etc.)
+  
+      data: {
+          // X-axis labels (dates of the week)
+          labels: dates,
+  
+          datasets: [{
+              // Label shown in chart legend
+              label: 'Weekly Revenue (NPR)',
+  
+              // Y-axis data (revenue values for each date)
+              data: revenues,
+  
+              // Thickness of bar border
+              borderWidth: 2,
+  
+              // Bar color
+              backgroundColor: '#C0392B'
+          }]
+      },
+  
+      options: {
+          // Makes chart responsive to screen size
+          responsive: true,
+  
+          // Prevents chart from stretching oddly
+          maintainAspectRatio: false,
+  
+          scales: {
+              y: {
+                  // Ensures Y-axis starts from 0
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+  
+  </script>
+
 </body>
 </html>

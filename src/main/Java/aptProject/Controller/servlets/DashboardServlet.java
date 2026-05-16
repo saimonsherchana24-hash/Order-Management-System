@@ -2,6 +2,8 @@ package aptProject.Controller.servlets;
 
 import aptProject.dao.OrderDAO;
 import aptProject.utilities.SessionUtil;
+import aptProject.model.WeeklyRevenue;
+import java.util.ArrayList;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,6 +33,21 @@ public class DashboardServlet extends HttpServlet {
         request.setAttribute("pendingOrders",   orderDAO.getPendingOrders());
         request.setAttribute("completedOrders", orderDAO.getCompletedOrders());
         request.setAttribute("totalRevenue",    orderDAO.getTotalRevenue());
+
+
+        ArrayList<WeeklyRevenue> weeklyRevenue = orderDAO.getWeeklyRevenue();
+
+ArrayList<String> dates = new ArrayList<>();
+ArrayList<Double> revenues = new ArrayList<>();
+
+for (WeeklyRevenue wr : weeklyRevenue) {
+    dates.add(wr.getDate());
+    revenues.add(wr.getRevenue());
+}
+
+request.setAttribute("dates", dates);
+request.setAttribute("revenues", revenues);
+
 
         request.getRequestDispatcher("/page/AdminDashboard.jsp").forward(request, response);
     }

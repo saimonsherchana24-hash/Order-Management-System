@@ -4,7 +4,7 @@ import aptProject.dao.Interface.OrderDAOInterface;
 import aptProject.model.Order;
 import aptProject.model.OrderItem;
 import aptProject.utilities.DBConnection;
-
+import aptProject.model.WeeklyRevenue;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -180,6 +180,41 @@ public class OrderDAO implements OrderDAOInterface {
         }
         return 0;
     }
+
+    @Override 
+public ArrayList<WeeklyRevenue> getWeeklyRevenue() {
+
+    ArrayList<WeeklyRevenue> revenueList = new ArrayList<>();
+
+    String sql =
+            "SELECT DATE(created_at) AS revenue_date, " +
+            "COALESCE(SUM(total_price),0) AS revenue " +
+            "FROM orders " +
+            "WHERE payment_status = 'PAID' " +
+            "AND created_at >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) " +
+            "GROUP BY DATE(created_at) " +
+            "ORDER BY revenue_date ASC";
+
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+
+        while (rs.next()) {
+
+            WeeklyRevenue weeklyRevenue = new WeeklyRevenue();
+
+            weeklyRevenue.setDate(rs.getString("revenue_date"));
+            weeklyRevenue.setRevenue(rs.getDouble("revenue"));
+
+            revenueList.add(weeklyRevenue);
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return revenueList;
+}
 
     // ------------------------------------------------------------------ helpers
     private List<Order> fetchOrders(String sql, Integer userId) {
