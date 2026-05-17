@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.User" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <% User adminUser = (User) session.getAttribute("user");
    String adminInitial = (adminUser != null && adminUser.getFullName() != null)
                          ? adminUser.getFullName().substring(0,1).toUpperCase() : "A";
@@ -18,8 +16,6 @@
 
 <!-- External CSS -->
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminDasboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
@@ -95,92 +91,67 @@
     <div class="bottom-row">
       <div class="chart-card">
         <div class="chart-header">
-          <h3>Order Activity</h3>
-          <button class="select-btn">This Week ▾</button>
+          <h3>Daily Revenue</h3>
+          <span class="select-btn">Last 7 Days</span>
         </div>
-        
-        <div style="height:350px; padding:20px;">
-          <canvas id="revenueChart"></canvas>
+        <%
+          double[] rev = (double[]) request.getAttribute("dailyRevenue");
+          String[] lbl = (String[]) request.getAttribute("dayLabels");
+          // Find max for scaling bars
+          double maxRev = 1; // avoid divide-by-zero
+          for (double d : rev) if (d > maxRev) maxRev = d;
+        %>
+        <div class="bar-chart">
+          <div class="y-axis">
+            <span>NPR <%= String.format("%,.0f", maxRev) %></span>
+            <span>NPR <%= String.format("%,.0f", maxRev * 0.75) %></span>
+            <span>NPR <%= String.format("%,.0f", maxRev * 0.5) %></span>
+            <span>NPR <%= String.format("%,.0f", maxRev * 0.25) %></span>
+            <span>0</span>
+          </div>
+          <div class="gridlines">
+            <div class="gridline"></div><div class="gridline"></div>
+            <div class="gridline"></div><div class="gridline"></div>
+            <div class="gridline"></div>
+          </div>
+          <div class="bars-wrap">
+            <% for (int i = 0; i < 7; i++) {
+                 int heightPct = (int) Math.round((rev[i] / maxRev) * 100);
+                 boolean isToday = (i == 6);
+                 String barStyle = isToday
+                     ? "height:" + heightPct + "%;background:linear-gradient(180deg,#C0392B,#8B1A1A);"
+                     : "height:" + heightPct + "%;";
+            %>
+            <div class="bar-group">
+              <div class="bar" style="<%= barStyle %>" title="NPR <%= String.format("%,.2f", rev[i]) %>"></div>
+              <span class="bar-label"><%= lbl[i] %></span>
+            </div>
+            <% } %>
+          </div>
+        </div>
       </div>
-
 
       <div class="promo-card">
         <div class="pasta-img">🍝</div>
         <div style="font-size:22px;margin-top:-6px;">🍷</div>
-        <div class="promo-label">More orders on</div>
-        <div class="promo-day">Saturday!</div>
-        <div class="promo-sub">Keep up the great work!</div>
+        <%
+          String bestDay = (String) request.getAttribute("bestDay");
+          double bestRev = request.getAttribute("bestDayRevenue") != null
+                           ? (double) request.getAttribute("bestDayRevenue") : 0;
+        %>
+        <% if (bestRev > 0) { %>
+        <div class="promo-label">Best day this week</div>
+        <div class="promo-day"><%= bestDay %></div>
+        <div class="promo-sub">NPR <%= String.format("%,.2f", bestRev) %> revenue</div>
+        <% } else { %>
+        <div class="promo-label">No paid orders yet</div>
+        <div class="promo-day">—</div>
+        <div class="promo-sub">Revenue will appear here once orders are marked paid.</div>
+        <% } %>
         <div class="promo-ornament">◆</div>
       </div>
     </div>
   </div>
 </main>
-      //Chart
-<script>
-
-  // Extracting X-axis labels (dates)
-  // These come from DashboardServlet via request.setAttribute("dates", dates)
-  // Example: ["2026-05-10", "2026-05-11", ...]
-  const dates = [
-  <c:forEach var="d" items="${dates}" varStatus="status">
-      "${d}"${!status.last ? ',' : ''}
-  </c:forEach>
-  ];
-  
-  // Extracting Y-axis values (revenue)
-  // These come from DashboardServlet via request.setAttribute("revenues", revenues)
-  // Example: [1200, 2500, 1800, ...]
-  const revenues = [
-  <c:forEach var="r" items="${revenues}" varStatus="status">
-      ${r}${!status.last ? ',' : ''}
-  </c:forEach>
-  ];
-  
-  
-  // Get the canvas element where the chart will be drawn
-  const ctx = document.getElementById('revenueChart');
-  
-  
-  // Creating a new Chart.js bar chart
-  new Chart(ctx, {
-      type: 'bar', // Chart type: bar chart (can be line, pie, etc.)
-  
-      data: {
-          // X-axis labels (dates of the week)
-          labels: dates,
-  
-          datasets: [{
-              // Label shown in chart legend
-              label: 'Weekly Revenue (NPR)',
-  
-              // Y-axis data (revenue values for each date)
-              data: revenues,
-  
-              // Thickness of bar border
-              borderWidth: 2,
-  
-              // Bar color
-              backgroundColor: '#C0392B'
-          }]
-      },
-  
-      options: {
-          // Makes chart responsive to screen size
-          responsive: true,
-  
-          // Prevents chart from stretching oddly
-          maintainAspectRatio: false,
-  
-          scales: {
-              y: {
-                  // Ensures Y-axis starts from 0
-                  beginAtZero: true
-              }
-          }
-      }
-  });
-  
-  </script>
-
 </body>
 </html>

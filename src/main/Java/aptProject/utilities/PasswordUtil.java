@@ -1,90 +1,54 @@
 package aptProject.utilities;
 
 import java.security.MessageDigest;
-import java.security.SecureRandom;
-import java.util.Base64;
+import java.nio.charset.StandardCharsets;
 
+/**
+ * PasswordUtil — password hashing using SHA-256.
+ *
+ * How it works:
+ *   hashPassword("mypassword")  →  SHA-256  →  64-char hex string
+ *   e.g. "89e01536ac207279409d4de1e5253e01f4a1769e696db0d6062ca9b8f56767c8"
+ *
+ * Stored in DB as a plain 64-character hex string.
+ * Only uses characters 0-9 and a-f — no encoding issues, no special characters.
+ *
+ * Verification:
+ *   Hash the entered password the same way and compare the two hex strings.
+ */
 public final class PasswordUtil {
 
     private PasswordUtil() {}
 
-    // ── HASH ─────────────────────────────────────────────────────────────────
-
     /**
-     * Hash a plain-text password.
-     * Returns a string in the format:  base64(salt) $ base64(hash)
-     * This is what gets saved to the database.
+     * Hash a password using SHA-256.
+     * Returns a 64-character lowercase hex string.
      */
-    public static String hashPassword(String plainPassword) {
+    public static String hashPassword(String password) {
         try {
-            // Step 1: generate a random salt
-            byte[] salt = generateSalt();
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
 
-            // Step 2: hash (salt + password) with SHA-256
-            byte[] hash = sha256(salt, plainPassword);
-
-            // Step 3: encode both to Base64 and join with $
-            String saltBase64 = Base64.getEncoder().encodeToString(salt);
-            String hashBase64 = Base64.getEncoder().encodeToString(hash);
-
-            return saltBase64 + "$" + hashBase64;
+            // Convert each byte to 2-digit hex
+            StringBuilder hex = new StringBuilder();
+            for (byte b : hashBytes) {
+                hex.append(String.format("%02x", b));
+            }
+            return hex.toString(); // always exactly 64 characters
 
         } catch (Exception e) {
-            throw new RuntimeException("Error hashing password", e);
+            throw new RuntimeException("SHA-256 not available", e);
         }
     }
 
-    // ── VERIFY ───────────────────────────────────────────────────────────────
-
     /**
-     * Check if an entered plain-text password matches the stored hash.
+     * Verify a password against its stored SHA-256 hex hash.
      *
-     * @param enteredPassword  what the user typed in the login form
-     * @param storedValue      the salt$hash string from the database
-     * @return true if the password is correct
+     * @param entered  what the user typed in the login form
+     * @param stored   the 64-char hex hash from the database
      */
-    public static boolean verifyPassword(String enteredPassword, String storedValue) {
-        if (enteredPassword == null || storedValue == null) return false;
-
-        // Support plain-text passwords already in the DB (legacy / test accounts)
-        if (!storedValue.contains("$")) {
-            return enteredPassword.equals(storedValue);
-        }
-
-        try {
-            // Step 1: split stored value back into salt and hash
-            String[] parts    = storedValue.split("\\$", 2);
-            byte[]   salt     = Base64.getDecoder().decode(parts[0]);
-            byte[]   expected = Base64.getDecoder().decode(parts[1]);
-
-            // Step 2: hash the entered password with the same salt
-            byte[] actual = sha256(salt, enteredPassword);
-
-            // Step 3: compare byte-by-byte (constant-time to prevent timing attacks)
-            return MessageDigest.isEqual(actual, expected);
-
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    // ── HELPERS ──────────────────────────────────────────────────────────────
-
-    /** Generate a random 16-byte salt using a cryptographically secure RNG */
-    private static byte[] generateSalt() {
-        byte[] salt = new byte[16];
-        new SecureRandom().nextBytes(salt);
-        return salt;
-    }
-
-    /**
-     * Run SHA-256 on (salt + password).
-     * SHA-256 is a one-way function — you cannot reverse it to get the original password.
-     */
-    private static byte[] sha256(byte[] salt, String password) throws Exception {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        digest.update(salt);                          // feed in the salt first
-        digest.update(password.getBytes("UTF-8"));    // then the password
-        return digest.digest();                       // returns 32-byte hash
+    public static boolean verifyPassword(String entered, String stored) {
+        if (entered == null || stored == null) return false;
+        return hashPassword(entered).equals(stored);
     }
 }

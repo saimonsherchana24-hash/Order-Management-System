@@ -33,6 +33,39 @@ body{
     -webkit-font-smoothing:antialiased;
 }
 
+/* ── PROFILE NAVBAR ── */
+.profile-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px 20px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #EDE8E0;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    color: #1c3d2c;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: .65rem 1.1rem;
+    border-radius: 9999px;
+    transition: background .2s, color .2s;
+}
+.back-btn:hover {
+    background: #f0ebe0;
+    color: #15281e;
+}
+.back-btn svg {
+    flex-shrink: 0;
+}
+
 button,input{font:inherit;}
 h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;letter-spacing:-.01em;font-weight:700;}
 .container{width:100%;max-width:1100px;margin:0 auto;padding:0 2rem;}
@@ -70,7 +103,7 @@ main{flex:1;}
 
 .admin-wrap{
     min-height:100vh;
-    padding:6rem 0;
+    padding:2rem 0 6rem;
     background:
             radial-gradient(circle at top left,rgba(201,152,54,.16),transparent 32rem),
             var(--gradient-section);
