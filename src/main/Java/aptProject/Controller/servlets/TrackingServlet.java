@@ -48,6 +48,6 @@ public class TrackingServlet extends HttpServlet {
             request.setAttribute("orders", orders);
         }
 
-        request.getRequestDispatcher("/page/Tracking.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/Tracking.jsp").forward(request, response);
     }
 }

@@ -32,7 +32,7 @@ public class BillingServlet extends HttpServlet {
         request.setAttribute("orders",       orders);
         request.setAttribute("totalRevenue", orderDAO.getTotalRevenue());
 
-        request.getRequestDispatcher("/page/AdminBilling.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/AdminBilling.jsp").forward(request, response);
     }
 
     @Override

@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
         String remembered = CookieUtil.getRememberedUsername(request);
         request.setAttribute("rememberedUsername", remembered);
 
-        request.getRequestDispatcher("/page/Login.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/Login.jsp").forward(request, response);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             request.setAttribute("error", "Invalid username or password.");
             if (redirect != null) request.setAttribute("redirect", redirect);
-            request.getRequestDispatcher("/page/Login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/Login.jsp").forward(request, response);
         }
     }
 

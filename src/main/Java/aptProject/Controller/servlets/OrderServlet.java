@@ -33,13 +33,13 @@ public class OrderServlet extends HttpServlet {
         String path = request.getServletPath();
 
         if ("/order/checkout".equals(path)) {
-            request.getRequestDispatcher("/page/Checkout.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/Checkout.jsp").forward(request, response);
 
         } else if ("/order/confirm".equals(path)) {
             int orderId = Integer.parseInt(request.getParameter("orderId"));
             Order order = orderDAO.getOrderById(orderId);
             request.setAttribute("order", order);
-            request.getRequestDispatcher("/page/confirmation.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/confirmation.jsp").forward(request, response);
         }
     }
 
@@ -95,7 +95,7 @@ public class OrderServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/order/confirm?orderId=" + newOrderId);
         } else {
             request.setAttribute("error", "Failed to place order. Please try again.");
-            request.getRequestDispatcher("/page/Checkout.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/Checkout.jsp").forward(request, response);
         }
     }
 }

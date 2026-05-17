@@ -102,7 +102,7 @@
 
         <!-- Register Link -->
         <p class="register-text">
-            Don't have an account? <a href="<%= request.getContextPath() %>/page/UserRegister.jsp" class="register-link">Register here</a>
+            Don't have an account? <a href="<%= request.getContextPath() %>/register" class="register-link">Register here</a>
         </p>
 
     </div>

@@ -49,7 +49,7 @@ public class UserProfileServlet extends HttpServlet {
         User user = SessionUtil.getUser(request);
         request.setAttribute("profileUser", user);
         request.setAttribute("myOrders", orderDAO.getOrdersByUserId(user.getId()));
-        request.getRequestDispatcher("/page/UserProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/UserProfile.jsp").forward(request, response);
     }
 
     @Override
@@ -136,6 +136,6 @@ public class UserProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setAttribute("profileUser", user);
         request.setAttribute("myOrders", orderDAO.getOrdersByUserId(user.getId()));
-        request.getRequestDispatcher("/page/UserProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/UserProfile.jsp").forward(request, response);
     }
 }

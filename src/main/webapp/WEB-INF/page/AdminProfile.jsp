@@ -10,52 +10,6 @@
     <title>Admin Profile - Amici de Gusto</title>
     <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminProfile.css" />
-    <style>
-        .edit-panel        { display: none; }
-        .edit-panel:target { display: block; }
-
-        /* ── TOAST NOTIFICATION ── */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #1c3d2c;
-            color: #f4eedd;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 8px 24px rgba(20,40,28,.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 9999;
-            animation: slideIn .3s ease, fadeOut .4s ease 2.6s forwards;
-        }
-
-        .toast-icon {
-            width: 22px;
-            height: 22px;
-            background: #C9A84C;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            flex-shrink: 0;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to   { opacity: 0; pointer-events: none; }
-        }
-    </style>
 </head>
 <body>
 
@@ -166,14 +120,7 @@
     <div class="toast-icon">✔</div>
     <span><%= request.getAttribute("success") %></span>
 </div>
-<script>
-    // Auto remove toast after 3 seconds
-    setTimeout(function() {
-        var t = document.getElementById('toast');
-        if (t) t.remove();
-    }, 3000);
-</script>
 <% } %>
-
+<script src="<%= request.getContextPath() %>/js/profile.js"></script>
 </body>
 </html>

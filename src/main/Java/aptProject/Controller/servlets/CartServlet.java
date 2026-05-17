@@ -28,6 +28,6 @@ public class CartServlet extends HttpServlet {
             return;
         }
 
-        request.getRequestDispatcher("/page/cart.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/cart.jsp").forward(request, response);
     }
 }

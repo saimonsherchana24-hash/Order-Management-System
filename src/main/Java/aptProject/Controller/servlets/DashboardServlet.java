@@ -56,6 +56,6 @@ public class DashboardServlet extends HttpServlet {
         request.setAttribute("bestDay", dayLabels[bestIdx]);
         request.setAttribute("bestDayRevenue", dailyRevenue[bestIdx]);
 
-        request.getRequestDispatcher("/page/AdminDashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/AdminDashboard.jsp").forward(request, response);
     }
 }

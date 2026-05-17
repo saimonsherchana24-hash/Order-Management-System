@@ -46,7 +46,7 @@ public class AdminProfileServlet extends HttpServlet {
         }
 
         request.setAttribute("adminUser", SessionUtil.getUser(request));
-        request.getRequestDispatcher("/page/AdminProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/AdminProfile.jsp").forward(request, response);
     }
 
     @Override

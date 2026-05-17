@@ -42,7 +42,7 @@ public class MenuItemServlet extends HttpServlet {
         if (!isAdmin(request, response)) return;
 
         request.setAttribute("menuItems", menuDAO.getAllItems());
-        request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
     }
 
     // ── POST: route by action ────────────────────────────────────────────────
@@ -75,7 +75,7 @@ public class MenuItemServlet extends HttpServlet {
         if (name == null || name.isBlank() || category == null || priceParam == null) {
             request.setAttribute("error", "Please fill all required fields.");
             request.setAttribute("menuItems", menuDAO.getAllItems());
-            request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
             return;
         }
 
@@ -93,7 +93,7 @@ public class MenuItemServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             request.setAttribute("error", "Invalid price value.");
             request.setAttribute("menuItems", menuDAO.getAllItems());
-            request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
         }
     }
 
@@ -111,7 +111,7 @@ public class MenuItemServlet extends HttpServlet {
         if (idParam == null || name == null || name.isBlank() || priceParam == null) {
             request.setAttribute("error", "Please fill all required fields.");
             request.setAttribute("menuItems", menuDAO.getAllItems());
-            request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
             return;
         }
 
@@ -136,7 +136,7 @@ public class MenuItemServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             request.setAttribute("error", "Invalid ID or price.");
             request.setAttribute("menuItems", menuDAO.getAllItems());
-            request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
         }
     }
 

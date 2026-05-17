@@ -9,7 +9,7 @@
     --secondary: #ece3cf;
     --muted: #e6dcc4;
     --muted-foreground: #4d5a52;
-    --accent: #c99836;
+    --accent: #26592d;
     --accent-glow: #e7b757;
     --accent-foreground: #15281e;
     --border: #d6caa8;
@@ -40,6 +40,36 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; letter-spacing
 
 .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 main { flex: 1; }
+
+/* ── PROFILE NAVBAR ── */
+.profile-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px 20px;
+    background: #1c3d2c;
+    border-bottom: 1px solid #EDE8E0;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    color: #a3bfb1;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: .25rem 0;
+    transition: color .2s;
+}
+.back-btn:hover {
+    color: #efedea;
+
+}
+.back-btn svg { flex-shrink: 0; }
 
 /* ── BUTTONS ── */
 .btn {
@@ -77,7 +107,7 @@ main { flex: 1; }
 /* ── PROFILE WRAP ── */
 .profile-wrap {
     min-height: 100vh;
-    padding: 6rem 0;
+    padding: 2rem 0 6rem;
     background:
         radial-gradient(circle at top left, rgba(201,152,54,.16), transparent 32rem),
         var(--gradient-section);
@@ -324,4 +354,43 @@ dd { font-weight: 600; color: var(--primary); text-align: right; word-break: bre
     dl div { display: grid; }
     dd { text-align: left; }
     .order-card { grid-template-columns: 1fr; gap: .5rem; }
+}
+
+/* ── EDIT PANEL (hash-target reveal) ── */
+.edit-panel        { display: none; }
+.edit-panel:target { display: block; }
+
+/* ── TOAST NOTIFICATION ── */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #1c3d2c;
+    color: #f4eedd;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(20,40,28,.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+    animation: slideIn .3s ease, fadeOut .4s ease 2.6s forwards;
+}
+.toast-icon {
+    width: 22px; height: 22px;
+    background: #C9A84C;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; pointer-events: none; }
 }
