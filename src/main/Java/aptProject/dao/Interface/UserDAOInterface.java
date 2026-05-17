@@ -16,4 +16,7 @@ public interface UserDAOInterface {
 
     /** Update password_hash for a user */
     boolean updatePassword(int userId, String newHashedPassword);
+
+    /** Update profile_image path for a user */
+    boolean updateProfileImage(int userId, String imagePath);
 }

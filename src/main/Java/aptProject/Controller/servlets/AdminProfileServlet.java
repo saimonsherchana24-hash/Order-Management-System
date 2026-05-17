@@ -3,6 +3,7 @@ package aptProject.Controller.servlets;
 import aptProject.dao.UserDAO;
 import aptProject.model.User;
 import aptProject.utilities.SessionUtil;
+import aptProject.utilities.UploadUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -12,12 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 /**
  * AdminProfileServlet
@@ -75,7 +71,8 @@ public class AdminProfileServlet extends HttpServlet {
         // Handle optional profile image upload
         Part imagePart = request.getPart("profileImage");
         if (imagePart != null && imagePart.getSize() > 0) {
-            String imagePath = saveProfileImage(imagePart, admin.getId());
+            String imagePath = UploadUtil.save(imagePart, getServletContext(),
+                                               "profiles", "admin_" + admin.getId());
             if (imagePath != null) {
                 admin.setProfileImage(imagePath);
                 userDAO.updateProfileImage(admin.getId(), imagePath);
@@ -89,29 +86,5 @@ public class AdminProfileServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/admin/profile?saved=true");
     }
 
-    /** Save uploaded image to /Resource/profiles/ and return the web path */
-    private String saveProfileImage(Part part, int userId) {
-        try {
-            String originalName = part.getSubmittedFileName();
-            if (originalName == null || originalName.isBlank()) return null;
-
-            // Sanitize and prefix with userId so each admin has a unique file
-            String ext      = originalName.substring(originalName.lastIndexOf('.'));
-            String fileName = "admin_" + userId + "_" + System.currentTimeMillis() + ext;
-
-            String uploadDir = getServletContext().getRealPath("/Resource/profiles");
-            File dir = new File(uploadDir);
-            if (!dir.exists()) dir.mkdirs();
-
-            try (InputStream in = part.getInputStream()) {
-                Files.copy(in, Paths.get(uploadDir, fileName), StandardCopyOption.REPLACE_EXISTING);
-            }
-
-            return "../Resource/profiles/" + fileName;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }
+

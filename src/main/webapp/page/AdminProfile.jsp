@@ -83,7 +83,7 @@
                     <%-- Show profile image if uploaded, otherwise show initial letter --%>
                     <div class="avatar-wrap">
                         <% if (adminUser != null && adminUser.getProfileImage() != null && !adminUser.getProfileImage().isEmpty()) { %>
-                        <img class="avatar-img" src="<%= adminUser.getProfileImage() %>" alt="Profile" />
+                        <img class="avatar-img" src="<%= request.getContextPath() %><%= adminUser.getProfileImage() %>" alt="Profile" />
                         <% } else { %>
                         <div class="avatar"><%= adminUser != null ? adminUser.getInitial() : "A" %></div>
                         <% } %>
@@ -143,7 +143,7 @@
                         Profile Picture
                         <% if (adminUser != null && adminUser.getProfileImage() != null && !adminUser.getProfileImage().isEmpty()) { %>
                         <div style="margin-bottom:8px;">
-                            <img src="<%= adminUser.getProfileImage() %>" alt="Current"
+                            <img src="<%= request.getContextPath() %><%= adminUser.getProfileImage() %>" alt="Current"
                                  style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid #C9A84C;" />
                             <span style="font-size:12px;color:#5A4A42;margin-left:8px;">Current photo</span>
                         </div>

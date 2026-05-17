@@ -77,7 +77,7 @@
                 <section class="panel account-panel">
                     <div class="avatar-wrap">
                         <% if (profileUser != null && profileUser.getProfileImage() != null && !profileUser.getProfileImage().isEmpty()) { %>
-                        <img class="avatar-img" src="<%= profileUser.getProfileImage() %>" alt="Profile" />
+                        <img class="avatar-img" src="<%= request.getContextPath() %><%= profileUser.getProfileImage() %>" alt="Profile" />
                         <% } else { %>
                         <div class="avatar"><%= profileUser != null ? profileUser.getFullName().substring(0,1).toUpperCase() : "U" %></div>
                         <% } %>
@@ -148,7 +148,7 @@
                         Profile Picture
                         <% if (profileUser != null && profileUser.getProfileImage() != null && !profileUser.getProfileImage().isEmpty()) { %>
                         <div style="margin-bottom:8px;">
-                            <img src="<%= profileUser.getProfileImage() %>" alt="Current"
+                            <img src="<%= request.getContextPath() %><%= profileUser.getProfileImage() %>" alt="Current"
                                  style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid #C9A84C;" />
                             <span style="font-size:12px;color:#5A4A42;margin-left:8px;">Current photo</span>
                         </div>
