@@ -8,7 +8,7 @@
   <display-name>Order Management System</display-name>
 
   <welcome-file-list>
-    <welcome-file>page/home.jsp</welcome-file>
+    <welcome-file>/WEB-INF/page/home.jsp</welcome-file>
   </welcome-file-list>
 
 </web-app>

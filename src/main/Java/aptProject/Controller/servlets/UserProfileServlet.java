@@ -5,6 +5,7 @@ import aptProject.dao.UserDAO;
 import aptProject.model.User;
 import aptProject.utilities.PasswordUtil;
 import aptProject.utilities.SessionUtil;
+import aptProject.utilities.UploadUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -14,12 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 @WebServlet(name = "UserProfileServlet",
         urlPatterns = {"/profile", "/profile/changePassword", "/profile/update"})
@@ -29,6 +25,10 @@ import java.nio.file.StandardCopyOption;
         maxRequestSize    = 10 * 1024 * 1024
 )
 public class UserProfileServlet extends HttpServlet {
+
+    // ── Route constants — avoids magic strings scattered through the code ──
+    private static final String UPDATE_PROFILE   = "/profile/update";
+    private static final String CHANGE_PASSWORD  = "/profile/changePassword";
 
     private final UserDAO  userDAO  = new UserDAO();
     private final OrderDAO orderDAO = new OrderDAO();
@@ -42,7 +42,6 @@ public class UserProfileServlet extends HttpServlet {
             return;
         }
 
-        // Show toast if redirected after a successful save
         if ("true".equals(request.getParameter("saved"))) {
             request.setAttribute("success", "Profile updated successfully.");
         }
@@ -50,7 +49,7 @@ public class UserProfileServlet extends HttpServlet {
         User user = SessionUtil.getUser(request);
         request.setAttribute("profileUser", user);
         request.setAttribute("myOrders", orderDAO.getOrdersByUserId(user.getId()));
-        request.getRequestDispatcher("/page/UserProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/UserProfile.jsp").forward(request, response);
     }
 
     @Override
@@ -64,11 +63,12 @@ public class UserProfileServlet extends HttpServlet {
 
         String path = request.getServletPath();
 
-        if ("/profile/update".equals(path)) {
+        if (UPDATE_PROFILE.equals(path)) {
             handleProfileUpdate(request, response);
-        } else {
-            // /profile/changePassword (and legacy /profile/uploadImage)
+        } else if (CHANGE_PASSWORD.equals(path)) {
             handlePasswordChange(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/profile");
         }
     }
 
@@ -76,29 +76,28 @@ public class UserProfileServlet extends HttpServlet {
     private void handleProfileUpdate(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String fullName = request.getParameter("fullName");
-        String email    = request.getParameter("email");
-
         User user = SessionUtil.getUser(request);
-        user.setFullName(fullName);
-        user.setEmail(email);
+        user.setFullName(request.getParameter("fullName"));
+        user.setEmail(request.getParameter("email"));
 
-        userDAO.updateProfile(user.getId(), fullName, email);
+        userDAO.updateProfile(user.getId(), user.getFullName(), user.getEmail());
 
-        // Handle optional profile image upload
+        // Null-safe image upload — only saves if a file was actually selected
         Part imagePart = request.getPart("profileImage");
         if (imagePart != null && imagePart.getSize() > 0) {
-            String imagePath = saveProfileImage(imagePart, user.getId());
+            String imagePath = UploadUtil.save(
+                    imagePart,
+                    getServletContext(),
+                    "profiles",
+                    "user_" + user.getId()
+            );
             if (imagePath != null) {
                 user.setProfileImage(imagePath);
                 userDAO.updateProfileImage(user.getId(), imagePath);
             }
         }
 
-        // Refresh session with updated data
         SessionUtil.createSession(request, user);
-
-        // PRG redirect with success flag
         response.sendRedirect(request.getContextPath() + "/profile?saved=true");
     }
 
@@ -137,31 +136,6 @@ public class UserProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setAttribute("profileUser", user);
         request.setAttribute("myOrders", orderDAO.getOrdersByUserId(user.getId()));
-        request.getRequestDispatcher("/page/UserProfile.jsp").forward(request, response);
-    }
-
-    /** Save uploaded image to /Resource/profiles/ and return the web path */
-    private String saveProfileImage(Part part, int userId) {
-        try {
-            String originalName = part.getSubmittedFileName();
-            if (originalName == null || originalName.isBlank()) return null;
-
-            String ext      = originalName.substring(originalName.lastIndexOf('.'));
-            String fileName = "user_" + userId + "_" + System.currentTimeMillis() + ext;
-
-            String uploadDir = getServletContext().getRealPath("/Resource/profiles");
-            File dir = new File(uploadDir);
-            if (!dir.exists()) dir.mkdirs();
-
-            try (InputStream in = part.getInputStream()) {
-                Files.copy(in, Paths.get(uploadDir, fileName), StandardCopyOption.REPLACE_EXISTING);
-            }
-
-            return "../Resource/profiles/" + fileName;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        request.getRequestDispatcher("/WEB-INF/page/UserProfile.jsp").forward(request, response);
     }
 }

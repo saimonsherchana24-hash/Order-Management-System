@@ -3,6 +3,7 @@ package aptProject.Controller.servlets;
 import aptProject.dao.MenuItemDAO;
 import aptProject.model.MenuItem;
 import aptProject.utilities.SessionUtil;
+import aptProject.utilities.UploadUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -12,12 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 /**
  * MenuItemServlet - admin adds, edits, and deletes menu items.
@@ -46,7 +42,7 @@ public class MenuItemServlet extends HttpServlet {
         if (!isAdmin(request, response)) return;
 
         request.setAttribute("menuItems", menuDAO.getAllItems());
-        request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
     }
 
     // ── POST: route by action ────────────────────────────────────────────────
@@ -79,7 +75,7 @@ public class MenuItemServlet extends HttpServlet {
         if (name == null || name.isBlank() || category == null || priceParam == null) {
             request.setAttribute("error", "Please fill all required fields.");
             request.setAttribute("menuItems", menuDAO.getAllItems());
-            request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
             return;
         }
 
@@ -97,7 +93,7 @@ public class MenuItemServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             request.setAttribute("error", "Invalid price value.");
             request.setAttribute("menuItems", menuDAO.getAllItems());
-            request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
         }
     }
 
@@ -115,7 +111,7 @@ public class MenuItemServlet extends HttpServlet {
         if (idParam == null || name == null || name.isBlank() || priceParam == null) {
             request.setAttribute("error", "Please fill all required fields.");
             request.setAttribute("menuItems", menuDAO.getAllItems());
-            request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
             return;
         }
 
@@ -140,7 +136,7 @@ public class MenuItemServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             request.setAttribute("error", "Invalid ID or price.");
             request.setAttribute("menuItems", menuDAO.getAllItems());
-            request.getRequestDispatcher("/page/AdminMenu.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/AdminMenu.jsp").forward(request, response);
         }
     }
 
@@ -163,37 +159,18 @@ public class MenuItemServlet extends HttpServlet {
         }
     }
 
-    // ── save uploaded image to /Resource folder ──────────────────────────────
+    // ── save uploaded image to /Resource/menu/ ───────────────────────────────
     private String saveUploadedImage(HttpServletRequest request, String fieldName)
             throws IOException, ServletException {
 
         Part filePart = request.getPart(fieldName);
 
         if (filePart == null || filePart.getSize() == 0) {
-            return "../Resource/default.jpg"; // fallback if no image uploaded
+            return "/Resource/default.jpg";
         }
 
-        // Get original filename
-        String submittedFileName = filePart.getSubmittedFileName();
-        if (submittedFileName == null || submittedFileName.isBlank()) {
-            return "../Resource/default.jpg";
-        }
-
-        // Sanitize filename — keep only safe characters
-        String fileName = System.currentTimeMillis() + "_"
-                + submittedFileName.replaceAll("[^a-zA-Z0-9._-]", "_");
-
-        // Save to webapp/Resource folder
-        String uploadDir = getServletContext().getRealPath("/Resource");
-        File dir = new File(uploadDir);
-        if (!dir.exists()) dir.mkdirs();
-
-        try (InputStream input = filePart.getInputStream()) {
-            Files.copy(input, Paths.get(uploadDir, fileName), StandardCopyOption.REPLACE_EXISTING);
-        }
-
-        // Return relative path used in JSP/menu
-        return "../Resource/" + fileName;
+        String saved = UploadUtil.save(filePart, getServletContext(), "menu", "item");
+        return saved != null ? saved : "/Resource/default.jpg";
     }
 
     // ── guard ────────────────────────────────────────────────────────────────

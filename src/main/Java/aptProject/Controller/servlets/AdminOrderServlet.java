@@ -30,7 +30,7 @@ public class AdminOrderServlet extends HttpServlet {
 
         List<Order> orders = orderDAO.getAllOrders();
         request.setAttribute("orders", orders);
-        request.getRequestDispatcher("/page/AdminOrder.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/AdminOrder.jsp").forward(request, response);
     }
 
     @Override

@@ -121,13 +121,45 @@
                  String barStyle = isToday
                      ? "height:" + heightPct + "%;background:linear-gradient(180deg,#C0392B,#8B1A1A);"
                      : "height:" + heightPct + "%;";
+                 String revFormatted = String.format("NPR %,.0f", rev[i]);
             %>
             <div class="bar-group">
-              <div class="bar" style="<%= barStyle %>" title="NPR <%= String.format("%,.2f", rev[i]) %>"></div>
+              <div class="bar" style="<%= barStyle %>" data-val="<%= revFormatted %>"></div>
               <span class="bar-label"><%= lbl[i] %></span>
             </div>
             <% } %>
           </div>
+
+          <%-- SVG line overlay connecting bar tops --%>
+          <%
+            StringBuilder points = new StringBuilder();
+            int barCount = 7;
+            double barGroupWidth = 100.0 / barCount;
+            for (int i = 0; i < barCount; i++) {
+                double x = barGroupWidth * i + barGroupWidth / 2.0;
+                double y = 100.0 - Math.round((rev[i] / maxRev) * 100.0);
+                if (i > 0) points.append(" ");
+                points.append(String.format("%.1f,%.1f", x, y));
+            }
+          %>
+          <svg class="line-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polyline
+              points="<%= points.toString() %>"
+              fill="none"
+              stroke="#C9A84C"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              vector-effect="non-scaling-stroke"
+            />
+            <% for (int i = 0; i < barCount; i++) {
+                 double x = barGroupWidth * i + barGroupWidth / 2.0;
+                 double y = 100.0 - Math.round((rev[i] / maxRev) * 100.0);
+            %>
+            <circle cx="<%= String.format("%.1f", x) %>" cy="<%= String.format("%.1f", y) %>"
+                    r="1.8" fill="#C9A84C" vector-effect="non-scaling-stroke"/>
+            <% } %>
+          </svg>
         </div>
       </div>
 

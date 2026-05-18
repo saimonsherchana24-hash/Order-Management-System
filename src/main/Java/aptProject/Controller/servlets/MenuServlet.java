@@ -33,6 +33,6 @@ public class MenuServlet extends HttpServlet {
 
         request.setAttribute("menuItems", items);
         request.setAttribute("activeCategory", category != null ? category : "all");
-        request.getRequestDispatcher("/page/menu.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/page/menu.jsp").forward(request, response);
     }
 }

@@ -15,18 +15,14 @@ public class UserDAO implements UserDAOInterface {
     @Override
     public boolean register(User user) {
         String sql = "INSERT INTO users (full_name, username, email, password_hash, role) VALUES (?, ?, ?, ?, ?)";
-
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setString(1, user.getFullName());
-            statement.setString(2, user.getUsername());
-            statement.setString(3, user.getEmail());
-            statement.setString(4, user.getPasswordHash());
-            statement.setString(5, user.getRole());
-
-            return statement.executeUpdate() == 1;
-
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user.getFullName());
+            ps.setString(2, user.getUsername());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getPasswordHash());
+            ps.setString(5, user.getRole());
+            return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -36,118 +32,102 @@ public class UserDAO implements UserDAOInterface {
     @Override
     public User findByEmail(String email) {
         String sql = "SELECT id, full_name, username, email, password_hash, role, profile_image FROM users WHERE email = ?";
-
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setString(1, email);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return mapUser(resultSet);
-                }
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return mapUser(rs);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
     @Override
     public User findByUsername(String username) {
         String sql = "SELECT id, full_name, username, email, password_hash, role, profile_image FROM users WHERE username = ?";
-
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setString(1, username);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    return mapUser(resultSet);
-                }
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return mapUser(rs);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
     @Override
     public User login(String usernameOrEmail, String password) {
         User user = findByUsername(usernameOrEmail);
-
-        if (user == null) {
-            user = findByEmail(usernameOrEmail);
-        }
+        if (user == null) user = findByEmail(usernameOrEmail);
 
         if (user != null) {
             boolean match = PasswordUtil.verifyPassword(password, user.getPasswordHash());
             System.out.println("[LOGIN] user=" + usernameOrEmail
-                + " | stored_hash=" + user.getPasswordHash()
-                + " | entered_hash=" + PasswordUtil.hashPassword(password)
+                + " | stored=" + user.getPasswordHash()
+                + " | entered=" + PasswordUtil.hashPassword(password)
                 + " | match=" + match);
             if (match) return user;
         }
-
         return null;
-    }
-
-    @Override
-    public boolean updatePassword(int userId, String newHashedPassword) {
-        String sql = "UPDATE users SET password_hash = ? WHERE id = ?";
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, newHashedPassword);
-            statement.setInt(2, userId);
-            return statement.executeUpdate() == 1;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 
     @Override
     public boolean updateProfile(int userId, String fullName, String email) {
         String sql = "UPDATE users SET full_name = ?, email = ? WHERE id = ?";
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, fullName);
-            statement.setString(2, email);
-            statement.setInt(3, userId);
-            return statement.executeUpdate() == 1;
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, fullName);
+            ps.setString(2, email);
+            ps.setInt(3, userId);
+            return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
 
+    @Override
+    public boolean updatePassword(int userId, String newHashedPassword) {
+        String sql = "UPDATE users SET password_hash = ? WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newHashedPassword);
+            ps.setInt(2, userId);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
     public boolean updateProfileImage(int userId, String imagePath) {
         String sql = "UPDATE users SET profile_image = ? WHERE id = ?";
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, imagePath);
-            statement.setInt(2, userId);
-            return statement.executeUpdate() == 1;
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, imagePath);
+            ps.setInt(2, userId);
+            return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    private User mapUser(ResultSet resultSet) throws SQLException {
+    // ── private helper ────────────────────────────────────────────────────────
+    private User mapUser(ResultSet rs) throws SQLException {
         User user = new User();
-        user.setId(resultSet.getInt("id"));
-        user.setFullName(resultSet.getString("full_name"));
-        user.setUsername(resultSet.getString("username"));
-        user.setEmail(resultSet.getString("email"));
-        user.setPasswordHash(resultSet.getString("password_hash"));
-        user.setRole(resultSet.getString("role"));
-        try { user.setProfileImage(resultSet.getString("profile_image")); } catch (SQLException ignored) {}
+        user.setId(rs.getInt("id"));
+        user.setFullName(rs.getString("full_name"));
+        user.setUsername(rs.getString("username"));
+        user.setEmail(rs.getString("email"));
+        user.setPasswordHash(rs.getString("password_hash"));
+        user.setRole(rs.getString("role"));
+        try { user.setProfileImage(rs.getString("profile_image")); } catch (SQLException ignored) {}
         return user;
     }
 }

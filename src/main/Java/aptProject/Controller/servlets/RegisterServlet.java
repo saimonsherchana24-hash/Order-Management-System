@@ -20,6 +20,13 @@ public class RegisterServlet extends HttpServlet {
     private final UserDAOInterface userDAO = new UserDAO();
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Show the registration form
+        request.getRequestDispatcher("/WEB-INF/page/UserRegister.jsp").forward(request, response);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -33,28 +40,28 @@ public class RegisterServlet extends HttpServlet {
         if (fullName == null || email == null || password == null
                 || fullName.isBlank() || email.isBlank() || password.isBlank()) {
             request.setAttribute("error", "Please fill all required fields.");
-            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/UserRegister.jsp").forward(request, response);
             return;
         }
 
         // 2. Check password match
         if (!password.equals(confirmPassword)) {
             request.setAttribute("error", "Passwords do not match.");
-            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/UserRegister.jsp").forward(request, response);
             return;
         }
 
         // 3. Check terms
         if (terms == null) {
             request.setAttribute("error", "Please agree to the Terms of Service and Privacy Policy.");
-            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/UserRegister.jsp").forward(request, response);
             return;
         }
 
         // 4. Check if email exists
         if (userDAO.findByEmail(email) != null) {
             request.setAttribute("error", "Email already exists.");
-            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/UserRegister.jsp").forward(request, response);
             return;
         }
 
@@ -82,7 +89,7 @@ public class RegisterServlet extends HttpServlet {
         } else {
             System.out.println("FAILURE: userDAO.register() returned false!");
             request.setAttribute("error", "Registration failed. Please try again.");
-            request.getRequestDispatcher("/page/UserRegister.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/page/UserRegister.jsp").forward(request, response);
         }
     }
 

@@ -413,7 +413,7 @@ nav {
     top: 0;
     bottom: 28px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: space-between;
     font-size: 11px;
     color: #8B7B74;
@@ -486,6 +486,18 @@ nav {
 .bar-label {
     font-size: 11px;
     color: #8B7B74;
+}
+
+/* ── LINE OVERLAY ── */
+.line-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 28px); /* exclude label area */
+    pointer-events: none;
+    z-index: 2;
+    overflow: visible;
 }
 
 /* ── PROMO CARD ── */
