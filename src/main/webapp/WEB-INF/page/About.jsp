@@ -26,7 +26,6 @@
         </svg>
       </a>
       <a href="<%= request.getContextPath() %>/cart" class="icon-btn" aria-label="Cart">
-        <span class="cart-count" data-cart-count>0</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
@@ -77,32 +76,6 @@
         </div>
       </div>
 
-      <!-- ── ROW 2: Our Mission (image right) ── -->
-      <div class="about-row reverse">
-        <div class="about-img-wrap">
-          <img src="<%= request.getContextPath() %>/Resource/hero.jpg"
-               alt="Chef preparing fresh pasta"
-               class="about-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="about-img-fallback" style="display:none;">
-            <span>👨‍🍳</span>
-          </div>
-        </div>
-        <div class="about-details">
-          <p class="eyebrow">What We Stand For</p>
-          <h2>Our Mission</h2>
-          <div class="about-divider"></div>
-          <p class="about-text">Our mission is simple — to serve food that feels like home. We source the finest local ingredients and combine them with traditional Italian techniques passed down through three generations of the Russo family.</p>
-          <p class="about-text">From hand-pulled pasta to wood-fired pizzas and carefully selected wines, every element of your dining experience is crafted with care, consistency, and passion.</p>
-          <dl class="about-dl">
-            <div><dt>Specialty</dt><dd>Handcrafted pasta &amp; wood-fired pizza</dd></div>
-            <div><dt>Ingredients</dt><dd>Locally sourced, seasonally fresh</dd></div>
-            <div><dt>Wine Selection</dt><dd>Curated Italian &amp; Nepali labels</dd></div>
-            <div><dt>Experience</dt><dd>50+ years of Italian dining</dd></div>
-          </dl>
-        </div>
-      </div>
-
       <!-- ── ROW 3: The Institute / System (image left) ── -->
       <div class="about-row">
         <div class="about-img-wrap">
@@ -121,7 +94,7 @@
           <p class="about-text">This Order Management System was developed as part of the Advanced Programming Techniques coursework at <strong>Islington College</strong>, affiliated with <strong>London Metropolitan University</strong>.</p>
           <p class="about-text">The system enables customers to browse the menu, manage their cart, place orders, and track order status in real time — while giving administrators full control over menu management, order processing, and billing.</p>
           <dl class="about-dl">
-            <div><dt>Institution</dt><dd>Islington College, Kathmandu</dd></div>
+            <div><dt>Institution</dt><dd>Informatics College Pokhara, Pokhara</dd></div>
             <div><dt>Affiliation</dt><dd>London Metropolitan University</dd></div>
             <div><dt>Module</dt><dd>Advanced Programming Techniques</dd></div>
             <div><dt>Technology</dt><dd>Java, JSP, MySQL, Apache Tomcat</dd></div>
@@ -135,9 +108,58 @@
 
 </main>
 
+<!-- ── TEAM STRIP ── -->
+<section class="team-strip">
+  <div class="container">
+    <p class="eyebrow center">The Team</p>
+    <h2 class="team-title center">Built by</h2>
+    <div class="team-cards">
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="<%= request.getContextPath() %>/Resource/member1.jpg" alt="Subarna Shrestha" />
+        </div>
+        <div class="team-name">Subarna Shrestha</div>
+        <div class="team-role">Full Stack Developer</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="<%= request.getContextPath() %>/Resource/member2.jpg" alt="Soniya Thapa" />
+        </div>
+        <div class="team-name">Soniya Thapa</div>
+        <div class="team-role">Frontend Developer and Documentation</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="<%= request.getContextPath() %>/Resource/member3.jpg" alt="Saimon Sherchan" />
+        </div>
+        <div class="team-name">Saimon Sherchan</div>
+        <div class="team-role">Database and Backend</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="<%= request.getContextPath() %>/Resource/member4.jpg" alt="Pragati Kunwar" />
+        </div>
+        <div class="team-name">Pragati Kunwar</div>
+        <div class="team-role">Backend Developer And Documentation</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="<%= request.getContextPath() %>/Resource/member5.jpg" alt="Tsering Tashi Gurung" />
+        </div>
+        <div class="team-name">Tsering Tashi Gurung</div>
+        <div class="team-role">Frontend</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div><h3>Amici <span class="accent">de</span> Gusto</h3><p>Authentic Italian dining in the heart of Kathmandu since 1972.</p></div>
+    <div><h3>Amici <span class="accent">de</span> Gusto</h3><p>Authentic Italian dining in the heart of Pokhara since 1972.</p></div>
     <div><h4>Contact</h4><ul><li>Pokhara, Lakeside, Nepal</li><li>+977 01-4567890</li><li>namaste@amicidegusto.com.np</li></ul></div>
     <div><h4>Hours</h4><ul><li>Tuesday - Sunday</li><li>12:00 - 23:00</li><li style="opacity:.6;">Closed Mondays</li></ul></div>
   </div>

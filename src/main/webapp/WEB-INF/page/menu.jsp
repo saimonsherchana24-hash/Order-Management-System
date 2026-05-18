@@ -92,11 +92,11 @@
 </main>
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div><h3>Amici <span class="accent">de</span> Gusto</h3><p>Authentic Italian dining in the heart of Kathmandu since 1972. Handcrafted pasta, wood-fired pizzas, and curated wines.</p></div>
+    <div><h3>Amici <span class="accent">de</span> Gusto</h3><p>Authentic Italian dining in the heart of Pokhara since 1972. Handcrafted pasta, wood-fired pizzas, and curated wines.</p></div>
     <div><h4>Contact</h4><ul><li>Pokhara,Lakeside, Nepal</li><li>+977 01-4567890</li><li>namaste@amicidegusto.com.np</li></ul></div>
     <div><h4>Hours</h4><ul><li>Tuesday - Sunday</li><li>12:00 - 23:00</li><li style="opacity:.6;">Closed Mondays</li></ul></div>
   </div>
-  <div class="footer-bottom"><div class="container">&copy; 2026 Amici de Gusto - Crafted with passion in Kathmandu, Nepal</div></div>
+  <div class="footer-bottom"><div class="container">&copy; 2026 Amici de Gusto - Crafted with passion in Pokhara, Nepal</div></div>
 </footer>
 <script src="<%= request.getContextPath() %>/js/cart.js"></script>
 </body>

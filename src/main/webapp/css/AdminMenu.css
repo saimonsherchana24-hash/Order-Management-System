@@ -668,3 +668,7 @@ tbody td {
         opacity: 1;
     }
 }
+
+/* ── POPUP OVERLAY (hash-target reveal) ── */
+.popup-overlay        { display: none; }
+.popup-overlay:target { display: flex; }

@@ -1,4 +1,4 @@
-/* ===== LOGIN PAGE — Amici de Gusto ===== */
+﻿/* ===== LOGIN PAGE â€” Amici de Gusto ===== */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -209,3 +209,4 @@ body {
     .card-title { font-size: 20px; }
     .brand-label { font-size: 11px; letter-spacing: 2.5px; }
 }
+

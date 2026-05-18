@@ -15,11 +15,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminMenu.css">
-  <style>
-    /* Popups hidden by default, shown only when their id is the URL hash */
-    .popup-overlay        { display: none; }
-    .popup-overlay:target { display: flex; }
-  </style> 
 </head>
 
 <body>
@@ -216,27 +211,6 @@
   </div>
 </div>
 
-<script>
-function openEdit(id, name, category, price, description, imageUrl) {
-    document.getElementById('editItemId').value         = id;
-    document.getElementById('editItemName').value       = name;
-    document.getElementById('editCategory').value       = category;
-    document.getElementById('editPrice').value          = price;
-    document.getElementById('editDescription').value    = description;
-    document.getElementById('editExistingImage').value  = imageUrl;
-
-    // Show current image name so admin knows what's already set
-    var imgLabel = document.getElementById('editCurrentImg');
-    if (imageUrl) {
-        var fileName = imageUrl.split('/').pop();
-        imgLabel.textContent = 'Current: ' + fileName;
-    } else {
-        imgLabel.textContent = 'No image set';
-    }
-
-    window.location.hash = 'editPopup';
-}
-</script>
-
+<script src="<%= request.getContextPath() %>/js/adminMenu.js"></script>
 </body>
 </html>
