@@ -79,7 +79,7 @@
       <!-- ── ROW 3: The Institute / System (image left) ── -->
       <div class="about-row">
         <div class="about-img-wrap">
-          <img src="<%= request.getContextPath() %>/Resource/hero.jpg"
+          <img src="<%= request.getContextPath() %>/Resource/loginImage.png"
                alt="Digital ordering system"
                class="about-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
