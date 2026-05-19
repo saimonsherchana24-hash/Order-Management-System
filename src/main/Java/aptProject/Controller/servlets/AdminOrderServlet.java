@@ -2,7 +2,6 @@ package aptProject.Controller.servlets;
 
 import aptProject.dao.OrderDAO;
 import aptProject.model.Order;
-import aptProject.utilities.SessionUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,11 +27,7 @@ public class AdminOrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Block non-admin users from accessing the order management page
-        if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // Fetch every order from the database and pass the list to the JSP
         List<Order> orders = orderDAO.getAllOrders();
@@ -48,11 +43,7 @@ public class AdminOrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Block non-admin users from submitting status changes
-        if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // Read the target order ID and the new status value from the form
         int    orderId   = Integer.parseInt(request.getParameter("orderId"));

@@ -33,11 +33,7 @@ public class TrackingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Redirect unauthenticated users to the login page
-        if (!SessionUtil.isLoggedIn(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // Read the optional query parameters to determine what to display
         String orderIdParam = request.getParameter("orderId");

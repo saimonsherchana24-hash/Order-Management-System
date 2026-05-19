@@ -230,6 +230,7 @@ public class OrderDAO implements OrderDAOInterface {
      * are included.</p>
      * @return {[7]} of daily revenue totals
      */
+    @Override
     public double[] getDailyRevenue() {
         double[] revenue = new double[7]; // one slot per day, all initialised to 0.0
 

@@ -46,11 +46,7 @@ public class UserProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Redirect unauthenticated visitors to the login page
-        if (!SessionUtil.isLoggedIn(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // Show a success banner if the page was reached after a successful profile save
         if ("true".equals(request.getParameter("saved"))) {
@@ -70,11 +66,7 @@ public class UserProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Redirect unauthenticated visitors to the login page
-        if (!SessionUtil.isLoggedIn(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // Determine which sub-action was requested by inspecting the URL path
         String path = request.getServletPath();
