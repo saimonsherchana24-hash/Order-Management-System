@@ -2,7 +2,6 @@ package aptProject.Controller.servlets;
 
 import aptProject.dao.OrderDAO;
 import aptProject.model.Order;
-import aptProject.utilities.SessionUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,11 +28,7 @@ public class BillingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Block non-admin users from accessing the billing page
-        if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // Fetch every order to display in the billing table
         List<Order> orders = orderDAO.getAllOrders();
@@ -51,11 +46,7 @@ public class BillingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Block non-admin users from submitting payment updates
-        if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // Read the order ID from the form submission
         int orderId = Integer.parseInt(request.getParameter("orderId"));

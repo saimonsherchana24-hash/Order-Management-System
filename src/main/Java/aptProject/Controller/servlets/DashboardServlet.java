@@ -1,7 +1,6 @@
 package aptProject.Controller.servlets;
 
 import aptProject.dao.OrderDAO;
-import aptProject.utilities.SessionUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,11 +28,7 @@ public class DashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Block non-admin users from accessing the dashboard
-        if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // ── Summary stats — top-level KPI cards on the dashboard ──
         request.setAttribute("totalOrders",     orderDAO.getTotalOrders());     // all-time order count

@@ -39,11 +39,7 @@ public class AdminProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Block non-admin users from accessing this page
-        if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // If redirected here after a save, set a success message for the JSP to display
         if ("true".equals(request.getParameter("saved"))) {
@@ -63,11 +59,7 @@ public class AdminProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Block non-admin users from submitting this form
-        if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        // Authentication handled by AuthFilter
 
         // Read the updated name and email from the submitted form
         String fullName = request.getParameter("adminName");

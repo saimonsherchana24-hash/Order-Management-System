@@ -74,4 +74,11 @@ public interface OrderDAOInterface {
 
     // Returns the sum of {@code total_price} for all orders with payment status {@code PAID}.
     double getTotalRevenue();
+
+    /**
+     * Returns revenue per day for the last 7 days (including today).
+     * Index 0 = 6 days ago, index 6 = today. Only PAID orders are included.
+     * @return array of 7 daily revenue totals
+     */
+    double[] getDailyRevenue();
 }

@@ -2,7 +2,6 @@ package aptProject.Controller.servlets;
 
 import aptProject.dao.MenuItemDAO;
 import aptProject.model.MenuItem;
-import aptProject.utilities.SessionUtil;
 import aptProject.utilities.UploadUtil;
 
 import jakarta.servlet.ServletException;
@@ -222,15 +221,11 @@ public class MenuItemServlet extends HttpServlet {
     // ── ADMIN
 
     /**
-     * Checks whether the current user is an admin.
-     * Redirects to login and returns false if they are not.
+     * Authentication is handled by AuthFilter — always returns true here.
      */
     private boolean isAdmin(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        if (!SessionUtil.isAdmin(request)) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return false; // caller should stop processing immediately
-        }
+        // Authentication handled by AuthFilter
         return true;
     }
 }
