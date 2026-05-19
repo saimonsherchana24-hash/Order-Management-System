@@ -1,7 +1,9 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.Order, aptProject.model.OrderItem, java.util.List, java.util.Arrays" %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/Tracking.css">
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
+<%-- Header section: show branding, navigation links, and quick user actions. --%>
 <header class="navbar">
     <span class="brand">Amici <span class="de">de</span> Gusto</span>
 </header>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main>
     <div class="container">
 
@@ -24,6 +29,7 @@
             <h1>Order Status</h1>
         </div>
 
+        <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
         <% if (request.getAttribute("error") != null) { %>
         <div class="error-box">
             ⚠️ <%= request.getAttribute("error") %>
@@ -52,6 +58,7 @@
             <div class="order-header">
                 <span>Item</span><span>Qty</span><span>Price</span>
             </div>
+            <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
             <% if (order.getItems() != null) {
                 for (OrderItem oi : order.getItems()) { %>
             <div class="order-row">

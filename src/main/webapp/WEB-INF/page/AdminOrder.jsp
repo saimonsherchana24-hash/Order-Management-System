@@ -1,5 +1,7 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.Order, aptProject.model.OrderItem, aptProject.model.User, java.util.List" %>
+<%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
 <%
     User adminUser   = (User) session.getAttribute("user");
     String adminInitial = (adminUser != null) ? adminUser.getFullName().substring(0,1).toUpperCase() : "A";
@@ -8,6 +10,7 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +19,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminOrder.css">
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <!-- SIDEBAR -->
+<%-- Sidebar section: provide admin navigation for dashboard pages. --%>
 <aside class="sidebar">
     <div class="logo-wrap">
         <div class="logo-name">Amici<br>De Gusto</div>
@@ -35,6 +40,7 @@
 </aside>
 
 <!-- MAIN -->
+<%-- Main content: render the primary page information and actions. --%>
 <main class="main">
 
     <!-- Topbar -->
@@ -64,9 +70,11 @@
                 <h3>All Orders</h3>
             </div>
 
+            <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
             <% if (orders == null || orders.isEmpty()) { %>
             <p class="empty-msg">No orders found.</p>
             <% } else { %>
+            <%-- Table section: display records in rows and columns for easy scanning. --%>
             <table>
                 <thead>
                     <tr>
@@ -80,6 +88,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
                 <% for (Order o : orders) {
                        boolean isPending   = "PENDING".equalsIgnoreCase(o.getStatus());
                        boolean isCompleted = "COMPLETED".equalsIgnoreCase(o.getStatus());
@@ -88,6 +97,7 @@
                     <td class="token"><%= o.getToken() %></td>
                     <td><%= o.getCustomerName() %></td>
                     <td class="items-cell">
+                        <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
                         <% if (o.getItems() != null) {
                                for (OrderItem oi : o.getItems()) { %>
                         <span><%= oi.getItemName() %> x<%= oi.getQuantity() %></span><br>
@@ -105,11 +115,13 @@
                         <% if (!isCompleted) { %>
                         <div class="action-btns">
                             <!-- Mark as Completed -->
+                            <%-- Form section: collect user input and submit it to the matching servlet. --%>
                             <form method="post" action="<%= request.getContextPath() %>/admin/orders/updateStatus" style="display:inline">
                                 <input type="hidden" name="orderId" value="<%= o.getId() %>">
                                 <input type="hidden" name="status"  value="COMPLETED">
                                 <button type="submit" class="btn-complete">✔ Complete</button>
                             </form>
+                            <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
                             <% if (!isPending) { %>
                             <!-- Mark back to Pending -->
                             <form method="post" action="<%= request.getContextPath() %>/admin/orders/updateStatus" style="display:inline">

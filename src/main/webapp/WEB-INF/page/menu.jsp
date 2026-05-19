@@ -1,5 +1,7 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.MenuItem, java.util.List" %>
+<%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
 <%
     List<MenuItem> menuItems = (List<MenuItem>) request.getAttribute("menuItems");
     String activeCategory    = (String) request.getAttribute("activeCategory");
@@ -7,6 +9,7 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -15,7 +18,9 @@
   <meta name="description" content="Browse the full Amici de Gusto menu - savory plates, curated drinks, and sweet endings." />
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/menu.css" />
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
+<%-- Header section: show branding, navigation links, and quick user actions. --%>
 <header class="site-header">
   <div class="container header-inner">
     <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
@@ -40,7 +45,9 @@
     </div>
   </div>
 </header>
+<%-- Main content: render the primary page information and actions. --%>
 <main>
+  <%-- Content section: group related page content for this part of the screen. --%>
   <section class="section section-gradient">
     <div class="container">
       <div class="page-header">
@@ -57,6 +64,7 @@
         </div>
       </div>
       <div class="grid menu-grid animate-fade-in-up">
+        <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
         <% if (menuItems == null || menuItems.isEmpty()) { %>
         <p style="text-align:center;color:#4d5a52;padding:3rem 0;grid-column:1/-1;">
             No menu items available yet.
@@ -100,6 +108,7 @@
     </div>
   </section>
 </main>
+<%-- Footer section: show closing restaurant information and support details. --%>
 <footer class="site-footer">
   <div class="container footer-grid">
     <div><h3>Amici <span class="accent">de</span> Gusto</h3><p>Authentic Italian dining in the heart of Pokhara since 1972. Handcrafted pasta, wood-fired pizzas, and curated wines.</p></div>
@@ -108,6 +117,7 @@
   </div>
   <div class="footer-bottom"><div class="container">&copy; 2026 Amici de Gusto - Crafted with passion in Pokhara, Nepal</div></div>
 </footer>
+<%-- Script section: load JavaScript that supports page interaction. --%>
 <script src="<%= request.getContextPath() %>/js/cart.js"></script>
 </body>
 </html>

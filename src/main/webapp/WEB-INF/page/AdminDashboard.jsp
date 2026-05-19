@@ -1,11 +1,14 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.User" %>
+<%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
 <% User adminUser = (User) session.getAttribute("user");
    String adminInitial = (adminUser != null && adminUser.getFullName() != null)
                          ? adminUser.getFullName().substring(0,1).toUpperCase() : "A";
    String adminName = (adminUser != null) ? adminUser.getFullName() : "Admin"; %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +21,10 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminDasboard.css">
 
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
+<%-- Sidebar section: provide admin navigation for dashboard pages. --%>
 <aside class="sidebar">
   <div class="logo-wrap">
     <div class="logo-name">Amici<br>De Gusto</div>
@@ -37,6 +42,7 @@
   </nav>
 </aside>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main class="main">
   <div class="topbar">
     <div class="title-row">
@@ -93,6 +99,7 @@
           <h3>Daily Revenue</h3>
           <span class="select-btn">Last 7 Days</span>
         </div>
+        <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
         <%
           double[] rev = (double[]) request.getAttribute("dailyRevenue");
           String[] lbl = (String[]) request.getAttribute("dayLabels");
@@ -114,6 +121,7 @@
             <div class="gridline"></div>
           </div>
           <div class="bars-wrap">
+            <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
             <% for (int i = 0; i < 7; i++) {
                  int heightPct = (int) Math.round((rev[i] / maxRev) * 100);
                  boolean isToday = (i == 6);
@@ -130,6 +138,7 @@
           </div>
 
           <%-- SVG line overlay connecting bar tops --%>
+          <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
           <%
             StringBuilder points = new StringBuilder();
             int barCount = 7;

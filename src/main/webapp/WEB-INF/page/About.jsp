@@ -1,6 +1,8 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -8,9 +10,11 @@
   <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/About.css" />
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <!-- ── NAVBAR ── -->
+<%-- Header section: show branding, navigation links, and quick user actions. --%>
 <header class="site-header">
   <div class="header-inner">
     <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
@@ -35,9 +39,11 @@
   </div>
 </header>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main>
 
   <!-- ── HERO ── -->
+  <%-- Content section: group related page content for this part of the screen. --%>
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Our Story</p>
@@ -109,6 +115,7 @@
 </main>
 
 <!-- ── TEAM STRIP ── -->
+<%-- Content section: group related page content for this part of the screen. --%>
 <section class="team-strip">
   <div class="container">
     <p class="eyebrow center">The Team</p>
@@ -157,6 +164,7 @@
   </div>
 </section>
 
+<%-- Footer section: show closing restaurant information and support details. --%>
 <footer class="site-footer">
   <div class="container footer-grid">
     <div><h3>Amici <span class="accent">de</span> Gusto</h3><p>Authentic Italian dining in the heart of Pokhara since 1972.</p></div>
@@ -166,6 +174,7 @@
   <div class="footer-bottom"><div class="container">&copy; 2026 Amici de Gusto &mdash; Crafted with passion in Kathmandu, Nepal</div></div>
 </footer>
 
+<%-- Script section: load JavaScript that supports page interaction. --%>
 <script src="<%= request.getContextPath() %>/js/cart.js"></script>
 </body>
 </html>

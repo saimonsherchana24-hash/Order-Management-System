@@ -1,5 +1,7 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.User, aptProject.model.Order, aptProject.dao.OrderDAO, java.util.List" %>
+<%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
 <%
    User profileUser = (User) session.getAttribute("user");
    if (request.getAttribute("profileUser") != null) {
@@ -16,6 +18,7 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -23,6 +26,7 @@
     <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/UserProfile.css" />
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <!-- ── TOP NAVBAR ── -->
@@ -36,7 +40,9 @@
   </a>
 </nav>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main>
+    <%-- Content section: group related page content for this part of the screen. --%>
     <section class="profile-wrap">
         <div class="container">
             <div class="profile-head">
@@ -47,8 +53,10 @@
 
             <div class="profile-grid">
                 <%-- ── ACCOUNT INFO PANEL ── --%>
+                <%-- Content section: group related page content for this part of the screen. --%>
                 <section class="panel account-panel">
                     <div class="avatar-wrap">
+                        <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
                         <% if (profileUser != null && profileUser.getProfileImage() != null && !profileUser.getProfileImage().isEmpty()) { %>
                         <img class="avatar-img" src="<%= request.getContextPath() %><%= profileUser.getProfileImage() %>" alt="Profile" />
                         <% } else { %>
@@ -77,6 +85,7 @@
                         <p class="eyebrow small">Security</p>
                         <h2>Change Password</h2>
                     </div>
+                    <%-- Form section: collect user input and submit it to the matching servlet. --%>
                     <form class="profile-form" action="<%= request.getContextPath() %>/profile/changePassword" method="post">
                         <% if (errorMsg != null) { %>
                         <div class="form-msg form-msg-error"><%= errorMsg %></div>
@@ -99,11 +108,13 @@
             </div>
 
             <%-- ── EDIT PROFILE PANEL (admin-style, revealed by #editPanel) ── --%>
+            <%-- Content section: group related page content for this part of the screen. --%>
             <section class="panel edit-panel" id="editPanel">
                 <div class="section-title">
                     <p class="eyebrow small">Edit Details</p>
                     <h2>Update Your Profile</h2>
                 </div>
+                <%-- Form section: collect user input and submit it to the matching servlet. --%>
                 <form class="user-edit-form" action="<%= request.getContextPath() %>/profile/update" method="post" enctype="multipart/form-data">
                     <label>
                         Full Name
@@ -142,10 +153,12 @@
                     <p class="eyebrow small">Orders</p>
                     <h2>My Orders</h2>
                 </div>
+                <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
                 <% if (myOrders == null || myOrders.isEmpty()) { %>
                 <p class="orders-copy">You have no orders yet. <a href="<%= request.getContextPath() %>/menu" class="track-link">Browse the menu →</a></p>
                 <% } else { %>
                 <div class="order-list">
+                    <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
                     <% for (Order o : myOrders) {
                         String statusClass = "COMPLETED".equalsIgnoreCase(o.getStatus()) ? "complete" : "active";
                     %>
@@ -179,6 +192,7 @@
     <span><%= successMsg %></span>
 </div>
 <% } %>
+<%-- Script section: load JavaScript that supports page interaction. --%>
 <script src="<%= request.getContextPath() %>/js/profile.js"></script>
 </body>
 </html>

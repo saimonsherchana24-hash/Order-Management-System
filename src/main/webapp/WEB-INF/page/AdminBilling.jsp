@@ -1,11 +1,14 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, aptProject.model.Order, aptProject.model.OrderItem, aptProject.model.User" %>
+<%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
 <% User adminUser = (User) session.getAttribute("user");
    String adminInitial = (adminUser != null && adminUser.getFullName() != null)
                          ? adminUser.getFullName().substring(0,1).toUpperCase() : "A";
    String adminName = (adminUser != null) ? adminUser.getFullName() : "Admin"; %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +19,10 @@
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminBilling.css">
 </head>
 
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
+<%-- Sidebar section: provide admin navigation for dashboard pages. --%>
 <aside class="sidebar">
   <div class="logo-wrap">
     <div class="logo-name">Amici<br>De Gusto</div>
@@ -45,6 +50,7 @@
   </nav>
 </aside>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main class="main">
   <div class="topbar">
     <div class="title-row">
@@ -70,6 +76,7 @@
         <div class="table-title">All Bills</div>
       </div>
 
+      <%-- Table section: display records in rows and columns for easy scanning. --%>
       <table>
         <thead>
         <tr>
@@ -82,6 +89,7 @@
         </thead>
 
         <tbody>
+        <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
         <%
           List<Order> orders = (List<Order>) request.getAttribute("orders");
           if (orders != null) {
@@ -95,7 +103,9 @@
           <td class="<%= isPaid ? "paid" : "unpaid" %>"><%= order.getPaymentStatus() %></td>
           <td>
             <a href="#bill-<%= order.getId() %>" class="btn">View Bill</a>
+            <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
             <% if (!isPaid) { %>
+            <%-- Form section: collect user input and submit it to the matching servlet. --%>
             <form method="post" action="<%= request.getContextPath() %>/admin/billing/markPaid" style="display:inline">
               <input type="hidden" name="orderId" value="<%= order.getId() %>">
               <button type="submit" class="btn paid-btn">Mark as Paid</button>
@@ -110,6 +120,7 @@
   </div>
 
   <%-- Dynamic receipt popups for each order --%>
+  <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
   <%
     List<Order> billOrders = (List<Order>) request.getAttribute("orders");
     if (billOrders != null) {

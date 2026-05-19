@@ -1,6 +1,8 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -9,13 +11,17 @@
   <meta name="description" content="Premium Italian dining in Kathmandu. Handcrafted pasta, wood-fired pizzas, and curated wines since 1972." />
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css" />
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
+<%-- Header section: show branding, navigation links, and quick user actions. --%>
 <header class="site-header transparent">
   <div class="container header-inner">
     <!-- Cart and Profile icons removed -->
   </div>
 </header>
+<%-- Main content: render the primary page information and actions. --%>
 <main>
+  <%-- Content section: group related page content for this part of the screen. --%>
   <section class="hero">
     <img src="<%= request.getContextPath() %>/Resource/hero.jpg" alt="Elegant Italian fine dining table with pasta and red wine" class="hero-img" />
     <div class="hero-overlay"></div>
@@ -35,6 +41,7 @@
     </div>
   </section>
 </main>
+<%-- Footer section: show closing restaurant information and support details. --%>
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>

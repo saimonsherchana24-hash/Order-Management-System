@@ -1,6 +1,8 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +10,11 @@
     <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/Checkout.css">
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <!-- NAVBAR (EXACT SAME AS CART.JSP) -->
+<%-- Header section: show branding, navigation links, and quick user actions. --%>
 <header class="navbar">
     <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
     <div class="nav-end">
@@ -30,6 +34,7 @@
     <!-- ORDER SUMMARY -->
     <div class="box">
         <h3>Order Summary</h3>
+        <%-- Table section: display records in rows and columns for easy scanning. --%>
         <table>
             <thead>
             <tr>
@@ -59,6 +64,7 @@
     </div>
 
     <!-- Hidden form for servlet -->
+    <%-- Form section: collect user input and submit it to the matching servlet. --%>
     <form id="orderForm" method="post" action="<%= request.getContextPath() %>/order/place">
         <input type="hidden" name="totalPrice"   id="formTotal">
         <input type="hidden" name="specialNote"  id="formNote">
@@ -72,6 +78,7 @@
 
 </div>
 
+<%-- Script section: load JavaScript that supports page interaction. --%>
 <script src="<%= request.getContextPath() %>/js/checkout.js"></script>
 </body>
 </html>

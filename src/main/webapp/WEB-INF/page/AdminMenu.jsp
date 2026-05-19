@@ -1,11 +1,14 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, aptProject.model.MenuItem, aptProject.model.User" %>
+<%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
 <% User adminUser = (User) session.getAttribute("user");
    String adminInitial = (adminUser != null && adminUser.getFullName() != null)
                          ? adminUser.getFullName().substring(0,1).toUpperCase() : "A";
    String adminName = (adminUser != null) ? adminUser.getFullName() : "Admin"; %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +20,10 @@
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminMenu.css">
 </head>
 
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
+<%-- Sidebar section: provide admin navigation for dashboard pages. --%>
 <aside class="sidebar">
   <div class="logo-wrap">
     <div class="logo-name">Amici<br>De Gusto</div>
@@ -36,6 +41,7 @@
   </nav>
 </aside>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main class="main">
   <div class="topbar">
     <div class="page-title">
@@ -64,6 +70,7 @@
           <div class="table-title">≡ Menu Items</div>
         </div>
 
+        <%-- Table section: display records in rows and columns for easy scanning. --%>
         <table>
           <thead>
           <tr>
@@ -76,6 +83,7 @@
           </thead>
 
           <tbody>
+          <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
           <%
             List<MenuItem> menuItems = (List<MenuItem>) request.getAttribute("menuItems");
             if (menuItems != null) {
@@ -91,6 +99,7 @@
                 <!-- Edit: open popup pre-filled -->
                 <button class="btn-edit" onclick="openEdit(<%= item.getId() %>,'<%= item.getName() %>','<%= item.getCategory() %>',<%= item.getPrice() %>,'<%= item.getDescription() %>','<%= item.getImageUrl() %>')">Edit</button>
                 <!-- Delete: small form POST -->
+                <%-- Form section: collect user input and submit it to the matching servlet. --%>
                 <form method="post" action="<%= request.getContextPath() %>/admin/menu/delete" style="display:inline">
                   <input type="hidden" name="itemId" value="<%= item.getId() %>">
                   <button type="submit" class="btn-delete" onclick="return confirm('Delete this item?')">Delete</button>
@@ -127,6 +136,7 @@
       <span class="form-header-icon">🍽️</span>
       <h2>Add New Item</h2>
     </div>
+    <%-- Form section: collect user input and submit it to the matching servlet. --%>
     <form method="post" action="<%= request.getContextPath() %>/admin/menu/add" enctype="multipart/form-data">
       <div class="form-group">
         <label>Item Name</label>
@@ -205,6 +215,7 @@
   </div>
 </div>
 
+<%-- Script section: load JavaScript that supports page interaction. --%>
 <script src="<%= request.getContextPath() %>/js/adminMenu.js"></script>
 </body>
 </html>

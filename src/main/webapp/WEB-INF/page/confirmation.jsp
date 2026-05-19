@@ -1,8 +1,11 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.Order, aptProject.model.OrderItem" %>
+<%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
 <% Order order = (Order) request.getAttribute("order"); %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +13,11 @@
     <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/confirmation.css">
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <!-- HEADER (EXACT MATCH TO CART.JSP) -->
+<%-- Header section: show branding, navigation links, and quick user actions. --%>
 <header class="site-header">
     <div class="header-inner">
         <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
@@ -46,11 +51,13 @@
     <!-- ORDER DETAILS -->
     <div class="box">
         <h3>Order Details</h3>
+        <%-- Table section: display records in rows and columns for easy scanning. --%>
         <table>
             <thead>
             <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
             </thead>
             <tbody>
+            <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
             <% if (order != null && order.getItems() != null) {
                 for (OrderItem oi : order.getItems()) { %>
             <tr>

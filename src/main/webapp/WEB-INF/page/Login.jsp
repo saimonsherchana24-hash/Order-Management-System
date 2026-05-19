@@ -1,6 +1,8 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/Login.css">
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <!-- Restaurant Background -->
@@ -25,9 +28,11 @@
         </div>
 
         <!-- Form -->
+            <%-- Form section: collect user input and submit it to the matching servlet. --%>
             <form action="<%= request.getContextPath() %>/login" method="post" autocomplete="off">
 
             <%-- Carry redirect target through the form --%>
+            <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
             <% if (request.getAttribute("redirect") != null) { %>
             <input type="hidden" name="redirect" value="<%= request.getAttribute("redirect") %>" />
             <% } else if (request.getParameter("redirect") != null) { %>

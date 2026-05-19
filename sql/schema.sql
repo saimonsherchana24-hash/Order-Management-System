@@ -212,7 +212,7 @@ INSERT INTO menu_items (name, category, price, description, image_url) VALUES
  'Creamy egg sauce, pancetta, parmesan, black pepper',
  '/Resource/default.jpg'),
 
-('Penne Arrabbiata',    'food',    800.00,
+('Risotto ai Funghi',    'food',    800.00,
  'Spicy tomato sauce, garlic, fresh chilli',
  '/Resource/default.jpg'),
 

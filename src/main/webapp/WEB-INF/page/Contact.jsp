@@ -1,6 +1,8 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -9,9 +11,11 @@
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/About.css" />
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/Contact.css" />
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <!-- ── NAVBAR ── -->
+<%-- Header section: show branding, navigation links, and quick user actions. --%>
 <header class="site-header">
   <div class="header-inner">
     <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
@@ -36,9 +40,11 @@
   </div>
 </header>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main>
 
   <!-- ── PAGE HERO ── -->
+  <%-- Content section: group related page content for this part of the screen. --%>
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Get In Touch</p>
@@ -129,6 +135,7 @@
           <div class="message-card">
             <h3>Send a Message</h3>
             <p class="message-sub">For reservations, feedback, or general enquiries.</p>
+            <%-- Form section: collect user input and submit it to the matching servlet. --%>
             <form class="contact-form" onsubmit="handleSubmit(event)">
               <div class="form-row">
                 <label>Full Name<input type="text" placeholder="Your name" required /></label>
@@ -153,6 +160,7 @@
 
 </main>
 
+<%-- Footer section: show closing restaurant information and support details. --%>
 <footer class="site-footer">
   <div class="container footer-grid">
     <div><h3>Amici <span class="accent">de</span> Gusto</h3><p>Authentic Italian dining in the heart of Pokhara since 1972.</p></div>
@@ -162,6 +170,7 @@
   <div class="footer-bottom"><div class="container">&copy; 2026 Amici de Gusto &mdash; Crafted with passion in Pokhara , Nepal</div></div>
 </footer>
 
+<%-- Script section: load JavaScript that supports page interaction. --%>
 <script src="<%= request.getContextPath() %>/js/cart.js"></script>
 <script>
   function handleSubmit(e) {

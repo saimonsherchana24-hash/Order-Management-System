@@ -1,9 +1,12 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="aptProject.model.User" %>
+<%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
 <% User adminUser = (User) request.getAttribute("adminUser");
    if (adminUser == null) adminUser = (User) session.getAttribute("user"); %>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -11,6 +14,7 @@
     <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminProfile.css" />
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <!-- ── TOP NAVBAR ── -->
@@ -24,7 +28,9 @@
   </a>
 </nav>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main>
+    <%-- Content section: group related page content for this part of the screen. --%>
     <section class="admin-wrap">
         <div class="container">
             <div class="profile-head">
@@ -33,9 +39,11 @@
                 <p class="lead">Manage administrator details and review the latest login activity.</p>
             </div>
             <div class="admin-grid">
+                <%-- Content section: group related page content for this part of the screen. --%>
                 <section class="panel admin-panel">
                     <%-- Show profile image if uploaded, otherwise show initial letter --%>
                     <div class="avatar-wrap">
+                        <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
                         <% if (adminUser != null && adminUser.getProfileImage() != null && !adminUser.getProfileImage().isEmpty()) { %>
                         <img class="avatar-img" src="<%= request.getContextPath() %><%= adminUser.getProfileImage() %>" alt="Profile" />
                         <% } else { %>
@@ -75,11 +83,13 @@
                     </div>
                 </section>
             </div>
+            <%-- Content section: group related page content for this part of the screen. --%>
             <section class="panel edit-panel" id="editPanel">
                 <div class="section-title">
                     <p class="eyebrow small">Edit Details</p>
                     <h2>Update Admin Profile</h2>
                 </div>
+                <%-- Form section: collect user input and submit it to the matching servlet. --%>
                 <form class="admin-form" action="<%= request.getContextPath() %>/admin/profile/update" method="post" enctype="multipart/form-data">
                     <label>
                         Admin Name
@@ -121,6 +131,7 @@
     <span><%= request.getAttribute("success") %></span>
 </div>
 <% } %>
+<%-- Script section: load JavaScript that supports page interaction. --%>
 <script src="<%= request.getContextPath() %>/js/profile.js"></script>
 </body>
 </html>

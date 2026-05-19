@@ -1,6 +1,8 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/UserResgister.css">
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
 <div class="bg-layer">
@@ -21,12 +24,14 @@
         <h1 class="brand-title">AMICI DE GUSTO</h1>
         <p class="card-subtitle">Create Account</p>
 
+        <%-- Server-side data step: read servlet/session values before displaying dynamic content. --%>
         <% if (request.getAttribute("error") != null) { %>
         <div class="error-message">
             <%= request.getAttribute("error") %>
         </div>
         <% } %>
 
+        <%-- Form section: collect user input and submit it to the matching servlet. --%>
         <form class="register-form" action="<%= request.getContextPath() %>/register" method="post" autocomplete="off">
 
         <div class="field">

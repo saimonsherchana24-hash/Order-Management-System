@@ -1,6 +1,8 @@
+<%-- Page setup: configure JSP encoding and imports before rendering HTML. --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%-- Head section: define metadata, page title, icons, fonts, and CSS links. --%>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -8,8 +10,10 @@
   <link rel="icon" href="<%= request.getContextPath() %>/Resource/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/cart.css" />
 </head>
+<%-- Body section: start the visible page layout shown to the user. --%>
 <body>
 
+<%-- Header section: show branding, navigation links, and quick user actions. --%>
 <header class="navbar">
   <a href="<%= request.getContextPath() %>/menu" class="brand">Amici <span class="de">de</span> Gusto</a>
   <div class="nav-end">
@@ -22,6 +26,7 @@
   </div>
 </header>
 
+<%-- Main content: render the primary page information and actions. --%>
 <main>
   <div class="cart-wrap">
     <div class="container">
@@ -48,6 +53,7 @@
   </div>
 </main>
 
+<%-- Footer section: show closing restaurant information and support details. --%>
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -76,6 +82,7 @@
   </div>
 </footer>
 
+<%-- Script section: load JavaScript that supports page interaction. --%>
 <script src="<%= request.getContextPath() %>/js/cart.js"></script>
 </body>
 </html>
