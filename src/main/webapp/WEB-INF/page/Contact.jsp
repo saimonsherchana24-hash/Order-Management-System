@@ -90,7 +90,6 @@
             <div>
               <h3>Email</h3>
               <p>namaste@amicidegusto.com.np</p>
-              <p>reservations@amicidegusto.com.np</p>
             </div>
           </div>
 

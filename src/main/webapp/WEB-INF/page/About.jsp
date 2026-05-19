@@ -116,7 +116,7 @@
     <div class="team-cards">
       <div class="team-card">
         <div class="team-avatar">
-          <img src="<%= request.getContextPath() %>/Resource/member1.jpg" alt="Subarna Shrestha" />
+          <img src="<%= request.getContextPath() %>/Resource/SubarnaShrestha.jpg" alt="Subarna Shrestha" />
         </div>
         <div class="team-name">Subarna Shrestha</div>
         <div class="team-role">Full Stack Developer</div>
@@ -124,7 +124,7 @@
 
       <div class="team-card">
         <div class="team-avatar">
-          <img src="<%= request.getContextPath() %>/Resource/member2.jpg" alt="Soniya Thapa" />
+          <img src="<%= request.getContextPath() %>/Resource/Soniya.JPG" alt="Soniya Thapa" />
         </div>
         <div class="team-name">Soniya Thapa</div>
         <div class="team-role">Frontend Developer and Documentation</div>
@@ -132,7 +132,7 @@
 
       <div class="team-card">
         <div class="team-avatar">
-          <img src="<%= request.getContextPath() %>/Resource/member3.jpg" alt="Saimon Sherchan" />
+          <img src="<%= request.getContextPath() %>/Resource/Saimon.jpg" alt="Saimon Sherchan" />
         </div>
         <div class="team-name">Saimon Sherchan</div>
         <div class="team-role">Database and Backend</div>
@@ -140,7 +140,7 @@
 
       <div class="team-card">
         <div class="team-avatar">
-          <img src="<%= request.getContextPath() %>/Resource/member4.jpg" alt="Pragati Kunwar" />
+          <img src="<%= request.getContextPath() %>/Resource/Pragati.jpeg" alt="Pragati Kunwar" />
         </div>
         <div class="team-name">Pragati Kunwar</div>
         <div class="team-role">Backend Developer And Documentation</div>
@@ -148,7 +148,7 @@
 
       <div class="team-card">
         <div class="team-avatar">
-          <img src="<%= request.getContextPath() %>/Resource/member5.jpg" alt="Tsering Tashi Gurung" />
+          <img src="<%= request.getContextPath() %>/Resource/Tsering.png" alt="Tsering Tashi Gurung" />
         </div>
         <div class="team-name">Tsering Tashi Gurung</div>
         <div class="team-role">Frontend</div>
