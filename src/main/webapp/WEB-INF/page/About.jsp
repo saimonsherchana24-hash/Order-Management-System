@@ -96,7 +96,7 @@
           <dl class="about-dl">
             <div><dt>Institution</dt><dd>Informatics College Pokhara, Pokhara</dd></div>
             <div><dt>Affiliation</dt><dd>London Metropolitan University</dd></div>
-            <div><dt>Module</dt><dd>Advanced Programming Techniques</dd></div>
+            <div><dt>Module</dt><dd>Advanced Programming Technology</dd></div>
             <div><dt>Technology</dt><dd>Java, JSP, MySQL, Apache Tomcat</dd></div>
           </dl>
         </div>

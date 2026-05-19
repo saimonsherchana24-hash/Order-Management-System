@@ -62,11 +62,6 @@
       <div class="table-card">
         <div class="table-header">
           <div class="table-title">≡ Menu Items</div>
-
-          <div class="search-wrap">
-            <input type="text" id="menuSearch" placeholder="Search items..." autocomplete="off">
-            <span style="color:var(--text-light);">🔍</span>
-          </div>
         </div>
 
         <table>
