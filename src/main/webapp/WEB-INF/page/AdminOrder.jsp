@@ -21,7 +21,6 @@
 <!-- SIDEBAR -->
 <aside class="sidebar">
     <div class="logo-wrap">
-        <div class="logo-icon">🍽️</div>
         <div class="logo-name">Amici<br>De Gusto</div>
         <div class="logo-sub">Italian Restaurant</div>
     </div>

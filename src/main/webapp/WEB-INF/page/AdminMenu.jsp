@@ -21,7 +21,6 @@
 
 <aside class="sidebar">
   <div class="logo-wrap">
-    <div class="logo-icon">🍽️</div>
     <div class="logo-name">Amici<br>De Gusto</div>
     <div class="logo-sub">Italian Restaurant</div>
   </div>
@@ -65,7 +64,7 @@
           <div class="table-title">≡ Menu Items</div>
 
           <div class="search-wrap">
-            <input type="text" placeholder="Search items...">
+            <input type="text" id="menuSearch" placeholder="Search items..." autocomplete="off">
             <span style="color:var(--text-light);">🔍</span>
           </div>
         </div>
@@ -87,7 +86,7 @@
             if (menuItems != null) {
               for (MenuItem item : menuItems) {
           %>
-          <tr>
+          <tr data-name="<%= item.getName().toLowerCase() %>" data-category="<%= item.getCategory().toLowerCase() %>">
             <td><div class="item-img">🍽️</div></td>
             <td><strong><%= item.getName() %></strong></td>
             <td><span class="badge"><%= item.getCategory() %></span></td>
@@ -205,7 +204,7 @@
         <label>Description</label>
         <textarea name="description" id="editDescription"></textarea>
       </div>
-      <button type="submit" class="save-btn">💾 Update Item</button>
+      <button type="submit" class="save-btn"> Update Item</button>
       <a href="#" class="cancel-btn">Cancel</a>
     </form>
   </div>
