@@ -135,7 +135,7 @@
                 <label>Full Name<input type="text" placeholder="Your name" required /></label>
                 <label>Email<input type="email" placeholder="your@email.com" required /></label>
               </div>
-              <label>Subject<input type="text" placeholder="Reservation / Feedback / Other" /></label>
+              <label>Subject<input type="text" placeholder="Feedback/ others" /></label>
               <label>Message<textarea rows="4" placeholder="Write your message here..." required></textarea></label>
               <button type="submit" class="btn-gold-solid">Send Message</button>
             </form>

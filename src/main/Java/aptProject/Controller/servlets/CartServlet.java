@@ -11,23 +11,24 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * CartServlet - opens the cart page.
- *
- * GET /cart → forward to cart.jsp
- * Cart data is stored in browser localStorage, no DB needed.
+ * CartServlet — displays the shopping cart page.
+ * Only accessible to authenticated users; unauthenticated requests are redirected to login.
  */
 @WebServlet(name = "CartServlet", urlPatterns = {"/cart"})
 public class CartServlet extends HttpServlet {
+     // GET — verify the user is logged in, then display the cart page.
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Redirect unauthenticated users to the login page before showing the cart
         if (!SessionUtil.isLoggedIn(request)) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
 
+        // User is authenticated — forward to the cart JSP (cart data is in localStorage)
         request.getRequestDispatcher("/WEB-INF/page/cart.jsp").forward(request, response);
     }
 }
