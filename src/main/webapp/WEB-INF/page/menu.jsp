@@ -63,7 +63,17 @@
         </p>
         <% } else {
                for (MenuItem item : menuItems) {
-                   String img = item.getImageUrl() != null ? item.getImageUrl() : request.getContextPath() + "/Resource/default.jpg";
+                   String rawImg = item.getImageUrl();
+                   String img;
+                   if (rawImg == null || rawImg.isBlank()) {
+                       img = request.getContextPath() + "/Resource/default.jpg";
+                   } else if (rawImg.startsWith("/Resource") || rawImg.startsWith("/uploads")) {
+                       // Context-relative path stored by UploadUtil — prepend context path
+                       img = request.getContextPath() + rawImg;
+                   } else {
+                       // Already absolute or external URL
+                       img = rawImg;
+                   }
         %>
         <article class="menu-card" data-cat="<%= item.getCategory() %>">
           <div class="img-wrap">
