@@ -35,12 +35,12 @@
             <% } %>
 
             <% if (request.getAttribute("error") != null) { %>
-            <div style="color:#e74c3c; background:#fdecea; border:1px solid #e74c3c; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:0.9rem;">
+            <div class="alert alert-error">
                 <%= request.getAttribute("error") %>
             </div>
             <% } %>
             <% if (request.getParameter("registered") != null) { %>
-            <div style="color:#27ae60; background:#eafaf1; border:1px solid #27ae60; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:0.9rem;">
+            <div class="alert alert-success">
                 Account created successfully! Please log in.
             </div>
             <% } %>

@@ -31,7 +31,7 @@
     <div class="container container-sm center">
       <p class="eyebrow">La Nostra Storia</p>
       <h2>Three Generations of Flavor</h2>
-      <p class="lead">Since 1972, the Russo family has served Kathmandu with recipes carried across generations - slow-cooked sauces, hand-pulled pasta, and wines selected from small Italian estates. Every plate is a tribute to the Italian table, where food is family.</p>
+      <p class="lead">Since 1972, the Russo family has served Pokhara with recipes carried across generations - slow-cooked sauces, hand-pulled pasta, and wines selected from small Italian estates. Every plate is a tribute to the Italian table, where food is family.</p>
     </div>
   </section>
 </main>
@@ -39,7 +39,7 @@
   <div class="container footer-grid">
     <div>
       <h3>Amici <span class="accent">de</span> Gusto</h3>
-      <p>Authentic Italian dining in the heart of Kathmandu since 1972. Handcrafted pasta, wood-fired pizzas, and curated wines.</p>
+      <p>Authentic Italian dining in the heart of Pokhara since 1972. Handcrafted pasta, wood-fired pizzas, and curated wines.</p>
     </div>
     <div>
       <h4>Contact</h4>
@@ -59,7 +59,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="container">&copy; 2026 Amici de Gusto - Crafted with passion in Kathmandu, Nepal</div>
+    <div class="container">&copy; 2026 Amici de Gusto - Crafted with passion in Pokahra, Nepal</div>
   </div>
 </footer>
 </body>

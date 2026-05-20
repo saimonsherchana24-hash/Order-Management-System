@@ -15,18 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/AdminMenu.css">
-  <style>
-    /* Popups hidden by default, shown only when their id is the URL hash */
-    .popup-overlay        { display: none; }
-    .popup-overlay:target { display: flex; }
-  </style> 
 </head>
 
 <body>
 
 <aside class="sidebar">
   <div class="logo-wrap">
-    <div class="logo-icon">🍽️</div>
     <div class="logo-name">Amici<br>De Gusto</div>
     <div class="logo-sub">Italian Restaurant</div>
   </div>
@@ -68,11 +62,6 @@
       <div class="table-card">
         <div class="table-header">
           <div class="table-title">≡ Menu Items</div>
-
-          <div class="search-wrap">
-            <input type="text" placeholder="Search items...">
-            <span style="color:var(--text-light);">🔍</span>
-          </div>
         </div>
 
         <table>
@@ -92,7 +81,7 @@
             if (menuItems != null) {
               for (MenuItem item : menuItems) {
           %>
-          <tr>
+          <tr data-name="<%= item.getName().toLowerCase() %>" data-category="<%= item.getCategory().toLowerCase() %>">
             <td><div class="item-img">🍽️</div></td>
             <td><strong><%= item.getName() %></strong></td>
             <td><span class="badge"><%= item.getCategory() %></span></td>
@@ -210,33 +199,12 @@
         <label>Description</label>
         <textarea name="description" id="editDescription"></textarea>
       </div>
-      <button type="submit" class="save-btn">💾 Update Item</button>
+      <button type="submit" class="save-btn"> Update Item</button>
       <a href="#" class="cancel-btn">Cancel</a>
     </form>
   </div>
 </div>
 
-<script>
-function openEdit(id, name, category, price, description, imageUrl) {
-    document.getElementById('editItemId').value         = id;
-    document.getElementById('editItemName').value       = name;
-    document.getElementById('editCategory').value       = category;
-    document.getElementById('editPrice').value          = price;
-    document.getElementById('editDescription').value    = description;
-    document.getElementById('editExistingImage').value  = imageUrl;
-
-    // Show current image name so admin knows what's already set
-    var imgLabel = document.getElementById('editCurrentImg');
-    if (imageUrl) {
-        var fileName = imageUrl.split('/').pop();
-        imgLabel.textContent = 'Current: ' + fileName;
-    } else {
-        imgLabel.textContent = 'No image set';
-    }
-
-    window.location.hash = 'editPopup';
-}
-</script>
-
+<script src="<%= request.getContextPath() %>/js/adminMenu.js"></script>
 </body>
 </html>
