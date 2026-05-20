@@ -2,8 +2,6 @@ package aptProject.dao.Interface;
 
 import aptProject.model.Order;
 import java.util.List;
-import java.util.ArrayList;
-import aptProject.model.WeeklyRevenue;
 
 /**
  * OrderDAOInterface — contract for all order-related database operations.
@@ -76,6 +74,4 @@ public interface OrderDAOInterface {
 
     // Returns the sum of {@code total_price} for all orders with payment status {@code PAID}.
     double getTotalRevenue();
-
-    ArrayList<WeeklyRevenue> getWeeklyRevenue();
 }
